@@ -31,33 +31,22 @@ export default {
   <div class="app-dashboard" ref="container">
     <app-menu></app-menu>
     <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
-    <main class="container">
+    <main>
       <router-view></router-view>
     </main>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../assets/sass/_extend";
 
   // Dashboard container
   .app-dashboard {
     min-height: 100vh;
 
-    .menu,
-    .container {
-      flex-grow: 1;
-    }
-
-    .container {
+    main {
       min-height: 100vh;
       transition: $menu-transition;
-    }
-
-    &.is-active {
-      .container {
-        transform: translateX($menu-width);
-      }
     }
   }
 </style>

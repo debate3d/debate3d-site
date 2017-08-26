@@ -1,11 +1,11 @@
 <script>
-import Logo from '../../components/logo'
+import LogoGlasses from '../../components/logo-glasses.vue'
 import { isEmpty } from 'lodash'
 import { login, getUser } from '../../services/auth'
 import { setUserStorage, setHasLogged, setToken } from '../../helpers'
 
 export default {
-  components: { Logo },
+  components: { LogoGlasses },
   data () {
     return {
       email: '',
@@ -85,7 +85,7 @@ export default {
 
 <template>
   <div class="container">
-    <logo />
+    <logo-glasses />
     <section class="form-section">
       <h1 class="title is-3 has-text-centered"> Login </h1>
       <a class="button is-info is-fullwidth is-medium is-outlined"
@@ -129,6 +129,11 @@ export default {
 
   .container {
     padding-top: $space * 2;
+
+    .image {
+      max-width: 150px;
+      margin: $space auto;
+    }
   }
 
   .form-section {

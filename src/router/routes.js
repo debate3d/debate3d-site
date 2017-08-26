@@ -1,4 +1,4 @@
-import { routes } from '../app'
+import routes from '../app/routes'
 
 export default [
   {

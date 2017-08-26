@@ -1,11 +1,15 @@
 <script type="text/javascript">
   export default {
-    props: [ 'label', 'route' ]
+    props: [ 'label', 'route' ],
+    computed: {
+      routeAtual () { return this.$route.path },
+      isActive () { return (this.routeAtual === this.route) ? 'is-active' : '' }
+    }
   }
 </script>
 
 <template>
   <li class="menu-item">
-    <router-link :to="route"> {{ label }} </router-link>
+    <router-link :class="isActive" :to="route"> {{ label }} </router-link>
   </li>
 </template>

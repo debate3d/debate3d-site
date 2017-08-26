@@ -1,0 +1,63 @@
+<script>
+import AppMenu from '../components/menu/main.vue'
+import AppButton from '../components/menu/menu-button.vue'
+
+export default {
+  name: 'app',
+  components: {
+    AppMenu,
+    AppButton
+  },
+  data () {
+    return {
+      condition: false
+    }
+  },
+  computed: {
+    buttonText () {
+      return (this.condition) ? 'Fechar' : 'Menu'
+    }
+  },
+  methods: {
+    toogleMenu () {
+      this.condition = arguments[0]
+      this.$refs.container.classList.toggle('is-active')
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="app-dashboard" ref="container">
+    <app-menu></app-menu>
+    <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
+    <main class="container">
+      <router-view></router-view>
+    </main>
+  </div>
+</template>
+
+<style lang="scss">
+  @import "../assets/sass/_extend";
+
+  // Dashboard container
+  .app-dashboard {
+    min-height: 100vh;
+
+    .menu,
+    .container {
+      flex-grow: 1;
+    }
+
+    .container {
+      min-height: 100vh;
+      transition: $menu-transition;
+    }
+
+    &.is-active {
+      .container {
+        transform: translateX($menu-width);
+      }
+    }
+  }
+</style>

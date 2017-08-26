@@ -122,7 +122,7 @@ export default {
             v-model="newPassword"></b-input>
         </b-field>
 
-        <button class="button is-success is-medium is-outlined is-fullwidth"> Entrar </button>
+        <button class="button is-success is-medium is-outlined is-fullwidth"> Cadastre-se </button>
       </form>
 
       <p> Já possui uma conta? <router-link to="/login"> Acesse </router-link> </p>
@@ -150,4 +150,3 @@ export default {
     margin: $space / 2 0;
   }
 </style>
-

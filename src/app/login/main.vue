@@ -34,7 +34,6 @@ export default {
               setToken(token)
               getUser(token)
                 .then(response => {
-                  this.loading = false
                   const value = response.data.data
                   loading.close()
                   setUserStorage(value)
@@ -47,6 +46,7 @@ export default {
           })
           .catch(err => {
             if (err) {
+              loading.close()
               this.$snackbar.open({
                 message: 'Usuário inválido',
                 type: 'is-danger',
@@ -144,4 +144,3 @@ export default {
     margin: $space / 2 0;
   }
 </style>
-

@@ -1,6 +1,6 @@
 <template>
   <figure class="image">
-    <img src="../assets/img/logoMenu.png" alt="teste">
+    <img src="../assets/img/eyeglasses-d3d.png" alt="teste">
   </figure>
 </template>
 
@@ -12,4 +12,3 @@
     margin: $space auto;
   }
 </style>
-

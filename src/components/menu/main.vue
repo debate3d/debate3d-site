@@ -1,13 +1,15 @@
 <script type="text/javascript">
   import ListItem from './list-item.vue'
+  import AppLogo from './logo.vue'
   export default {
     name: 'menu',
-    components: { ListItem }
+    components: { ListItem, AppLogo }
   }
 </script>
 
 <template>
   <aside class="menu">
+    <app-logo></app-logo>
     <p class="menu-label">
       Conheça a plataforma
     </p>

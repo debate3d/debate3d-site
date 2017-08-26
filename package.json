@@ -12,14 +12,18 @@
     "deploy-github": "node build/build.js github"
   },
   "dependencies": {
+    "apollo-client": "^1.9.1",
     "axios": "^0.16.2",
     "buefy": "^0.5.1",
     "bulma": "^0.5.1",
+    "graphql": "^0.11.1",
+    "graphql-tag": "^2.4.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "vue": "^2.3.3",
+    "vue-apollo": "^2.1.0-beta.21",
     "vue-router": "^2.6.0",
     "vuex": "^2.3.1"
   },

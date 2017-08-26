@@ -5,11 +5,13 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Buefy from 'buefy'
-// import 'buefy/lib/buefy.min.css'
+import VueApollo from 'vue-apollo'
+import apolloProvider from './services/apollo'
 
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })
+Vue.use(VueApollo)
 
 Vue.config.productionTip = false
 
@@ -18,6 +20,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  apolloProvider,
   template: '<App/>',
   components: { App }
 })

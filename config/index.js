@@ -1,7 +1,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
-const assetsPublicPath = (process.argv[2] === 'github') ? '/debate3d/' : '/'
+const assetsPublicPath = (process.argv[2] === 'github') ? '/debate3d-site/' : '/'
 
 module.exports = {
   build: {

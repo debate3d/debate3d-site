@@ -1,0 +1,32 @@
+query me ($uid: String!) {
+  user(uid: $uid) {
+    name
+    uid
+    email
+    url_photo
+    created
+    cpf
+    cep
+    ponts
+    facebook
+    twitter
+    instagram
+    site
+    subscriber
+    votes {
+      id
+    }
+    cards {
+      uid
+    }
+    reactions {
+      id
+    }
+    topics {
+      uid
+    }
+    deck {
+      id
+    }
+  }
+}

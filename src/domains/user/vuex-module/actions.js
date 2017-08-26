@@ -1,0 +1,22 @@
+import * as TYPES from './mutations_types'
+
+export default {
+  setUser (store, obj) {
+    store.commit(TYPES.SET_USER, obj)
+  },
+  getTopics (store, value) {
+    store.commit(TYPES.GET_TOPICS, value)
+  },
+  getCards (store, value) {
+    store.commit(TYPES.GET_CARDS_USER, value)
+  },
+  getDeck (store, value) {
+    store.commit(TYPES.GET_DECK_CARDS_USER, value)
+  },
+  getReactions (store, value) {
+    store.commit(TYPES.GET_REACTIONS_USER, value)
+  },
+  isLogged (store, value) {
+    store.commit(TYPES.HAS_LOGGED, value)
+  }
+}

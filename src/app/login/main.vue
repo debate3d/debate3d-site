@@ -1,8 +1,7 @@
 <script>
 import LogoGlasses from '../../components/logo-glasses.vue'
 import { isEmpty } from 'lodash'
-import { login, getUser } from '../../services/auth'
-import { setUserStorage, setHasLogged, setToken } from '../../helpers'
+import { login } from '../../services/auth'
 
 export default {
   components: { LogoGlasses },
@@ -27,24 +26,12 @@ export default {
           email,
           password
         }
-        login(payload)
+        login(payload, this.$store)
           .then(response => {
-            const { token } = response.data
-            if (!isEmpty(token)) {
-              setToken(token)
-              getUser(token)
-                .then(response => {
-                  const value = response.data.data
-                  loading.close()
-                  setUserStorage(value)
-                  setHasLogged(true)
-                  this.$store.dispatch('setUser', value)
-                  this.$router.push('/dashboard')
-                })
-              return
-            }
+            loading.close()
           })
           .catch(err => {
+            console.error(err)
             if (err) {
               loading.close()
               this.$snackbar.open({

@@ -1,3 +1,3 @@
-import user from '../domains/user/vuex-module'
+import auth from '../domains/user/vuex-module'
 
-export default { user }
+export default { auth }

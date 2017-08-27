@@ -1,4 +1,4 @@
-import * as TYPES from './mutations_types'
+import * as TYPES from './mutation-types'
 
 export default {
   [ TYPES.SET_USER ] (store, obj) {

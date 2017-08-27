@@ -1,11 +1,9 @@
-import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
+import { ApolloClient } from 'apollo-client'
+import networkInterface from './network-interface'
 
 // Create the apollo client
 const apolloClient = new ApolloClient({
-  networkInterface: createBatchingNetworkInterface({
-    uri: 'http://localhost:3000/graphql'
-  }),
-  connectToDevTools: true
+  networkInterface
 })
 
 export default apolloClient

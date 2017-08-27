@@ -1,4 +1,4 @@
-import * as TYPES from './mutations_types'
+import * as TYPES from './mutation-types'
 
 export default {
   setUser (store, obj) {
@@ -17,6 +17,6 @@ export default {
     store.commit(TYPES.GET_REACTIONS_USER, value)
   },
   isLogged (store, value) {
-    store.commit(TYPES.HAS_LOGGED, value)
+    store.commit(TYPES.IS_LOGGED, value)
   }
 }

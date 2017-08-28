@@ -27,9 +27,10 @@
 
   .button {
     position: absolute;
-    top: $space / 2;
+    top: $space - 5px;
     z-index: 3;
-    transition: $menu-transition
+    transition: $menu-transition;
+    outline: none;
   }
 
   .app-dashboard.is-active {

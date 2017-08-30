@@ -43,6 +43,7 @@
       width: 100vw;
       height: 100%;
       opacity: 0;
+      visibility: hidden;
       transition: opacity 0.2s ease;
     }
 
@@ -65,6 +66,7 @@
 
       &:after {
         opacity: 1;
+        visibility: visible;
       }
     }
   }

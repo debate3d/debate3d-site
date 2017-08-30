@@ -1,0 +1,23 @@
+{
+  topics {
+    uid
+    ponts
+    title
+    cards(page: 1) {
+      count
+    }
+    position {
+      positive
+      negative
+    }
+    votes_topic {
+      count
+      positive {
+        id
+      }
+      negative {
+        id
+      }
+    }
+  }
+}

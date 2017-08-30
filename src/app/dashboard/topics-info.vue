@@ -27,7 +27,7 @@
   <section class="topics-info">
     <h2 class="title is-4"> Temas em destaque </h2>
     <div class="columns is-multiline is-centered">
-      <div class="column is-4" v-for="(topic, key) in allTopics">
+      <div class="column is-half-tablet is-one-third-desktop" v-for="(topic, key) in allTopics">
         <app-topic :topic="topic" :position="key + 1"></app-topic>
       </div>
     </div>

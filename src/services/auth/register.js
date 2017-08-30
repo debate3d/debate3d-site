@@ -9,7 +9,7 @@ import setUser from '../../domains/user/services/set-user'
  * @param  {Object} router  Router instance
  * @return {Promise}
  */
-export default (payload, store) => http.post('/auth/login', payload)
+export default (payload, store) => http.post('/auth/users', payload)
  .then(response => setToken(response.data.token))
  .then(token => {
    return setUser(store)

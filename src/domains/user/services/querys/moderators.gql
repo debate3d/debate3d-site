@@ -1,0 +1,10 @@
+query allModerators ($page: Int!) {
+  moderators {
+    count
+    records(page: $page) {
+      name
+      url_photo
+      ponts
+    }
+  }
+}

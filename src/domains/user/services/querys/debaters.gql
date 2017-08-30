@@ -1,5 +1,5 @@
-query allUser ($page: Int!) {
-  users {
+query allDebaters ($page: Int!) {
+  debaters {
     count
     records(page: $page) {
       name

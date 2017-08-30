@@ -12,7 +12,7 @@
         return (this.hasUser) ? this.user.ponts : 0
       },
       name () {
-        return (this.hasUser) ? this.user.name.split(' ').slice(0, 2).join(' ') : 0
+        return (this.hasUser && !isEmpty(this.user.name)) ? this.user.name.split(' ').slice(0, 2).join(' ') : ''
       }
     }
   }
@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
 
-    > .tag {
+    > .tag.is-primary {
       margin: 0 $space / 2 0 0;
     }
 

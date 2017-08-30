@@ -9,24 +9,27 @@ export default {
     return {
       email: '',
       newPassword: '',
-      password: ''
+      password: '',
+      name: ''
     }
   },
   computed: {
     isValid () {
-      return !isEmpty(this.email) && !isEmpty(this.password) && !isEmpty(this.newPassword)
+      return !isEmpty(this.name) && !isEmpty(this.email) && this.isEqualPwd
     },
     isEqualPwd () {
-      return this.password === this.newPassword
+      return this.password === this.newPassword && this.password !== '' && this.newPassword !== ''
     }
   },
   methods: {
     register () {
       if (this.isValid && this.isEqualPwd) {
         const loading = this.$loading.open()
+        const name = this.name
         const email = this.email
         const password = this.password
         const payload = {
+          name,
           email,
           password
         }
@@ -46,7 +49,7 @@ export default {
               onAction: () => {
                 this.email = ''
                 this.password = ''
-                this.$refs.inputEmail.focus()
+                this.$refs.inputName.focus()
                 loading.close()
               }
             })
@@ -84,11 +87,20 @@ export default {
       <form @submit.prevent="register">
         <b-field>
           <b-input
+            placeholder="Nome"
+            icon="user"
+            size="is-medium"
+            type="text"
+            ref="inputName"
+            v-model="name"></b-input>
+        </b-field>
+
+        <b-field>
+          <b-input
             placeholder="Email"
             icon="envelope"
             size="is-medium"
-            type="text"
-            ref="inputEmail"
+            type="email"
             v-model="email"></b-input>
         </b-field>
 
@@ -110,7 +122,7 @@ export default {
             v-model="newPassword"></b-input>
         </b-field>
 
-        <button class="button is-success is-medium is-outlined is-fullwidth"> Cadastre-se </button>
+        <button :disabled="!isValid" class="button is-success is-medium is-outlined is-fullwidth"> Cadastre-se </button>
       </form>
 
       <p> Já possui uma conta? <router-link to="/login"> Acesse </router-link> </p>

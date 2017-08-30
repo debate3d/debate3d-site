@@ -15,12 +15,9 @@
 
 <template lang="html">
   <div class="user-info">
-    <div>
-      <app-avatar :url="user.url_photo" :name="user.name" length="is-small"></app-avatar>
-    </div>
-    <div>
-      <span class="tag is-large is-info"> {{ user.ponts }} pontos </span>
-    </div>
+    <app-avatar :url="user.url_photo" :name="user.name" length="is-small"></app-avatar>
+    <h2 class="subtitle"> {{ user.name }} </h2>
+    <span class="tag is-large is-info"> {{ user.ponts }} pontos </span>
   </div>
 </template>
 
@@ -28,18 +25,44 @@
   @import "../../assets/sass/_extend";
 
   .user-info {
-    display: flex;
+    position: relative;
 
-    div {
-      flex-grow: 1;
+    @media (max-width: 520px) {
+      .avatar {
+        margin: $space - 5px 0 $space - 5px $space - 5px;
+      }
+
+      .subtitle {
+        margin-left: $space - 5px;
+      }
+
+      .tag {
+        position: absolute;
+        top: $space + 5px;
+        right: $space - 5px;
+      }
     }
 
-    .avatar {
-      margin: $space - 5px 0 $space / 2 $space;
-    }
+    @media (min-width: 521px) {
+      height: 80px;
 
-    .tag {
-      margin: $space - 5px $space / 2 auto;
+      .avatar {
+        position: absolute;
+        top: $space - 5px;
+        left: $space - 5px;
+      }
+
+      .subtitle {
+        position: absolute;
+        top: $space + 10px;
+        left: 80px;
+      }
+
+      .tag {
+        position: absolute;
+        top: $space - 5px;
+        right: $space - 5px;
+      }
     }
   }
 </style>

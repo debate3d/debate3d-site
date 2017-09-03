@@ -19,7 +19,6 @@ export default store => {
       store.dispatch('getDeck', deck)
       store.dispatch('getCards', cards)
       store.dispatch('isLogged', true)
-      router.push('/dashboard')
       return Promise.resolve()
     })
     .catch(error => {

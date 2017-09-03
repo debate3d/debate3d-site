@@ -1,5 +1,5 @@
 <script>
-  import LogoLetters from '../../components/logo-letters.vue'
+  import LogoLetters from './logo-letters.vue'
 
   export default {
     name: 'dashboard-main-header',
@@ -14,7 +14,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/sass/_extend";
+  @import "../assets/sass/_extend";
 
   .header {
     background-color: $menu-color;

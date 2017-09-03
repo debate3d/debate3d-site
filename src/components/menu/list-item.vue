@@ -13,3 +13,9 @@
     <router-link :class="isActive" :to="route"> {{ label }} </router-link>
   </li>
 </template>
+
+<style scoped lang="scss">
+  .menu-item {
+    margin: 5px 0;
+  }
+</style>

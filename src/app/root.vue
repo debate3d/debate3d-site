@@ -1,10 +1,12 @@
 <script>
+import AppHeader from '../components/header.vue'
 import AppMenu from '../components/menu/main.vue'
 import AppButton from '../components/menu/menu-button.vue'
 
 export default {
   name: 'app',
   components: {
+    AppHeader,
     AppMenu,
     AppButton
   },
@@ -32,6 +34,7 @@ export default {
     <app-menu></app-menu>
     <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
     <main>
+      <app-header></app-header>
       <router-view></router-view>
     </main>
   </div>

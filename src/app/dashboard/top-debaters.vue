@@ -2,12 +2,20 @@
   import debatersQuery from '../../domains/user/services/querys/debaters.gql'
   import AppUser from '../../components/box-user.vue'
   import { isEmpty } from 'lodash'
+  import { schemaUserBox } from '../../domains/user/schemas'
 
   export default {
     components: { AppUser },
     computed: {
       allUsers () {
-        return (isEmpty(this.debaters.records)) ? [] : this.debaters.records.slice(0, 5)
+        const debatersSchema = [
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox
+        ]
+        return (isEmpty(this.debaters.records)) ? debatersSchema : this.debaters.records.slice(0, 5)
       }
     },
     data () {
@@ -31,7 +39,7 @@
 <template lang="html">
   <section class="debaters-info">
     <h2 class="title is-4"> Top Debatedores </h2>
-    <app-user v-for="(user, key) in allUsers" :user="user" :position="key + 1"></app-user>
+    <app-user v-for="(user, index) in allUsers" :user="user" :position="index + 1"></app-user>
   </section>
 </template>
 

@@ -2,6 +2,7 @@ query allDebaters ($page: Int!) {
   debaters {
     count
     records(page: $page) {
+      uid
       name
       url_photo
       ponts

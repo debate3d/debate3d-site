@@ -1,18 +1,13 @@
 <script>
-  import { isEmpty } from 'lodash'
-
   export default {
     name: 'topic-panel',
     props: ['user', 'position'],
     computed: {
-      hasUser () {
-        return !isEmpty(this.user)
-      },
       ponts () {
-        return (this.hasUser) ? this.user.ponts : 0
+        return this.user.ponts
       },
       name () {
-        return (this.hasUser && !isEmpty(this.user.name)) ? this.user.name.split(' ').slice(0, 2).join(' ') : ''
+        return this.user.name.split(' ').slice(0, 2).join(' ')
       }
     }
   }
@@ -21,8 +16,8 @@
 <template lang="html">
   <div class="box">
     <span class="tag is-primary is-medium is-rounded"> {{ position }} </span>
-    <router-link :to="`/dashboard`" class="title is-5"> {{ name }} </router-link>
-    <span class="tag is-info is-medium"> {{ ponts }} pts </span>
+    <router-link :to="`/${user.uid}`" class="title is-5"> {{ user.name }} </router-link>
+    <span class="tag is-info is-medium"> {{ user.ponts }} pts </span>
   </div>
 </template>
 

@@ -2,12 +2,20 @@
   import moderatorsQuery from '../../domains/user/services/querys/moderators.gql'
   import AppUser from '../../components/box-user.vue'
   import { isEmpty } from 'lodash'
+  import { schemaUserBox } from '../../domains/user/schemas'
 
   export default {
     components: { AppUser },
     computed: {
       allUsers () {
-        return (isEmpty(this.moderators.records)) ? [] : this.moderators.records.slice(0, 5)
+        const moderatorSchema = [
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox,
+          schemaUserBox
+        ]
+        return (isEmpty(this.moderators.records)) ? moderatorSchema : this.moderators.records.slice(0, 5)
       }
     },
     data () {

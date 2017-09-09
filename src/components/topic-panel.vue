@@ -50,9 +50,7 @@
     }
 
     > .tag:not(.is-position) {
-      &:last-child {
-        margin: 5px;
-      }
+      margin-right: 5px;
     }
 
     > .tag.is-position {

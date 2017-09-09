@@ -1,0 +1,29 @@
+query allTopics($page: Int!) {
+  topics {
+    count
+    mostVoted(page: $page) {
+      uid
+      ponts
+      title
+      cards(page: 1) {
+        count
+      }
+      position {
+        positive
+        negative
+      }
+      votes_topic {
+        count
+        positive {
+          id
+        }
+        negative {
+          id
+        }
+      }
+      tags {
+        label
+      }
+    }
+  }
+}

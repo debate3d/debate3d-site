@@ -1,27 +1,26 @@
 <script>
   import topicsQuery from '../../domains/topics/services/querys/topics.gql'
   import AppTopic from '../../components/topic-panel.vue'
-  import { isEmpty } from 'lodash'
   import { schemaTopicBox } from '../../domains/topics/schemas'
 
   export default {
     components: { AppTopic },
     computed: {
       allTopics () {
-        const schemaTopics = [
-          schemaTopicBox,
-          schemaTopicBox,
-          schemaTopicBox,
-          schemaTopicBox,
-          schemaTopicBox
-        ]
-        const topics = (isEmpty(this.topics)) ? [] : this.topics.mostPonts
-        return (isEmpty(this.topics)) ? schemaTopics : topics.slice(0, 6)
+        return this.topics.mostPonts.slice(0, 6)
       }
     },
     data () {
       return {
-        topics: {}
+        topics: {
+          mostPonts: [
+            schemaTopicBox,
+            schemaTopicBox,
+            schemaTopicBox,
+            schemaTopicBox,
+            schemaTopicBox
+          ]
+        }
       }
     },
     apollo: {

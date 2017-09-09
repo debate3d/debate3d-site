@@ -15,7 +15,8 @@
           schemaTopicBox,
           schemaTopicBox
         ]
-        return (isEmpty(this.topics)) ? schemaTopics : this.topics.slice(0, 6)
+        const topics = (isEmpty(this.topics)) ? [] : this.topics.mostPonts
+        return (isEmpty(this.topics)) ? schemaTopics : topics.slice(0, 6)
       }
     },
     data () {

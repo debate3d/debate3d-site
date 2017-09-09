@@ -10,7 +10,7 @@ import router from '../../../router'
 export default store => {
   return getUser()
     .then(response => {
-      const { user } = response.data.me
+      const user = response.data.me
       setHasLogged(true)
       const { reactions, topics, cards, deck } = user
       store.dispatch('setUser', user)
@@ -19,6 +19,7 @@ export default store => {
       store.dispatch('getDeck', deck)
       store.dispatch('getCards', cards)
       store.dispatch('isLogged', true)
+      router.push('/dashboard')
       return Promise.resolve()
     })
     .catch(error => {

@@ -17,6 +17,9 @@
       },
       countCards () {
         return this.topic.cards.count
+      },
+      tags () {
+        return this.topic.tags
       }
     }
   }
@@ -24,13 +27,14 @@
 
 <template lang="html">
   <div class="box" @click="$router.push(`/${topic.uid}`)">
-    <span class="tag is-warning is-rounded"> {{ position }} </span>
+    <span class="tag is-warning is-rounded is-position"> {{ position }} </span>
     <h3 class="title is-5">
       {{ topic.title }}
     </h3>
     <p> {{ countCards }} card(s) cadastrados </p>
     <p> {{ namePositive }}: {{ countPositive }} </p>
     <p> {{ nameNegative }}: {{ countNegative }} </p>
+    <span v-for="tag in tags" class="tag is-info"> {{ tag.label }} </span>
   </div>
 </template>
 
@@ -42,10 +46,19 @@
     cursor: pointer;
 
     > .tag {
+      transition: background-color .4s ease;
+    }
+
+    > .tag:not(.is-position) {
+      &:last-child {
+        margin: 5px;
+      }
+    }
+
+    > .tag.is-position {
       position: absolute;
       top: -0.5rem;
       left: -0.5rem;
-      transition: background-color .4s ease;
     }
 
     &:hover {

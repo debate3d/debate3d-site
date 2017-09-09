@@ -2,6 +2,7 @@ query allModerators ($page: Int!) {
   moderators {
     count
     records(page: $page) {
+      uid
       name
       url_photo
       ponts

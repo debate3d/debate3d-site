@@ -26,15 +26,18 @@
 </script>
 
 <template lang="html">
-  <div class="box" @click="$router.push(`/${topic.uid}`)">
+  <div class="box">
     <span class="tag is-warning is-rounded is-position"> {{ position }} </span>
-    <h3 class="title is-5">
+    <h3 class="title is-5" @click="$router.push(`/${topic.uid}`)">
       {{ topic.title }}
     </h3>
     <p> {{ countCards }} card(s) cadastrados </p>
     <p> {{ namePositive }}: {{ countPositive }} </p>
     <p> {{ nameNegative }}: {{ countNegative }} </p>
-    <span v-for="tag in tags" class="tag is-info"> {{ tag.label }} </span>
+    <span
+      v-for="tag in tags"
+      class="tag is-info"
+      @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
   </div>
 </template>
 

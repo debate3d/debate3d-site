@@ -1,7 +1,8 @@
-query allTopics($page: Int!) {
-  topics {
-    count
-    mostVoted(page: $page) {
+query searchTag ($label: String!) {
+  tagSearch(label: $label) {
+    uid
+    label
+    topics {
       uid
       ponts
       title

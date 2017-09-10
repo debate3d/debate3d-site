@@ -22,6 +22,7 @@ query allTopics($page: Int!) {
         }
       }
       tags {
+        uid
         label
       }
     }

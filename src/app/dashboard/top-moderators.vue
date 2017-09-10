@@ -1,11 +1,11 @@
 <script>
   import moderatorsQuery from '../../domains/user/services/querys/moderators.gql'
-  import AppUser from '../../components/box-user.vue'
+  import { boxUser } from '@/domains/user/view'
   import { isEmpty } from 'lodash'
   import { schemaUserBox } from '../../domains/user/schemas'
 
   export default {
-    components: { AppUser },
+    components: { boxUser },
     computed: {
       allUsers () {
         const moderatorSchema = [
@@ -39,7 +39,10 @@
 <template lang="html">
   <section class="moderators-info">
     <h2 class="title is-4"> Top Moderadores </h2>
-    <app-user v-for="(user, key) in allUsers" :user="user" :position="key + 1"></app-user>
+    <box-user
+      v-for="(user, index) in allUsers"
+      :user="user"
+      :position="index + 1"></box-user>
   </section>
 </template>
 

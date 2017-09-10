@@ -1,11 +1,11 @@
 <script>
   import mostPontsQuery from '../../domains/topics/services/querys/most-ponts.gql'
   import { schemaTopicBox } from '../../domains/topics/schemas'
-  import AppTopic from '../../components/topic-panel.vue'
+  import { boxTopic } from '@/domains/topics/view'
 
   export default {
     name: 'most-ponts',
-    components: { AppTopic },
+    components: { boxTopic },
     computed: {
       allTopics () {
         return this.topics.mostPonts
@@ -42,7 +42,7 @@
 <template lang="html">
   <div class="columns is-multiline is-centered">
     <div class="column is-half-tablet is-one-third-desktop" v-for="(topic, key) in allTopics">
-      <app-topic :topic="topic" :position="key + 1"></app-topic>
+      <box-topic :topic="topic" :position="key + 1"></box-topic>
     </div>
   </div>
 </template>

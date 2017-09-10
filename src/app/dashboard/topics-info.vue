@@ -1,10 +1,10 @@
 <script>
   import topicsQuery from '../../domains/topics/services/querys/topics.gql'
-  import AppTopic from '../../components/topic-panel.vue'
+  import { boxTopic } from '@/domains/topics/view'
   import { schemaTopicBox } from '../../domains/topics/schemas'
 
   export default {
-    components: { AppTopic },
+    components: { boxTopic },
     computed: {
       allTopics () {
         return this.topics.mostPonts.slice(0, 6)
@@ -36,7 +36,7 @@
     <h2 class="title is-4"> Temas em destaque </h2>
     <div class="columns is-multiline is-centered">
       <div class="column is-half-tablet is-one-third-desktop" v-for="(topic, key) in allTopics">
-        <app-topic :topic="topic" :position="key + 1"></app-topic>
+        <box-topic :topic="topic" :position="key + 1"></box-topic>
       </div>
     </div>
   </section>

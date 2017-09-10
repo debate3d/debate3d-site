@@ -1,11 +1,11 @@
 <script>
   import debatersQuery from '../../domains/user/services/querys/debaters.gql'
-  import AppUser from '../../components/box-user.vue'
+  import { boxUser } from '@/domains/user/view'
   import { isEmpty } from 'lodash'
   import { schemaUserBox } from '../../domains/user/schemas'
 
   export default {
-    components: { AppUser },
+    components: { boxUser },
     computed: {
       allUsers () {
         const debatersSchema = [
@@ -39,7 +39,10 @@
 <template lang="html">
   <section class="debaters-info">
     <h2 class="title is-4"> Top Debatedores </h2>
-    <app-user v-for="(user, index) in allUsers" :user="user" :position="index + 1"></app-user>
+    <box-user
+      v-for="(user, index) in allUsers"
+      :user="user"
+      :position="index + 1"></box-user>
   </section>
 </template>
 

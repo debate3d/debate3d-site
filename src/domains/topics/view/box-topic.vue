@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: 'topic-panel',
+    name: 'box-topic',
     props: ['topic', 'position'],
     computed: {
       namePositive () {
@@ -42,13 +42,17 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../assets/sass/_extend";
+  @import "../../../assets/sass/_extend";
 
   .box {
     position: relative;
-    cursor: pointer;
+
+    > .title {
+      cursor: pointer;
+    }
 
     > .tag {
+      cursor: pointer;
       transition: background-color .4s ease;
     }
 

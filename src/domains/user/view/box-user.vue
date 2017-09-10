@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: 'topic-panel',
+    name: 'box-user',
     props: ['user', 'position'],
     computed: {
       ponts () {
@@ -22,7 +22,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../assets/sass/_extend";
+  @import "../../../assets/sass/_extend";
 
   .box {
     position: relative;

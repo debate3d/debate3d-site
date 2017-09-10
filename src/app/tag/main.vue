@@ -1,6 +1,6 @@
 <script>
   import AppTopic from '@/components/topic-panel'
-  import schemaTopics from '@/domains/topics/schemas'
+  import { schemaTopicBox } from '@/domains/topics/schemas'
   import searchTag from '@/domains/tag/services/querys/search-tag.gql'
 
   export default {
@@ -25,7 +25,7 @@
           {
             uid: '',
             label: '',
-            topics: [ schemaTopics ]
+            topics: [ schemaTopicBox ]
           }
         ]
       }

@@ -28,7 +28,7 @@
 <template lang="html">
   <div class="box">
     <span class="tag is-warning is-rounded is-position"> {{ position }} </span>
-    <h3 class="title is-5" @click="$router.push(`/${topic.uid}`)">
+    <h3 class="title is-5" @click="$router.push(`/topic/${topic.uid}`)">
       {{ topic.title }}
     </h3>
     <p> {{ countCards }} card(s) cadastrados </p>

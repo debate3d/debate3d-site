@@ -1,0 +1,20 @@
+query getMiniCard ($uid: String!) {
+  card(uid: $uid) {
+  uid
+  edited
+  likes {
+    id
+  }
+  dislikes {
+    id
+  }
+  deck {
+    id
+  }
+  ponts
+  author {
+    uid
+    name
+  }
+}
+}

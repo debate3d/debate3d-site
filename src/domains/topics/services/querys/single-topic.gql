@@ -1,0 +1,46 @@
+query getSingleTopic ($uid: String!) {
+  topic (uid: $uid) {
+    uid
+    title
+    content
+    position {
+      positive
+      negative
+    }
+    author {
+      name
+      uid
+      email
+      url_photo
+    }
+    tags {
+      uid
+      label
+    }
+    votes_topic {
+      count
+      positive {
+        id
+        user {
+          uid
+          name
+          url_photo
+        }
+      }
+      negative {
+        id
+        user {
+          uid
+          name
+          url_photo
+        }
+      }
+    }
+    cards(page: 1) {
+      count
+      records {
+        uid
+      }
+    }
+  }
+}

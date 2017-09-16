@@ -40,6 +40,23 @@ query getSingleTopic ($uid: String!) {
       count
       records {
         uid
+        author {
+          name
+          uid
+          url_photo
+        }
+        content
+        position
+        ponts
+        deck {
+          id
+        }
+        likes {
+          id
+        }
+        dislikes {
+          id
+        }
       }
     }
   }

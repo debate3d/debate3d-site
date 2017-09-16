@@ -48,9 +48,9 @@
 <template lang="html">
   <div class="tag-info">
     <h1 class="title is-4">
-      {{ countTopics }} encontrados para a tag {{ tagName }}
+      {{ countTopics }} tema(s) encontrado(s) para a tag {{ tagName }}
     </h1>
-    <div class="columns is-multiline is-centered">
+    <div class="columns is-multiline">
       <div
         class="column is-half-tablet is-one-third-desktop"
         v-for="(topic, key) in topics">

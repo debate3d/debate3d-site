@@ -1,10 +1,13 @@
 <script>
   import queySingleTopic from '../../domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '../../domains/topics/schemas'
+
   import AuthorInfo from './author-info.vue'
+  import AppProgress from './progress'
+  import RenderCards from '../../components/render-cards/main.vue'
 
   export default {
-    components: { AuthorInfo },
+    components: { AuthorInfo, AppProgress, RenderCards },
     data () {
       return {
         topic: schemaTopicView
@@ -27,7 +30,7 @@
 
 <template lang="html">
   <div class="topic-info">
-    <div class="view-header">
+    <header class="view-header">
       <div class="author-info">
         <author-info :author="topic.author"></author-info>
       </div>
@@ -39,7 +42,23 @@
           class="tag is-info"
           @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
       </div>
-    </div>
+    </header>
+    <section class="view-section">
+      <p class="title is-5 has-text-centered"> Votos </p>
+
+      <app-progress
+        :data="topic.votes_topic"
+        :position="topic.position"></app-progress>
+
+      <!-- Aqui irá entrar o componente para voto -->
+
+      <hr>
+
+      <render-cards
+        :cards="topic.cards"
+        successMessage="Conheça opinião de nossos debatedores"
+        errorMessage="Esse tema não possui cards"></render-cards>
+    </section>
   </div>
 </template>
 
@@ -52,6 +71,7 @@
 
   .view-header {
     display: flex;
+    justify-content: center;
 
     .tag {
       cursor: pointer;
@@ -74,5 +94,9 @@
         margin-right: $space / 2;
       }
     }
+  }
+
+  .view-section {
+    margin: $space auto;
   }
 </style>

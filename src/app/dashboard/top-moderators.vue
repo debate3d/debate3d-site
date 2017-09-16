@@ -42,6 +42,7 @@
     <box-user
       v-for="(user, index) in allUsers"
       :user="user"
+      :key="index"
       :position="index + 1"></box-user>
   </section>
 </template>

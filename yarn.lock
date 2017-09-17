@@ -1006,6 +1006,10 @@ bulma@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.5.1.tgz#db2831c94afe732250c7b12527a7b792a4dc9ef8"
 
+bulma@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.5.2.tgz#b5c4695075700b9539619555840d8f4f9f84b3a5"
+
 caller-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/caller-path/-/caller-path-0.1.0.tgz#94085ef63581ecd3daa92444a8fe94e82577751f"
@@ -1908,6 +1912,10 @@ esrecurse@^4.1.0:
 estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
+
+estree-walker@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.3.1.tgz#e6b1a51cf7292524e7237c312e5fe6660c1ce1aa"
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -4299,6 +4307,19 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^2.0.0"
     inherits "^2.0.1"
 
+rollup-plugin-json@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-2.3.0.tgz#3c07a452c1b5391be28006fbfff3644056ce0add"
+  dependencies:
+    rollup-pluginutils "^2.0.1"
+
+rollup-pluginutils@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.0.1.tgz#7ec95b3573f6543a46a6461bd9a7c544525d0fc0"
+  dependencies:
+    estree-walker "^0.3.0"
+    micromatch "^2.3.11"
+
 run-async@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-0.1.0.tgz#c8ad4a5e110661e402a7d21b530e009f25f8e389"
@@ -4922,6 +4943,12 @@ vue-loader@^12.1.0:
 vue-router@^2.6.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.7.0.tgz#16d424493aa51c3c8cce8b7c7210ea4c3a89aff1"
+
+vue-social-sharing@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/vue-social-sharing/-/vue-social-sharing-2.2.5.tgz#366892638748b8abfa8d4377a20e10b29493b937"
+  dependencies:
+    rollup-plugin-json "^2.1.0"
 
 vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:
   version "3.0.1"

@@ -27,7 +27,9 @@
 
 <template lang="html">
   <div class="box">
-    <span class="tag is-warning is-rounded is-position"> {{ position }} </span>
+    <span
+      class="tag is-warning is-rounded is-position"
+      v-if="position !== undefined"> {{ position }} </span>
     <h3 class="title is-5" @click="$router.push(`/topic/${topic.uid}`)">
       {{ topic.title }}
     </h3>

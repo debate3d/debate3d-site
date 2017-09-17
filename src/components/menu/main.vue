@@ -19,6 +19,7 @@
       <list-item route="/dashboard/topics" label="Temas"></list-item>
       <list-item route="/my-cards" label="Meus Cards"></list-item>
       <list-item route="/my-deck" label="Meu Deck"></list-item>
+      <list-item route="/my-topics" label="Meus Temas"></list-item>
     </ul>
   </aside>
 </template>

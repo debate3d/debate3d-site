@@ -6,6 +6,7 @@ import TopicMain from '../topic-view/main.vue'
 import CardMain from '../card-view/main.vue'
 import MyCards from '../my-cards/main.vue'
 import MyDeck from '../my-deck/main.vue'
+import MyTopics from '../my-topics/main.vue'
 
 /**
  * Return dashboard children routes
@@ -58,6 +59,13 @@ export default [
     path: '/my-deck',
     name: 'my-deck',
     component: MyDeck,
+    meta: { requireAuth: true },
+    beforeEnter
+  },
+  {
+    path: '/my-topics',
+    name: 'my-topics',
+    component: MyTopics,
     meta: { requireAuth: true },
     beforeEnter
   }

@@ -23,7 +23,7 @@
     <a
       href="#"
       class="vote"
-      @click.prevent="$emit('showFavorite', 'favorite')">
+      @click.prevent="$emit('showFavorite')">
       {{ deck }}
     </a>
   </div>

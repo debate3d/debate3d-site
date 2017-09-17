@@ -23,7 +23,7 @@
     <a
       href="#"
       class="vote"
-      @click.prevent="$emit('showLike', 'like')">
+      @click.prevent="$emit('showLike')">
       {{ likes }}
     </a>
   </div>

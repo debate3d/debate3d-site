@@ -3,6 +3,7 @@
   import DislikeButton from './dislike-button.vue'
   import FavoriteButton from './favorite-button.vue'
   import Comments from './comments.vue'
+  import AppTabsModal from './modal-tabs.vue'
 
   export default {
     props: ['card', 'url', 'isMyArgument'],
@@ -10,12 +11,8 @@
       LikeButton,
       DislikeButton,
       FavoriteButton,
-      Comments
-    },
-    methods: {
-      showUsersVotedAndFavorites () {
-        console.log(arguments)
-      }
+      Comments,
+      AppTabsModal
     },
     mounted () {
       if (window !== undefined && window.FB !== undefined) {
@@ -27,22 +24,24 @@
 
 <template lang="html">
   <footer class="card-footer">
-    <LikeButton
+    <like-button
       :card="card"
       class="card-footer-item"
-      @showLike="showUsersVotedAndFavorites" />
+      @showLike="$refs.modal.openModal(0)" />
 
-    <DislikeButton
+    <dislike-button
       :card="card"
       class="card-footer-item"
-      @showDislike="showUsersVotedAndFavorites" />
+      @showDislike="$refs.modal.openModal(1)" />
 
-    <FavoriteButton
+    <favorite-button
       :card="card"
       class="card-footer-item"
-      @showFavorite="showUsersVotedAndFavorites" />
+      @showFavorite="$refs.modal.openModal(2)" />
 
     <Comments :url="url" class="card-footer-item" />
+
+    <app-tabs-modal ref="modal" :card="card"></app-tabs-modal>
   </footer>
 </template>
 

@@ -13,8 +13,7 @@
   <div>
     <a
       href="#"
-      class="negative"
-      @click.prevent="computedVote('dislike')">
+      class="negative">
       <span
         class="icon is-medium"
         aria-hidden="true">
@@ -24,7 +23,7 @@
     <a
       href="#"
       class="vote"
-      @click.prevent="$emit('showDislike', 'dislike')">
+      @click.prevent="$emit('showDislike')">
       {{ dislikes }}
     </a>
   </div>

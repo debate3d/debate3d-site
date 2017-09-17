@@ -50,12 +50,24 @@ query getSingleTopic ($uid: String!) {
         ponts
         deck {
           id
+          user {
+            uid
+            name
+          }
         }
         likes {
           id
+          user {
+            uid
+            name
+          }
         }
         dislikes {
           id
+          user {
+            uid
+            name
+          }
         }
       }
     }

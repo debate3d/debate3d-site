@@ -8,6 +8,7 @@ import MyCards from '../my-cards/main.vue'
 import MyDeck from '../my-deck/main.vue'
 import MyTopics from '../my-topics/main.vue'
 import UserView from '../user-view/main.vue'
+import Ranking from '../ranking/main.vue'
 
 /**
  * Return dashboard children routes
@@ -74,6 +75,13 @@ export default [
     path: '/user/:user',
     name: 'user-view',
     component: UserView,
+    meta: { requireAuth: false },
+    beforeEnter
+  },
+  {
+    path: '/ranking',
+    name: 'ranking',
+    component: Ranking,
     meta: { requireAuth: false },
     beforeEnter
   }

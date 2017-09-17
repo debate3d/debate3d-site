@@ -1,32 +1,34 @@
 <script>
-import AppHeader from '../components/header.vue'
-import AppMenu from '../components/menu/main.vue'
-import AppButton from '../components/menu/menu-button.vue'
+  import AppHeader from '@/components/header.vue'
+  import AppMenu from '@/components/menu/main.vue'
+  import AppButton from '@/components/menu/menu-button.vue'
+  import Copyright from '@/components/copyright.vue'
 
-export default {
-  name: 'app',
-  components: {
-    AppHeader,
-    AppMenu,
-    AppButton
-  },
-  data () {
-    return {
-      condition: false
-    }
-  },
-  computed: {
-    buttonText () {
-      return (this.condition) ? 'Fechar' : 'Menu'
-    }
-  },
-  methods: {
-    toogleMenu () {
-      this.condition = arguments[0]
-      this.$refs.container.classList.toggle('is-active')
+  export default {
+    name: 'app',
+    components: {
+      AppHeader,
+      AppMenu,
+      AppButton,
+      Copyright
+    },
+    data () {
+      return {
+        condition: false
+      }
+    },
+    computed: {
+      buttonText () {
+        return (this.condition) ? 'Fechar' : 'Menu'
+      }
+    },
+    methods: {
+      toogleMenu () {
+        this.condition = arguments[0]
+        this.$refs.container.classList.toggle('is-active')
+      }
     }
   }
-}
 </script>
 
 <template>
@@ -37,6 +39,7 @@ export default {
       <app-header></app-header>
       <router-view></router-view>
     </main>
+    <copyright />
   </div>
 </template>
 

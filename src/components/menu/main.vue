@@ -1,9 +1,20 @@
 <script type="text/javascript">
   import ListItem from './list-item.vue'
   import LogoLetters from '../logo-letters.vue'
+  import { mapGetters } from 'vuex'
+  import { isEmpty } from 'lodash'
+
   export default {
     name: 'menu',
-    components: { ListItem, LogoLetters }
+    components: { ListItem, LogoLetters },
+    computed: {
+      ...mapGetters({
+        'user': 'getUser'
+      }),
+      isLogged () {
+        return !isEmpty(this.user)
+      }
+    }
   }
 </script>
 
@@ -15,11 +26,12 @@
     </p>
 
     <ul class="menu-list">
-      <list-item route="/dashboard" label="Dashboard"></list-item>
-      <list-item route="/dashboard/topics" label="Temas"></list-item>
-      <list-item route="/my-cards" label="Meus Cards"></list-item>
-      <list-item route="/my-deck" label="Meu Deck"></list-item>
-      <list-item route="/my-topics" label="Meus Temas"></list-item>
+      <list-item route="/dashboard" label="Dashboard" />
+      <list-item route="/dashboard/topics" label="Temas" />
+      <list-item route="/ranking" label="Ranking de usuários" />
+      <list-item route="/my-cards" label="Meus Cards" v-if="isLogged" />
+      <list-item route="/my-deck" label="Meu Deck" v-if="isLogged" />
+      <list-item route="/my-topics" label="Meus Temas" v-if="isLogged" />
     </ul>
   </aside>
 </template>

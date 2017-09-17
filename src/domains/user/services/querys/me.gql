@@ -16,8 +16,11 @@
     votes {
       id
     }
-    cards {
-      uid
+    cards(page: 1) {
+      count
+      records {
+        uid
+      }
     }
     reactions {
       id

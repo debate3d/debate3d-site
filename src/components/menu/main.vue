@@ -17,6 +17,7 @@
     <ul class="menu-list">
       <list-item route="/dashboard" label="Dashboard"></list-item>
       <list-item route="/dashboard/topics" label="Temas"></list-item>
+      <list-item route="/my-cards" label="Meus Cards"></list-item>
     </ul>
   </aside>
 </template>

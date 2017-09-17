@@ -4,6 +4,7 @@ import DashboardTopics from '../topics/main.vue'
 import TagsMain from '../tag/main.vue'
 import TopicMain from '../topic-view/main.vue'
 import CardMain from '../card-view/main.vue'
+import MyCards from '../my-cards/main.vue'
 
 /**
  * Return dashboard children routes
@@ -43,6 +44,13 @@ export default [
     name: 'dashboard-card',
     component: CardMain,
     meta: { requireAuth: false },
+    beforeEnter
+  },
+  {
+    path: '/my-cards',
+    name: 'my-card',
+    component: MyCards,
+    meta: { requireAuth: true },
     beforeEnter
   }
 ]

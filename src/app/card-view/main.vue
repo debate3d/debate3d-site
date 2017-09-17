@@ -71,6 +71,7 @@
         </li>
       </ul>
       <p> Conheça mais um pouco o autor <router-link :to="`/user/${card.author.uid}`"> aqui </router-link> </p>
+      <p> <router-link :to="`/topic/${card.topic.uid}`"> Conheça o tema </router-link> </p>
     </div>
 
     <h3 class="subtitle has-text-centered"> Compartilhe este argumento </h3>

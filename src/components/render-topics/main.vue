@@ -3,7 +3,7 @@
 
   export default {
     name: 'render-topics',
-    props: ['topics', 'successMessage', 'errorMessage'],
+    props: ['topics', 'successMessage', 'errorMessage', 'column'],
     components: { BoxTopic },
     computed: {
       count () {
@@ -24,24 +24,12 @@
     <p class="title is-5 has-text-centered" v-if="count === '0'">
       {{ errorMessage }}
     </p>
-    <div class="block-flex-wraped">
-      <box-topic
-        v-for="(topic, index) in records"
-        :key="index"
-        :topic="topic" />
+    <div class="columns is-multiline is-centered">
+      <div class="column" :class="column" v-for="(topic, index) in records">
+        <box-topic
+          :key="index"
+          :topic="topic" />
+      </div>
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .block-flex-wraped {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .box {
-      flex-grow: 1;
-      max-width: 400px;
-    }
-  }
-</style>

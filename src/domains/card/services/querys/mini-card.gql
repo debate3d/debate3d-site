@@ -2,6 +2,10 @@ query getMiniCard ($uid: String!) {
   card(uid: $uid) {
   uid
   edited
+  topic {
+    uid
+    title
+  }
   likes {
     id
   }
@@ -16,5 +20,4 @@ query getMiniCard ($uid: String!) {
     uid
     name
   }
-}
 }

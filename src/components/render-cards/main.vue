@@ -3,7 +3,7 @@
 
   export default {
     name: 'render-cards',
-    props: ['cards', 'successMessage', 'errorMessage'],
+    props: ['cards', 'successMessage', 'errorMessage', 'column'],
     components: { AppCard },
     computed: {
       count () {
@@ -24,19 +24,12 @@
     <p class="title is-5 has-text-centered" v-if="count === '0'">
       {{ errorMessage }}
     </p>
-    <div class="block-flex-wraped">
-      <app-card
-        v-for="(card, index) in records"
-        :key="index"
-        :card="card"></app-card>
+    <div class="columns is-multiline is-centered">
+      <div class="column" :class="column" v-for="(card, index) in records">
+        <app-card
+          :key="index"
+          :card="card"></app-card>
+      </div>
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .block-flex-wraped {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-</style>

@@ -32,7 +32,9 @@
         <router-link :to="`/card/${card.uid}`">
           Ver mais detalhes
         </router-link>
-        </p>
+        <router-link :to="`/topic/${card.topic.uid}`">
+          Tema: {{ card.topic.title }}
+        </router-link>
       </div>
     </div>
     <app-card-footer :card="card" :url="''" :isMyArgument="false" />
@@ -46,16 +48,22 @@
     background-color: $white;
     color: $text;
     width: 290px;
-    height: 380px;
-    display: inline-block;
+    height: 410px;
     position: relative;
-    margin: .8em .5em;
+    margin: .8em auto;
     border-radius: 2px;
 
     .card-footer {
       position: absolute;
       bottom: 0;
       left: 0;
+    }
+
+    .card-content {
+      a {
+        display: block;
+        margin-bottom: 5px;
+      }
     }
 
     @media screen and (max-width: 768px) {

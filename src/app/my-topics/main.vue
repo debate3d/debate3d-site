@@ -47,7 +47,8 @@
     <render-topics
       :topics="topics"
       successMessage=""
-      errorMessage="Você não possui cards cadastros ainda" />
+      errorMessage="Você não possui cards cadastros ainda"
+      column="is-4"/>
     <negative-face
       v-if="topics.records.length === 0"
       message="Você não possui temas cadastrados ainda" />

@@ -40,6 +40,10 @@ query getSingleTopic ($uid: String!) {
       count
       records {
         uid
+        topic {
+          uid
+          title
+        }
         author {
           name
           uid

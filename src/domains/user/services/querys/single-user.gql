@@ -1,6 +1,39 @@
-query getMyCards ($uid: String!, $page: Int!) {
+query getSingleUser ($uid: String!) {
   user(uid: $uid) {
-    cards(page: $page) {
+    name
+    uid
+    email
+    created
+    ponts
+    topics(page: 1) {
+      count
+      records {
+        uid
+        ponts
+        title
+        cards(page: 1) {
+          count
+        }
+        position {
+          positive
+          negative
+        }
+        votes_topic {
+          count
+          positive {
+            id
+          }
+          negative {
+            id
+          }
+        }
+        tags {
+          uid
+          label
+        }
+      }
+    }
+    cards(page: 1) {
       count
       records {
         uid

@@ -6,6 +6,7 @@ export default {
   edited: false,
   ponts: 0,
   topic: {
+    uid: '',
     title: '',
     position: {
       positive: '',

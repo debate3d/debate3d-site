@@ -43,7 +43,11 @@
 <template lang="html">
   <div class="my-cards">
     <h1 class="title has-text-centered"> Meus cards </h1>
-    <render-cards :cards="cards" successMessage="" errorMessage="Você não possui cards cadastros ainda" />
+    <render-cards
+      :cards="cards"
+      successMessage=""
+      errorMessage="Você não possui cards cadastros ainda"
+      column="is-4"/>
   </div>
 </template>
 

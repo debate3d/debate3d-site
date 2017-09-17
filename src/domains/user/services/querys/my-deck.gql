@@ -3,6 +3,10 @@ query getMyCards ($uid: String!) {
     deck {
       card {
         uid
+        topic {
+          uid
+          title
+        }
         author {
           name
           uid

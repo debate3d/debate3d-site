@@ -52,9 +52,6 @@
     width: 100%;
     display: flex;
     align-items: stretch;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     border-top: 1px solid $border;
     background-color: rgba(221, 220, 220, 0.59);
   }

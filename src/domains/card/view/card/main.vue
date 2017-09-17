@@ -52,6 +52,12 @@
     margin: .8em .5em;
     border-radius: 2px;
 
+    .card-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
     @media screen and (max-width: 768px) {
       display: block;
       margin: 1em auto;

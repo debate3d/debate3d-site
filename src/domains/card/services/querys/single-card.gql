@@ -1,0 +1,39 @@
+query getSingleCard ($uid: String!) {
+  card(uid: $uid) {
+    uid
+    content
+    position
+    created
+    edited
+    ponts
+    topic {
+      title
+      position {
+        positive
+        negative
+      }
+    }
+    author {
+      uid
+      name
+    }
+    likes {
+      user {
+        uid
+        name
+      }
+    }
+    dislikes {
+      user {
+        uid
+        name
+      }
+    }
+    deck {
+      user {
+        uid
+        name
+      }
+    }
+  }
+}

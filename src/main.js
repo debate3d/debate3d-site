@@ -6,12 +6,14 @@ import router from './router'
 import store from './store'
 import Buefy from 'buefy'
 import VueApollo from 'vue-apollo'
+import SocialSharing from 'vue-social-sharing'
 import apolloProvider from './services/apollo'
 
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })
 Vue.use(VueApollo)
+Vue.use(SocialSharing)
 
 Vue.config.productionTip = false
 

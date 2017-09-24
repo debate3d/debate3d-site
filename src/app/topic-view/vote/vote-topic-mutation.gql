@@ -1,0 +1,7 @@
+mutation ($data: InputToVoteTopic!) {
+  VoteTopic(data: $data) {
+    id
+    uid_topic
+    vote
+  }
+}

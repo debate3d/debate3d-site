@@ -1,16 +1,23 @@
 <script>
+  import { isEmpty } from 'lodash'
   import queySingleTopic from '../../domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '../../domains/topics/schemas'
 
   import AuthorInfo from './author-info.vue'
   import AppProgress from './progress'
   import RenderCards from '../../components/render-cards/main.vue'
+  import AppVoteTopic from './vote/main.vue'
 
   export default {
-    components: { AuthorInfo, AppProgress, RenderCards },
+    components: { AuthorInfo, AppProgress, RenderCards, AppVoteTopic },
     data () {
       return {
         topic: schemaTopicView
+      }
+    },
+    computed: {
+      isLogged () {
+        return !isEmpty(this.$store.state.auth.user)
       }
     },
     apollo: {
@@ -23,6 +30,14 @@
             }
           }
         }
+      }
+    },
+    methods: {
+      refreshTopic () {
+        this.$apollo.queries.topic.refetch()
+          .catch(err => {
+            console.error(err)
+          })
       }
     }
   }
@@ -44,13 +59,14 @@
       </div>
     </header>
     <section class="view-section">
-      <p class="title is-5 has-text-centered"> Votos </p>
-
       <app-progress
         :data="topic.votes_topic"
         :position="topic.position"></app-progress>
 
-      <!-- Aqui irá entrar o componente para voto -->
+      <app-vote-topic
+        v-if="isLogged"
+        :topic="topic"
+        @done="refreshTopic"/>
 
       <hr>
 

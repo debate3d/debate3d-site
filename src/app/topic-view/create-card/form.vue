@@ -1,7 +1,6 @@
 <script>
-  import CreateCardMutation from './create-card.gql'
   import { mapGetters } from 'vuex'
-  import { cloneDeep } from 'lodash'
+  import createCard from './create-card'
 
   export default {
     props: [ 'position', 'uid_topic' ],
@@ -33,43 +32,12 @@
     },
     methods: {
       createCard () {
-        const data = Object.assign({ }, {
-          uid_topic: this.uid_topic,
-          content: this.content,
-          position: this.card_position
-        })
-        this.content = ''
-
-        this.$apollo.mutate({
-          mutation: CreateCardMutation,
-          variables: {
-            data
-          }
-        })
-        .then(result => {
-          const { InsertCard } = result.data
-          const user = cloneDeep(this.user)
-          user.cards.records.push(InsertCard)
-          user.ponts += 10
-          this.$store.dispatch('setUser', user)
-          this.$emit('done')
-          this.$parent.close()
-          this.$snackbar.open({
-            message: 'Você ganhou 10 pontos',
-            type: 'is-success',
-            position: 'is-bottom-left',
-            actionText: 'OK'
-          })
-        })
-        .catch(err => {
-          console.error(err)
-          this.$snackbar.open({
-            message: err,
-            type: 'is-warning',
-            position: 'is-bottom-left',
-            actionText: 'OK'
-          })
-        })
+        const args = [
+          this,
+          'Você ganhou 10 pontos',
+          'O usuário já possui card neste tópico'
+        ]
+        return createCard(...args)
       }
     }
   }

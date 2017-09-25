@@ -1,7 +1,7 @@
 <script>
   import { mapGetters } from 'vuex'
-  import VoteTopicMutation from './vote-topic-mutation.gql'
   import { isEmpty, cloneDeep } from 'lodash'
+  import VoteTopicMutation from './vote-topic-mutation.gql'
 
   export default {
     name: 'app-vote-topic',
@@ -54,13 +54,20 @@
           const { VoteTopic } = result.data
           const user = cloneDeep(this.user)
           user.votes.push(VoteTopic)
+          user.ponts += 2
           this.$store.dispatch('setUser', user)
           this.fullfiedBtn(vote)
           this.$emit('done')
+          this.$snackbar.open({
+            message: 'Você ganhou 2 pontos',
+            type: 'is-success',
+            position: 'is-bottom-left',
+            actionText: 'OK'
+          })
         })
         .catch(err => {
           console.error(err)
-          this.btnDisabled = true
+          this.btnDisabled = false
           this.$snackbar.open({
             message: 'Voto não computado, tente novamente',
             type: 'is-warning',
@@ -75,11 +82,6 @@
           return
         }
         this.$refs.btnNegative.classList.add('is-negative')
-      }
-    },
-    mounted () {
-      if (this.hasVoted) {
-        this.btnDisabled = true
       }
     }
   }
@@ -97,7 +99,7 @@
           @click="vote(true)"
           :class="{ 'is-positive' : voteObj.vote === true }"
           ref="btnPositive"
-          :disabled="btnDisabled">
+          :disabled="btnDisabled || hasVoted">
           <span> {{ positiveLength }} </span>
           <span class="icon">
             <i class="fa fa-thumbs-o-up"></i>
@@ -112,7 +114,7 @@
           @click="vote(false)"
           :class="{ 'is-negative' : voteObj.vote === false }"
           ref="btnNegative"
-          :disabled="btnDisabled">
+          :disabled="btnDisabled || hasVoted">
           <span> {{ negativeLength }} </span>
           <span class="icon">
             <i class="fa fa-thumbs-o-down"></i>
@@ -129,7 +131,7 @@
   @import "../../../assets/sass/_extend";
 
   .container {
-    margin: 10px 0;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

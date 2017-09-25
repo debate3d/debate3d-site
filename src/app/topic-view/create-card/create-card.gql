@@ -1,0 +1,24 @@
+mutation ($data: InputToCreateCard!) {
+  InsertCard(data: $data) {
+    uid
+    edited
+    topic {
+      uid
+      title
+    }
+    likes {
+      id
+    }
+    dislikes {
+      id
+    }
+    deck {
+      id
+    }
+    ponts
+    author {
+      uid
+      name
+    }
+  }
+}

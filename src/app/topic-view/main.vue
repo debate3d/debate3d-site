@@ -7,9 +7,16 @@
   import AppProgress from './progress'
   import RenderCards from '../../components/render-cards/main.vue'
   import AppVoteTopic from './vote/main.vue'
+  import CreateCard from './create-card/main.vue'
 
   export default {
-    components: { AuthorInfo, AppProgress, RenderCards, AppVoteTopic },
+    components: {
+      AuthorInfo,
+      AppProgress,
+      RenderCards,
+      AppVoteTopic,
+      CreateCard
+    },
     data () {
       return {
         topic: schemaTopicView
@@ -63,7 +70,16 @@
         :data="topic.votes_topic"
         :position="topic.position"></app-progress>
 
+      <hr>
+
       <app-vote-topic
+        v-if="isLogged"
+        :topic="topic"
+        @done="refreshTopic"/>
+
+      <hr>
+
+      <create-card
         v-if="isLogged"
         :topic="topic"
         @done="refreshTopic"/>

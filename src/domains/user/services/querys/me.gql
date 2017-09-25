@@ -22,6 +22,7 @@
       count
       records {
         uid
+        uid_topic
       }
     }
     reactions {

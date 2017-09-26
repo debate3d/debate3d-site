@@ -9,11 +9,11 @@ import MyDeck from '../my-deck/main.vue'
 import MyTopics from '../my-topics/main.vue'
 import UserView from '../user-view/main.vue'
 import Ranking from '../ranking/main.vue'
+import CreateTopic from '../create-topic/main.vue'
 
 /**
  * Return dashboard children routes
  */
-
 export default [
   {
     path: '/dashboard',
@@ -83,6 +83,13 @@ export default [
     name: 'ranking',
     component: Ranking,
     meta: { requireAuth: false },
+    beforeEnter
+  },
+  {
+    path: '/create-topic',
+    name: 'create-topic',
+    component: CreateTopic,
+    meta: { requireAuth: true },
     beforeEnter
   }
 ]

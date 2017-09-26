@@ -1,0 +1,7 @@
+{
+  positions {
+    id
+    positive
+    negative
+  }
+}

@@ -1,0 +1,6 @@
+query searchTag ($label: String!) {
+  tagSearch(label: $label) {
+    uid
+    label
+  }
+}

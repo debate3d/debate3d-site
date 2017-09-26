@@ -32,6 +32,7 @@
       <list-item route="/my-cards" label="Meus Cards" v-if="isLogged" />
       <list-item route="/my-deck" label="Meu Deck" v-if="isLogged" />
       <list-item route="/my-topics" label="Meus Temas" v-if="isLogged" />
+      <list-item route="/create-topic" label="Criar Tema" v-if="isLogged" />
     </ul>
   </aside>
 </template>

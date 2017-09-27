@@ -14,6 +14,8 @@ query getMiniCard ($uid: String!) {
   }
   deck {
     id
+    uid_card
+    uid_user
   }
   ponts
   author {

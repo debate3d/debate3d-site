@@ -36,6 +36,9 @@
     }
     deck {
       id
+      card {
+        uid
+      }
     }
   }
 }

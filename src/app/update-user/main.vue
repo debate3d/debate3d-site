@@ -67,6 +67,8 @@
               size="is-medium"
               v-model="user.name"
               icon="user"
+              maxlength="50"
+              :has-counter="true"
               expanded></b-input>
           </b-field>
 

@@ -8,12 +8,15 @@ import Buefy from 'buefy'
 import VueApollo from 'vue-apollo'
 import SocialSharing from 'vue-social-sharing'
 import apolloProvider from './services/apollo'
+import Autocomplete from 'v-autocomplete'
+import 'v-autocomplete/dist/v-autocomplete.css'
 
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })
 Vue.use(VueApollo)
 Vue.use(SocialSharing)
+Vue.use(Autocomplete)
 
 Vue.config.productionTip = false
 

@@ -1,0 +1,8 @@
+mutation AddDeck ($data: InputToAddDeck!) {
+  AddDeck(data: $data) {
+    id
+    card {
+      uid
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <script>
   import PositionsQuery from './positions.gql'
-  import { isEmpty } from 'lodash'
+  import { isEmpty, uniq } from 'lodash'
   import Autocomplete from './autocomplete.vue'
 
   export default {
@@ -28,6 +28,7 @@
       setSelected (value) {
         if (!isEmpty(value)) {
           this.selected.push(value)
+          this.selected = uniq(this.selected)
           return
         }
       }

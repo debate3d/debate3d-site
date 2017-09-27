@@ -1,43 +1,29 @@
 <script>
   import tagSearchQuery from './search-tag.gql'
-  import { debounce } from 'lodash'
+  import test from './test.vue'
 
   export default {
     props: ['label'],
     data () {
       return {
-        tagSearch: [],
         data: [],
-        name: ''
-      }
-    },
-    apollo: {
-      tagSearch () {
-        return {
-          query: tagSearchQuery,
-          variables () {
-            return {
-              label: this.name
-            }
-          },
-          manual: true,
-          result ({ data, loading }) {
-            if (loading) {
-              this.isFetching = true
-            }
-            if (!loading) {
-              this.data = data.tagSearch
-              this.isFetching = false
-            }
-          }
-        }
+        name: '',
+        template: test
       }
     },
     methods: {
-      setSelected: debounce(function () {
-        console.log(this.name)
-        this.$emit('selected', this.name)
-      }, 500)
+      updateItems (text) {
+        this.$apollo.query({
+          query: tagSearchQuery,
+          variables: {
+            label: text
+          }
+        })
+        .then(result => {
+          const { tagSearch } = result.data
+          this.data = tagSearch
+        })
+      }
     }
   }
 </script>
@@ -46,21 +32,37 @@
   <b-field
     label="Taggeie seu tópico - 2° tag"
     message="Se não houver uma, será criado automaticamente">
-    <b-autocomplete
-      :data="data"
+    <v-autocomplete
+      :items="data"
       v-model="name"
-      field="label"
-      placeholder="e.g. ciencia"
-      @input="setSelected"
-      expanded
-      @select="option => { $emit('select', option) }">
-        <template scope="props">
-          {{ props.option.label }}
-        </template>
-        <template slot="empty">No results found</template>
-      </b-autocomplete>
+      :template="template"
+      :get-label="item => item.label"
+      @update-items="updateItems"
+      @item-selected="option => { $emit('select', option) }">
+    </v-autocomplete>
   </b-field>
 </template>
 
-<style lang="css">
+<style lang="sass">
+  @import '../../assets/sass/_bulma-connector'
+
+  v-autocomplete
+  .v-autocomplete-input-group
+    .v-autocomplete-input
+      @extend .input
+    &.v-autocomplete-selected
+      .v-autocomplete-input
+        color: green
+        background-color: #f2fff2
+  .v-autocomplete-list
+    width: 100%
+    text-align: left
+    border: none
+    border-top: none
+    max-height: 400px
+    overflow-y: auto
+    border-bottom: 1px solid #157977
+    .v-autocomplete-list-item
+      cursor: pointer
+      background-color: #fff
 </style>

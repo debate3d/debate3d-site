@@ -28,7 +28,7 @@
   .button {
     position: absolute;
     top: $space - 5px;
-    z-index: 3;
+    z-index: 6;
     transition: $menu-transition;
     outline: none;
   }

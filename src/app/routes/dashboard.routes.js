@@ -10,6 +10,7 @@ import MyTopics from '../my-topics/main.vue'
 import UserView from '../user-view/main.vue'
 import Ranking from '../ranking/main.vue'
 import CreateTopic from '../create-topic/main.vue'
+import UpdateUser from '../update-user/main.vue'
 
 /**
  * Return dashboard children routes
@@ -89,6 +90,13 @@ export default [
     path: '/create-topic',
     name: 'create-topic',
     component: CreateTopic,
+    meta: { requireAuth: true },
+    beforeEnter
+  },
+  {
+    path: '/update-user',
+    name: 'update-user',
+    component: UpdateUser,
     meta: { requireAuth: true },
     beforeEnter
   }

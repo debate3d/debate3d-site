@@ -1,0 +1,12 @@
+mutation UpdateUser ($data: InputToUpdateUser!) {
+  UpdateUser(data: $data) {
+    name
+    youtube
+    facebook
+    twitter
+    instagram
+    site
+    cep
+    cpf
+  }
+}

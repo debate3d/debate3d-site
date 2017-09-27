@@ -33,6 +33,7 @@
       <list-item route="/my-deck" label="Meu Deck" v-if="isLogged" />
       <list-item route="/my-topics" label="Meus Temas" v-if="isLogged" />
       <list-item route="/create-topic" label="Criar Tema" v-if="isLogged" />
+      <list-item route="/update-user" label="Atualizar Dados" v-if="isLogged" />
     </ul>
   </aside>
 </template>
@@ -49,7 +50,7 @@
     background-color: $menu-color;
     transition: $menu-transition;
     min-height: 100vh;
-    z-index: 2;
+    z-index: 5;
 
     &:after {
       background-color: rgba($menu-color, 0.4);

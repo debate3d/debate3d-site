@@ -2,13 +2,14 @@ import AddDeck from './mutation.gql'
 
 import {
   mutationResolveHelper,
-  mutationRejectHelper
+  mutationRejectHelper,
+  pontuation
 } from '@/helpers'
 
 export default (context, uid_card) => { // eslint-disable-line
   const successArgs = [
     context,
-    'Você ganhou 5 pontos',
+    `Você ganhou ${pontuation.USER.STORE_CARD} pontos`,
     'InsertTopic'
   ]
 

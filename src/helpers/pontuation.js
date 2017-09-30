@@ -1,0 +1,23 @@
+export default {
+  USER: {
+    CREATE_TOPIC: 10,
+    CREATE_CARD: 10,
+    STORE_CARD: 5,
+    VOTE_CARD: 2,
+    VOTE_THEME: 2,
+    RECEIVE_LIKE: 5,
+    RECEIVE_DISLIKE: 1,
+    RECEIVE_DECK: 10,
+    RECEIVE_CARD_THEME: 5,
+    RECEIVE_VOTE_THEME: 1
+  },
+  CARD: {
+    RECEIVE_LIKE: 1,
+    RECEIVE_DISLIKE: 1,
+    RECEIVE_DECK: 1
+  },
+  TOPIC: {
+    RECEIVE_VOTE: 1,
+    RECEIVE_CARD: 1
+  }
+}

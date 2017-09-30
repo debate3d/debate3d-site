@@ -3,13 +3,14 @@ import AddReaction from './mutation.gql'
 import {
   EventBus,
   mutationResolveHelper,
-  mutationRejectHelper
+  mutationRejectHelper,
+  pontuation
 } from '@/helpers'
 
 export default (context, data) => {
   const successArgs = [
     context,
-    'Você ganhou 2 pontos',
+    `Você ganhou ${pontuation.USER.VOTE_CARD} pontos`,
     'InsertTopic'
   ]
 

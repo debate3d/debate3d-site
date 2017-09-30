@@ -3,7 +3,8 @@ import {
   EventBus,
   mutationHelper,
   mutationResolveHelper,
-  mutationRejectHelper
+  mutationRejectHelper,
+  pontuation
 } from '@/helpers'
 
 /**
@@ -22,7 +23,7 @@ export default context => {
 
   const successArgs = [
     context,
-    'Você ganhou 10 pontos',
+    `Você ganhou ${pontuation.USER.CREATE_CARD} pontos`,
     'InsertCard',
     10
   ]

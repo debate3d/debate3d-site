@@ -1,14 +1,16 @@
 <script>
-  import { cardView } from '@/domains/card/schemas'
   import moment from 'moment'
-  import queySingleCard from '@/domains/card/services/querys/single-card.gql'
 
+  import { cardView } from '@/domains/card/schemas'
+  import queySingleCard from '@/domains/card/services/querys/single-card.gql'
   import AppCardFooter from '@/domains/card/view/card/footer-card.vue'
   import AppCardShared from './card-shared.vue'
+  import { refreshQueryMixin } from '@/mixins'
 
   export default {
     name: 'card-view',
     components: { AppCardFooter, AppCardShared },
+    mixins: [ refreshQueryMixin('card') ],
     data () {
       return {
         card: cardView,

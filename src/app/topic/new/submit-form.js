@@ -1,13 +1,14 @@
 import MutationCreateTopic from './create-topic-mutation.gql'
 import {
   mutationResolveHelper,
-  mutationRejectHelper
+  mutationRejectHelper,
+  pontuation
 } from '@/helpers'
 
 export default (context, topic) => {
   const successArgs = [
     context,
-    'Você ganhou 10 pontos',
+    `Você ganhou ${pontuation.USER.CREATE_TOPIC} pontos`,
     'InsertTopic',
     10
   ]

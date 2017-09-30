@@ -3,7 +3,10 @@
   import createCard from './create-card'
 
   export default {
-    props: [ 'position', 'uid_topic' ],
+    props: {
+      position: Object,
+      uid_topic: String
+    },
     data () {
       return {
         card_position: true,
@@ -32,12 +35,7 @@
     },
     methods: {
       createCard () {
-        const args = [
-          this,
-          'Você ganhou 10 pontos',
-          'O usuário já possui card neste tópico'
-        ]
-        return createCard(...args)
+        return createCard(this)
       }
     }
   }

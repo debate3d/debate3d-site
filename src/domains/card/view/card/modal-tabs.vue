@@ -55,7 +55,9 @@
   export default {
     name: 'app-tabs-modal',
     components: { UserList },
-    props: ['card'],
+    props: {
+      card: Object
+    },
     data () {
       return {
         activeTab: 0,

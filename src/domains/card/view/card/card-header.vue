@@ -1,7 +1,9 @@
 <script>
   export default {
     name: 'app-card-header',
-    props: [ 'author' ],
+    props: {
+      author: Object
+    },
     computed: {
       authorName () {
         const split = this.author.name.split(' ')
@@ -16,7 +18,7 @@
 
 <template lang="html">
   <div class="card-header">
-    <router-link :to="`/user/${uidAuthor}`" class="card-header-title">
+    <router-link :to="`/user/${uidAuthor}/detail`" class="card-header-title">
       {{ authorName }}
     </router-link>
   </div>

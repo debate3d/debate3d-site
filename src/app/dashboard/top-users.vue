@@ -15,7 +15,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/_extend";
+  @import "../../assets/sass/extend.sass";
 
   .top-users {
     display: flex;

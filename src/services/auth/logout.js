@@ -11,5 +11,5 @@ export default () => {
   removeUser()
   setHasLogged(false)
   setToken('')
-  router.push('/login')
+  router.push('/auth/login')
 }

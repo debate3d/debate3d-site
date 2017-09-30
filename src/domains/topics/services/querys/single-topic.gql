@@ -21,6 +21,7 @@ query getSingleTopic ($uid: String!) {
       count
       positive {
         id
+        vote
         user {
           uid
           name
@@ -29,6 +30,7 @@ query getSingleTopic ($uid: String!) {
       }
       negative {
         id
+        vote
         user {
           uid
           name

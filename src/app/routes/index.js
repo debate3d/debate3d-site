@@ -1,19 +1,13 @@
 import dashboardChildren from './dashboard.routes'
+import { authRoutes } from '../auth'
 
-export default [{
-  path: '/login',
-  name: 'login',
-  component: () => import('../login/main'),
-  meta: { requireAuth: false }
-}, {
-  path: '/register',
-  name: 'register',
-  component: () => import('../register/main'),
-  meta: { requireAuth: false }
-}, {
-  path: '/dashboard',
-  name: 'dashboard',
-  component: () => import('../root'),
-  meta: { requireAuth: false },
-  children: dashboardChildren
-}]
+export default [
+  ...authRoutes,
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../root/main.vue'),
+    meta: { requireAuth: false },
+    children: dashboardChildren
+  }
+]

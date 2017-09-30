@@ -4,5 +4,6 @@ export default {
   topics: [],
   deck: [],
   reactions: [],
+  votes: [],
   isLogged: false
 }

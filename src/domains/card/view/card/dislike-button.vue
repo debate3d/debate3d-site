@@ -1,6 +1,8 @@
 <script>
   export default {
-    props: ['card'],
+    props: {
+      card: Object
+    },
     computed: {
       dislikes () {
         return this.card.dislikes.length

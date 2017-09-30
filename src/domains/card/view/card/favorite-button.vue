@@ -1,21 +1,22 @@
 <script>
-  import favoriteMethod from '../../services/add-favorite'
   import { mapGetters } from 'vuex'
-  import { defaultsDeep } from 'lodash'
+  import favoriteMethod from '../../services/add-favorite'
 
   export default {
     props: ['card'],
     computed: {
       ...mapGetters({
-        'user': 'getUser',
-        'deck': 'getDeck'
+        'user': 'getUser'
       }),
+      deckCard () {
+        return this.card.deck
+      },
       deckLength () {
-        return this.card.deck.length
+        return this.deckCard.length
       },
       hasFavorited () {
-        const { uid } = this.card
-        return this.deck.some(item => item.card.uid === uid)
+        const { uid } = this.user
+        return this.deckCard.some(item => item.user.uid === uid)
       },
       style () {
         return this.hasFavorited ? 'fa fa-star' : 'fa fa-star-o'
@@ -31,20 +32,7 @@
           const { uid } = this.card
           favoriteMethod(this, uid)
             .then(result => {
-              this.$snackbar.open('Você ganhou 5 pontos')
-              const deck = result.data.AddDeck
-              const storeUser = this.$store.state.auth.user
-              const merged = defaultsDeep({ }, storeUser)
-              merged.ponts += 5
-              merged.deck.push(deck)
-              this.$store.dispatch('setUser', merged)
-            })
-            .catch(err => {
-              console.error(err)
-              this.$snackbar.open({
-                message: 'Não foi possível guardar no deck',
-                type: 'is-warning'
-              })
+              this.$emit('refresh')
             })
         }
       }

@@ -30,7 +30,7 @@
     <span
       class="tag is-warning is-rounded is-position"
       v-if="position !== undefined"> {{ position }} </span>
-    <h3 class="title is-5" @click="$router.push(`/topic/${topic.uid}`)">
+    <h3 class="title is-5" @click="$router.push(`/topic/${topic.uid}/detail`)">
       {{ topic.title }}
     </h3>
     <p> {{ countCards }} card(s) cadastrados </p>

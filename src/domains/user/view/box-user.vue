@@ -1,7 +1,10 @@
 <script>
   export default {
     name: 'box-user',
-    props: ['user', 'position'],
+    props: {
+      user: Object,
+      position: Number
+    },
     computed: {
       ponts () {
         return this.user.ponts
@@ -16,7 +19,9 @@
 <template lang="html">
   <div class="box">
     <span class="tag is-primary is-medium is-rounded"> {{ position }} </span>
-    <router-link :to="`/user/${user.uid}`" class="title is-5"> {{ user.name }} </router-link>
+    <router-link
+      :to="`/user/${user.uid}/detail`"
+      class="title is-5"> {{ user.name }} </router-link>
     <span class="tag is-info is-medium"> {{ user.ponts }} pts </span>
   </div>
 </template>

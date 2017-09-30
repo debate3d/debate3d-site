@@ -13,6 +13,9 @@ export default {
   getDeck (store, value) {
     store.commit(TYPES.GET_DECK_CARDS_USER, value)
   },
+  getVotes (store, value) {
+    store.commit(TYPES.GET_VOTES_USER, value)
+  },
   getReactions (store, value) {
     store.commit(TYPES.GET_REACTIONS_USER, value)
   },

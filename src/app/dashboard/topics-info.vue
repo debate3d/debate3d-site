@@ -1,7 +1,7 @@
 <script>
-  import topicsQuery from '../../domains/topics/services/querys/topics.gql'
+  import topicsQuery from '@/domains/topics/services/querys/topics.gql'
   import { boxTopic } from '@/domains/topics/view'
-  import { schemaTopicBox } from '../../domains/topics/schemas'
+  import { schemaTopicBox } from '@/domains/topics/schemas'
 
   export default {
     components: { boxTopic },
@@ -43,7 +43,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/_extend";
+  @import "../../assets/sass/extend.sass";
 
   .topics-info {
     padding: $space;

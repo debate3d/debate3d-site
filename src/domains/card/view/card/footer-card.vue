@@ -6,13 +6,22 @@
   import AppTabsModal from './modal-tabs.vue'
 
   export default {
-    props: ['card', 'url', 'isMyArgument'],
+    props: {
+      card: Object,
+      url: String,
+      isMyArgument: Boolean
+    },
     components: {
       LikeButton,
       DislikeButton,
       FavoriteButton,
       Comments,
       AppTabsModal
+    },
+    methods: {
+      refresh () {
+        this.$emit('refresh')
+      }
     },
     mounted () {
       if (window !== undefined && window.FB !== undefined) {
@@ -37,7 +46,8 @@
     <favorite-button
       :card="card"
       class="card-footer-item"
-      @showFavorite="$refs.modal.openModal(2)" />
+      @showFavorite="$refs.modal.openModal(2)"
+      @refresh="refresh"/>
 
     <Comments :url="url" class="card-footer-item" />
 

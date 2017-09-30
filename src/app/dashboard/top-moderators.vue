@@ -1,8 +1,8 @@
 <script>
-  import moderatorsQuery from '../../domains/user/services/querys/moderators.gql'
+  import moderatorsQuery from '@/domains/user/services/querys/moderators.gql'
   import { boxUser } from '@/domains/user/view'
   import { isEmpty } from 'lodash'
-  import { schemaUserBox } from '../../domains/user/schemas'
+  import { schemaUserBox } from '@/domains/user/schemas'
 
   export default {
     components: { boxUser },
@@ -48,7 +48,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/_extend";
+  @import "../../assets/sass/extend.sass";
 
   .moderators-info {
     flex-grow: 1;

@@ -3,7 +3,7 @@ import routes from '../app/routes'
 export default [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/auth/login',
     meta: { requireAuth: false }
   },
   ...routes

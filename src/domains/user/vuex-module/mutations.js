@@ -16,6 +16,9 @@ export default {
   [ TYPES.GET_REACTIONS_USER ] (store, obj) {
     store.reactions = obj
   },
+  [ TYPES.GET_VOTES_USER ] (store, obj) {
+    store.reactions = obj
+  },
   [ TYPES.IS_LOGGED ] (store, state) {
     store.hasLogged = state
   }

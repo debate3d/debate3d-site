@@ -1,6 +1,6 @@
 <script>
   import { mapGetters } from 'vuex'
-  import AppAvatar from '../../components/avatar.vue'
+  import AppAvatar from '@/components/avatar.vue'
 
   export default {
     name: 'dashboard-user-info',
@@ -22,7 +22,7 @@
 </template>
 
 <style lang="scss">
-  @import "../../assets/sass/_extend";
+  @import "../../assets/sass/extend.sass";
 
   .user-info {
     position: relative;

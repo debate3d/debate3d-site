@@ -1,8 +1,8 @@
 <script>
-  import debatersQuery from '../../domains/user/services/querys/debaters.gql'
+  import debatersQuery from '@/domains/user/services/querys/debaters.gql'
   import { boxUser } from '@/domains/user/view'
   import { isEmpty } from 'lodash'
-  import { schemaUserBox } from '../../domains/user/schemas'
+  import { schemaUserBox } from '@/domains/user/schemas'
 
   export default {
     components: { boxUser },
@@ -48,7 +48,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/_extend";
+  @import "../../assets/sass/extend.sass";
 
   .debaters-info {
     flex-grow: 1;

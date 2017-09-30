@@ -21,7 +21,7 @@ export default store => {
           })
           .catch(err => {
             console.error(err)
-            router.push('/login')
+            router.push('/auth/login')
             return false
           })
       })

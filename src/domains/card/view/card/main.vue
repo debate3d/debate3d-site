@@ -5,7 +5,9 @@
   import AppCardFooter from './footer-card.vue'
 
   export default {
-    props: [ 'card' ],
+    props: {
+      card: Object
+    },
     components: { AppCardHeader, AppCardFooter },
     computed: {
       ...mapGetters({
@@ -16,6 +18,11 @@
       },
       position () {
         return (this.card.position === 'true') ? 'is-positive' : 'is-negative'
+      }
+    },
+    methods: {
+      refresh () {
+        this.$emit('refresh')
       }
     }
   }
@@ -29,15 +36,19 @@
         <p class="subtitle">
           &ldquo;{{ argument }}&rdquo;
         </p>
-        <router-link :to="`/card/${card.uid}`">
+        <router-link :to="`/card/${card.uid}/detail`">
           Ver mais detalhes
         </router-link>
-        <router-link :to="`/topic/${card.topic.uid}`">
+        <router-link :to="`/topic/${card.topic.uid}/detail`">
           Tema: {{ card.topic.title }}
         </router-link>
       </div>
     </div>
-    <app-card-footer :card="card" :url="''" :isMyArgument="false" />
+    <app-card-footer
+      :card="card"
+      :url="''"
+      :isMyArgument="false"
+      @refresh="refresh" />
   </div>
 </template>
 

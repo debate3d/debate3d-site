@@ -9,7 +9,10 @@
   import AppVoteTopic from './vote/main.vue'
   import CreateCard from './create-card/main.vue'
 
+  import { refreshQueryMixin } from '@/mixins'
+
   export default {
+    mixins: [ refreshQueryMixin('topic') ],
     components: {
       AuthorInfo,
       AppProgress,
@@ -37,14 +40,6 @@
             }
           }
         }
-      }
-    },
-    methods: {
-      refreshTopic () {
-        this.$apollo.queries.topic.refetch()
-          .catch(err => {
-            console.error(err)
-          })
       }
     }
   }
@@ -74,23 +69,20 @@
 
       <app-vote-topic
         v-if="isLogged"
-        :topic="topic"
-        @done="refreshTopic"/>
+        :topic="topic"/>
 
       <hr v-if="isLogged">
 
       <create-card
         v-if="isLogged"
-        :topic="topic"
-        @done="refreshTopic"/>
+        :topic="topic"/>
 
       <hr v-if="isLogged">
 
       <render-cards
         :cards="topic.cards"
         successMessage="Conheça opinião de nossos debatedores"
-        errorMessage="Esse tema não possui cards"
-        @refresh="refreshTopic"></render-cards>
+        errorMessage="Esse tema não possui cards"></render-cards>
     </section>
   </div>
 </template>

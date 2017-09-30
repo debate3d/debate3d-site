@@ -1,7 +1,7 @@
 import { login } from '@/services/auth'
 
 export default (context, payload, loading) => {
-  login(payload, this.$store, this.$router)
+  login(payload, context.$store, context.$router)
     .then(() => {
       loading.close()
     })
@@ -9,15 +9,15 @@ export default (context, payload, loading) => {
       console.error(err)
       if (err) {
         loading.close()
-        this.$snackbar.open({
+        context.$snackbar.open({
           message: 'Usuário inválido',
           type: 'is-danger',
           position: 'is-top-left',
           actionText: 'Ok',
           onAction: () => {
-            this.email = ''
-            this.password = ''
-            this.$refs.inputEmail.focus()
+            context.email = ''
+            context.password = ''
+            context.$refs.inputEmail.focus()
             loading.close()
           }
         })

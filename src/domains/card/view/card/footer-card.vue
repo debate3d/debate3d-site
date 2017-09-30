@@ -18,11 +18,6 @@
       Comments,
       AppTabsModal
     },
-    methods: {
-      refresh () {
-        this.$emit('refresh')
-      }
-    },
     mounted () {
       if (window !== undefined && window.FB !== undefined) {
         window.FB.XFBML.parse()
@@ -46,8 +41,7 @@
     <favorite-button
       :card="card"
       class="card-footer-item"
-      @showFavorite="$refs.modal.openModal(2)"
-      @refresh="refresh"/>
+      @showFavorite="$refs.modal.openModal(2)" />
 
     <Comments :url="url" class="card-footer-item" />
 

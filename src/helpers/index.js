@@ -1,3 +1,4 @@
+export { default as EventBus } from './event-bus'
 export { default as getUserStorage } from './getUserStorage'
 export { default as getHasLogged } from './getHasLogged'
 export { default as getToken } from './getToken'

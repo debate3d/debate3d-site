@@ -16,9 +16,9 @@
         'user': 'getUser'
       }),
       canCreate () {
-        const cards = this.user.cards.records
-        const { uid } = this.topic
-        const anyCardCreate = cards.filter(card => card.uid_topic === uid)[0]
+        const { uid } = this.user
+        const cards = this.topic.cards.records
+        const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
         return isEmpty(anyCardCreate)
       }
     }

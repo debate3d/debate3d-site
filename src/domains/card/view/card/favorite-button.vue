@@ -1,6 +1,8 @@
 <script>
   import { mapGetters } from 'vuex'
+
   import favoriteMethod from '../../services/add-favorite'
+  import { EventBus } from '@/helpers'
 
   export default {
     props: ['card'],
@@ -32,7 +34,7 @@
           const { uid } = this.card
           favoriteMethod(this, uid)
             .then(result => {
-              this.$emit('refresh')
+              EventBus.$emit('refresh:apollo')
             })
         }
       }

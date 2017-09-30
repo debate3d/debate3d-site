@@ -1,5 +1,6 @@
 import CreateCardMutation from './create-card.gql'
 import {
+  EventBus,
   mutationHelper,
   mutationResolveHelper,
   mutationRejectHelper
@@ -34,6 +35,7 @@ export default context => {
   return mutationHelper(context, CreateCardMutation, data)
     .then(mutationResolveHelper(...successArgs))
     .then(user => {
+      EventBus.$emit('refresh:apollo')
       context.$parent.close()
     })
     .catch(mutationRejectHelper(...errorArgs))

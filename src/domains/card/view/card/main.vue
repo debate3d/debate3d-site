@@ -19,11 +19,6 @@
       position () {
         return (this.card.position === 'true') ? 'is-positive' : 'is-negative'
       }
-    },
-    methods: {
-      refresh () {
-        this.$emit('refresh')
-      }
     }
   }
 </script>
@@ -47,8 +42,7 @@
     <app-card-footer
       :card="card"
       :url="''"
-      :isMyArgument="false"
-      @refresh="refresh" />
+      :isMyArgument="false" />
   </div>
 </template>
 

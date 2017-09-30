@@ -1,5 +1,6 @@
 import VoteTopicMutation from './vote-topic-mutation.gql'
 import {
+  EventBus,
   mutationResolveHelper,
   mutationRejectHelper
 } from '@/helpers'
@@ -25,7 +26,7 @@ export default (context, data) => {
     .then(mutationResolveHelper(...successArgs))
     .catch(mutationRejectHelper(...errorArgs))
     .then(result => {
-      context.$emit('done')
+      EventBus.$emit('refresh:apollo')
       return Promise.resolve(true)
     })
     .catch(() => {

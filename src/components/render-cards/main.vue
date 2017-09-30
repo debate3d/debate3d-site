@@ -12,11 +12,6 @@
       records () {
         return this.cards.records
       }
-    },
-    methods: {
-      refresh () {
-        this.$emit('refresh')
-      }
     }
   }
 </script>
@@ -33,8 +28,7 @@
       <div class="column" :class="column" v-for="(card, index) in records">
         <app-card
           :key="index"
-          :card="card"
-          @refresh="refresh"></app-card>
+          :card="card"></app-card>
       </div>
     </div>
   </div>

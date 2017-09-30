@@ -9,12 +9,13 @@ import setUser from '../../domains/user/services/set-user'
  * @param  {Object} router  Router instance
  * @return {Promise}
  */
-export default (payload, store) => http.post('/auth/login', payload)
+export default (payload, store, router) => http.post('/auth/login', payload)
   .then(response => setToken(response.data.token))
   .then(token => {
     return setUser(store)
       .then(result => {
-        Promise.resolve(result)
+        router.push('/dashboard')
+        return Promise.resolve(result)
       })
   })
   .catch(error => {

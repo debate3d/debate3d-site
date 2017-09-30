@@ -1,6 +1,4 @@
 <script>
-  import moment from 'moment'
-
   import { cardView } from '@/domains/card/schemas'
   import queySingleCard from '@/domains/card/services/querys/single-card.gql'
   import AppCardFooter from '@/domains/card/view/card/footer-card.vue'
@@ -19,7 +17,7 @@
     },
     computed: {
       created () {
-        return moment(this.card.created).format('DD/MM/YYYY')
+        return this.card.created
       },
       position () {
         const positionsTopic = this.card.topic.position

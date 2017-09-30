@@ -3,7 +3,6 @@
   import RenderTopics from '@/components/render-topics/main'
   import { schemaSingleUser } from '@/domains/user/schemas'
   import querySingleUser from '@/domains/user/services/querys/single-user.gql'
-  import moment from 'moment'
 
   export default {
     name: 'user-view',
@@ -15,7 +14,7 @@
     },
     computed: {
       created () {
-        return moment(this.user.created).format('DD/MM/YYYY')
+        return this.user.created
       }
     },
     apollo: {

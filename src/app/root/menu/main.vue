@@ -5,6 +5,7 @@
   import ListItem from './list-item.vue'
   import LogoLetters from '@/components/logo-letters.vue'
   import menu from './menu'
+  import { logout } from '@/services/auth'
 
   export default {
     name: 'menu',
@@ -21,6 +22,9 @@
       isLogged () {
         return !isEmpty(this.user)
       }
+    },
+    methods: {
+      logout
     }
   }
 </script>
@@ -38,6 +42,8 @@
         :key="item.key"
         :route="item.route"
         :label="item.label" />
+
+    <button class="button" @click="logout"> Sair </button>
     </ul>
   </aside>
 </template>

@@ -1,3 +1,8 @@
+const user = {
+  uid: '',
+  name: ''
+}
+
 export default {
   uid: '',
   content: 'Carregando conteúdo',
@@ -19,20 +24,19 @@ export default {
   },
   likes: [
     {
-      uid: '',
-      name: ''
+      reaction: '',
+      user
     }
   ],
   dislikes: [
     {
-      uid: '',
-      name: ''
+      reaction: '',
+      user
     }
   ],
   deck: [
     {
-      uid: '',
-      name: ''
+      user
     }
   ]
 }

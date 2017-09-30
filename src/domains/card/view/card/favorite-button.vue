@@ -2,40 +2,38 @@
   import { mapGetters } from 'vuex'
 
   import favoriteMethod from '../../services/add-favorite'
-  import { EventBus } from '@/helpers'
+  import { btnFooterMixin } from '../mixins'
 
   export default {
-    props: ['card'],
+    props: {
+      card: Object
+    },
+    mixins: [ btnFooterMixin('deck', 'deckLength') ],
     computed: {
       ...mapGetters({
         'user': 'getUser'
       }),
-      deckCard () {
-        return this.card.deck
-      },
-      deckLength () {
-        return this.deckCard.length
-      },
-      hasFavorited () {
-        const { uid } = this.user
-        return this.deckCard.some(item => item.user.uid === uid)
-      },
       style () {
-        return this.hasFavorited ? 'fa fa-star' : 'fa fa-star-o'
-      },
-      isMyCard () {
-        const { uid } = this.user
-        return this.card.author.uid === uid
+        return this.acted ? 'fa fa-star' : 'fa fa-star-o'
       }
     },
     methods: {
       favorite () {
-        if (!this.hasFavorited && !this.isMyCard) {
+        if (!this.acted && !this.isMyCard) {
           const { uid } = this.card
           favoriteMethod(this, uid)
-            .then(result => {
-              EventBus.$emit('refresh:apollo')
-            })
+        }
+        if (this.acted) {
+          this.$snackbar.open({
+            message: 'Você já guardou no deck este card',
+            type: 'is-warning'
+          })
+        }
+        if (this.isMyCard) {
+          this.$snackbar.open({
+            message: 'Você não pode guardar no deck o seu proprio card',
+            type: 'is-warning'
+          })
         }
       }
     }
@@ -48,7 +46,7 @@
       href="#"
       class="favorited"
       @click.prevent="favorite"
-      :disabled="hasFavorited">
+      :disabled="acted">
       <span
         class="icon is-medium"
         aria-hidden="true">

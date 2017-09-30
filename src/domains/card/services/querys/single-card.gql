@@ -19,12 +19,14 @@ query getSingleCard ($uid: String!) {
       name
     }
     likes {
+      reaction
       user {
         uid
         name
       }
     }
     dislikes {
+      reaction
       user {
         uid
         name

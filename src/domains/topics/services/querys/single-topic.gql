@@ -63,6 +63,7 @@ query getSingleTopic ($uid: String!) {
         }
         likes {
           id
+          reaction
           user {
             uid
             name
@@ -70,6 +71,7 @@ query getSingleTopic ($uid: String!) {
         }
         dislikes {
           id
+          reaction
           user {
             uid
             name

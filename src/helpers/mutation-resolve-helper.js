@@ -1,5 +1,6 @@
-import { cloneDeep } from 'lodash'
 import { curry } from 'ramda'
+
+import setUser from '@/domains/user/services/set-user'
 
 /**
  * success helper for mutation
@@ -10,17 +11,15 @@ import { curry } from 'ramda'
  * @return {Promise}
  */
 export default curry((context, msgSuccess, property, ponts, result) => {
-  const data = result.data[property]
-  const user = cloneDeep(context.user)
-  user.cards.records.push(data)
-  user.ponts += ponts
-  context.$store.dispatch('setUser', user)
-  context.$emit('done')
-  context.$snackbar.open({
-    message: msgSuccess,
-    type: 'is-success',
-    position: 'is-bottom-right',
-    actionText: 'OK'
-  })
-  return Promise.resolve(user)
+  return setUser(context.$store)
+    .then(user => {
+      context.$snackbar.open({
+        message: msgSuccess,
+        type: 'is-success',
+        position: 'is-bottom-right',
+        actionText: 'OK'
+      })
+      return Promise.resolve(user)
+    })
+    .catch(console.error)
 })

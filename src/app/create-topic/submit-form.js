@@ -1,15 +1,10 @@
 import MutationCreateTopic from './create-topic-mutation.gql'
-import { pick } from 'lodash'
 import {
   mutationResolveHelper,
   mutationRejectHelper
 } from '@/helpers'
 
-const factory = data => pick(data, ['title', 'id_position', 'content'])
-
-export default (context, data) => {
-  const topic = factory(data)
-
+export default (context, topic) => {
   const successArgs = [
     context,
     'Você ganhou 10 pontos',

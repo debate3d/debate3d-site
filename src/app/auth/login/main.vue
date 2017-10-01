@@ -72,7 +72,10 @@ export default {
             v-model="password"></b-input>
         </b-field>
 
-        <button class="button is-success is-medium is-outlined is-fullwidth"> Entrar </button>
+        <button
+          class="button is-success is-medium is-outlined is-fullwidth"
+          :disabled="!isValid">
+          Entrar </button>
       </form>
 
       <p> Não possui uma conta? <router-link to="/auth/register"> Cadastre-se </router-link> </p>

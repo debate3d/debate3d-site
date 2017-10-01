@@ -21,6 +21,9 @@
       }),
       isLogged () {
         return !isEmpty(this.user)
+      },
+      isSubscriber () {
+        return this.user.is_subscriber
       }
     },
     methods: {
@@ -41,7 +44,8 @@
         v-for="item in menu"
         :key="item.key"
         :route="item.route"
-        :label="item.label" />
+        :label="item.label"
+        v-if="item.needAuth(isLogged, isSubscriber)" />
 
     <button class="button" @click="logout"> Sair </button>
     </ul>

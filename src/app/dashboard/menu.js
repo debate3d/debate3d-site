@@ -1,6 +1,7 @@
 export default [
   {
     route: '/dashboard',
-    label: 'Dashboard'
+    label: 'Dashboard',
+    needAuth: bool => bool || true
   }
 ]

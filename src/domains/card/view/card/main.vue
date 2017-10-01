@@ -52,7 +52,7 @@
   .card {
     background-color: $white;
     color: $text;
-    width: 290px;
+    width: 295px;
     height: 410px;
     position: relative;
     margin: .8em auto;

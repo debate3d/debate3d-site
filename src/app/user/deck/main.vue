@@ -7,7 +7,7 @@
   import { miniCard } from '@/domains/card/schemas'
 
   export default {
-    name: 'my-cards',
+    name: 'my-deck',
     components: { AppCard, NegativeFace },
     data () {
       return {

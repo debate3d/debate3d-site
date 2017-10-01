@@ -33,3 +33,9 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .column {
+    min-width: 295px;
+  }
+</style>

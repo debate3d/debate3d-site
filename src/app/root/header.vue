@@ -19,7 +19,7 @@
 
 <template lang="html">
   <header class="header">
-    <logo-letters></logo-letters>
+    <logo-letters @click.native="$router.push('/dashboard')" />
     <router-link
       v-if="!isLogged"
       to="/auth/login"
@@ -40,6 +40,7 @@
 
     .image {
       max-width: 150px;
+      cursor: pointer;
     }
 
     .button {

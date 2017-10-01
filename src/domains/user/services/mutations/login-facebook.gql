@@ -1,0 +1,5 @@
+mutation LoginFacebook ($data: InputToLoginFacebook!) {
+  LoginFacebook(data: $data) {
+    token
+  }
+}

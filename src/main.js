@@ -11,6 +11,9 @@ import apolloProvider from './services/apollo'
 import Autocomplete from 'v-autocomplete'
 import 'v-autocomplete/dist/v-autocomplete.css'
 
+import FBSignInButton from 'vue-facebook-signin-button'
+Vue.use(FBSignInButton)
+
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })

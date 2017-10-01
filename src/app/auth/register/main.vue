@@ -3,9 +3,10 @@ import { isEmpty } from 'lodash'
 
 import LogoGlasses from '@/components/logo-glasses.vue'
 import register from './register'
+import loginWithFacebook from '../facebook/main.vue'
 
 export default {
-  components: { LogoGlasses },
+  components: { LogoGlasses, loginWithFacebook },
   data () {
     return {
       email: '',
@@ -54,13 +55,8 @@ export default {
     <logo-glasses />
     <section class="form-section">
       <h1 class="title is-3 has-text-centered"> Login </h1>
-      <a class="button is-info is-fullwidth is-medium is-outlined"
-        @click.prevent="facebook">
-        <span class="icon">
-          <i class="fa fa-facebook-official"></i>
-        </span>
-        <span>Login com o Facebook</span>
-      </a>
+
+      <login-with-facebook />
 
       <hr>
 

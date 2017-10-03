@@ -45,6 +45,7 @@
     <a
       href="#"
       class="favorited"
+      :class="{ 'is-active': acted }"
       @click.prevent="favorite"
       :disabled="acted">
       <span
@@ -62,5 +63,21 @@
   </div>
 </template>
 
-<style lang="css">
+<style lang="scss" scoped>
+  .favorited,
+  .favorited .vote {
+    transition: color 0.5s ease;
+  }
+
+  .favorited:hover span,
+  .card-footer-item:hover .favorited + .vote,
+  .favorited.is-active + .vote,
+  .favorited.is-active span {
+    color: #EBE000;
+  }
+
+  a,
+  span {
+    color: #949494;
+  }
 </style>

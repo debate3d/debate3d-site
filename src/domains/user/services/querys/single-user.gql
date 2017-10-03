@@ -58,6 +58,7 @@ query getSingleUser ($uid: String!) {
         }
         likes {
           id
+          reaction
           user {
             uid
             name
@@ -65,6 +66,7 @@ query getSingleUser ($uid: String!) {
         }
         dislikes {
           id
+          reaction
           user {
             uid
             name

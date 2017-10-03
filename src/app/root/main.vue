@@ -2,6 +2,7 @@
   import AppHeader from './header.vue'
   import AppMenu from './menu/main.vue'
   import AppButton from './menu/menu-button.vue'
+  import AppFooter from './footer.vue'
   import Copyright from './copyright.vue'
 
   export default {
@@ -10,6 +11,7 @@
       AppHeader,
       AppMenu,
       AppButton,
+      AppFooter,
       Copyright
     },
     data () {
@@ -33,12 +35,13 @@
 
 <template>
   <div class="app-dashboard" ref="container">
-    <app-menu></app-menu>
+    <app-menu />
     <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
     <main>
-      <app-header></app-header>
+      <app-header />
       <router-view></router-view>
     </main>
+    <app-footer />
     <copyright />
   </div>
 </template>

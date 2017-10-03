@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../../../assets/sass/_extend";
 
   .card-header {
@@ -33,7 +33,7 @@
     display: flex;
 
     .card-header-title {
-      color: $text-strong;
+      color: $white;
       font-size: 22px;
     }
 

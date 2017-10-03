@@ -3,10 +3,12 @@
   import RenderTopics from '@/components/render-topics/main'
   import { schemaSingleUser } from '@/domains/user/schemas'
   import querySingleUser from '@/domains/user/services/querys/single-user.gql'
+  import { refreshQueryMixin } from '@/mixins'
 
   export default {
     name: 'user-view',
     components: { RenderTopics, RenderCards },
+    mixins: [ refreshQueryMixin('user') ],
     data () {
       return {
         user: schemaSingleUser

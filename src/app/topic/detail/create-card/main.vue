@@ -28,15 +28,16 @@
 <template lang="html">
   <div class="container">
     <h5
-      class="title is-5 has-text-centered"
-      v-if="canCreate"> Deixe sua opinião </h5>
-    <h5
       class="title is-4 has-text-centered"
       v-if="!canCreate"> Você já possui card cadastrado </h5>
     <button
-      class="button is-primary is-outlined is-medium"
+      class="button is-primary is-large create-card-button"
       @click="state = true"
-      v-if="canCreate"> Criar card </button>
+      v-if="canCreate">
+      <span class="icon is-small">
+        <i class="fa fa-plus"></i>
+      </span>
+    </button>
     <b-modal :active.sync="state" v-if="canCreate">
       <app-form
         @done="$emit('done')"
@@ -53,6 +54,21 @@
     .button {
       margin: 0 auto;
       display: block;
+    }
+
+    .create-card-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3;
+      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+
+      @media (max-width: 768px) {
+        width: 65px;
+        height: 65px;
+      }
     }
   }
 </style>

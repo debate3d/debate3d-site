@@ -4,6 +4,7 @@ import MeTopics from './topics/main.vue'
 import Detail from './detail/main.vue'
 import Update from './update/main.vue'
 import Ranking from './ranking/main.vue'
+import TermsOfUse from './terms-of-use'
 
 export default beforeEnter => [
   {
@@ -45,6 +46,13 @@ export default beforeEnter => [
     path: '/ranking',
     name: 'ranking',
     component: Ranking,
+    meta: { requireAuth: false },
+    beforeEnter
+  },
+  {
+    path: '/terms-of-use',
+    name: 'Termos-de-Uso',
+    component: TermsOfUse,
     meta: { requireAuth: false },
     beforeEnter
   }

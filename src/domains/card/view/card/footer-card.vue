@@ -74,35 +74,5 @@
     &:not(:last-child) {
       border-right: 1px solid $border;
     }
-
-    .vote {
-      margin-left: .4em;
-    }
-
-    a,
-    span {
-      color: #949494;
-    }
-
-    .positive:hover span,
-    .card-footer-item:hover .positive + .vote,
-    .positive.is-active + .vote,
-    .positive.is-active span {
-      color: #009a00;
-    }
-
-    .negative:hover span,
-    .card-footer-item:hover .negative + .vote,
-    .negative.is-active + .vote,
-    .negative.is-active span {
-      color: #ff4a4a;
-    }
-
-    .favorited:hover span,
-    .card-footer-item:hover .favorited + .vote,
-    .favorited.is-active + .vote,
-    .favorited.is-active span {
-      color: #EBE000;
-    }
   }
 </style>

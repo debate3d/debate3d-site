@@ -18,6 +18,9 @@
         const reaction = get(this.reaction, 'reaction')
         const condition = (this.acted && reaction === 'false  ')
         return condition ? 'fa fa-thumbs-down' : 'fa fa-thumbs-o-down'
+      },
+      disliked () {
+        return this.acted && this.reaction.reaction === 'false  '
       }
     },
     methods: {
@@ -54,6 +57,7 @@
     <a
       href="#"
       class="negative"
+      :class="{ 'is-active': disliked }"
       @click.prevent="dislike"
       :disabled="acted">
       <span
@@ -71,5 +75,21 @@
   </div>
 </template>
 
-<style lang="css">
+<style lang="scss" scoped>
+  .negative,
+  .negative .vote {
+    transition: color 0.5s ease;
+  }
+
+  .negative:hover span,
+  .card-footer-item:hover .negative + .vote,
+  .negative.is-active + .vote,
+  .negative.is-active span {
+    color: #ff4a4a;
+  }
+
+  a,
+  span {
+    color: #949494;
+  }
 </style>

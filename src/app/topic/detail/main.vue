@@ -53,7 +53,7 @@
       </div>
       <div class="topic-info content card">
         <h1 class="title"> {{ topic.title }} </h1>
-        <p> {{ topic.content }} </p>
+        <p class="content"> {{ topic.content }} </p>
         <span
           v-for="tag in topic.tags"
           class="tag is-info"
@@ -92,6 +92,10 @@
 
   .topic-info {
     padding: $space;
+
+    .content {
+      word-wrap: break-word;
+    }
   }
 
   .view-header {

@@ -1,9 +1,9 @@
 <script>
   import { mapGetters } from 'vuex'
+  import { get } from 'lodash'
 
   import reactionMethod from '../../services/add-reation'
   import { btnFooterMixin } from '../mixins'
-  import { get } from 'lodash'
 
   export default {
     props: {
@@ -18,6 +18,9 @@
         const reaction = get(this.reaction, 'reaction')
         const condition = (this.acted && reaction === 'true   ')
         return condition ? 'fa fa-thumbs-up' : 'fa fa-thumbs-o-up'
+      },
+      liked () {
+        return this.acted && this.reaction.reaction === 'true   '
       }
     },
     methods: {
@@ -53,6 +56,7 @@
     <a
       href="#"
       class="positive"
+      :class="{ 'is-active': liked }"
       @click.prevent="like"
       :disabled="acted">
       <span
@@ -70,5 +74,21 @@
   </div>
 </template>
 
-<style lang="css">
+<style lang="scss" scoped>
+  .positive,
+  .positive .vote {
+    transition: color 0.5s ease;
+  }
+
+  .positive:hover span,
+  .card-footer-item:hover .positive + .vote,
+  .positive.is-active + .vote,
+  .positive.is-active span {
+    color: #3399ee;
+  }
+
+  a,
+  span {
+    color: #949494;
+  }
 </style>

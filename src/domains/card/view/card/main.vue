@@ -77,11 +77,19 @@
     }
 
     &.is-positive {
-      box-shadow: 0 2px 3px rgba($positive-color, 0.4), 0 0 0 1px rgba($positive-color, 0.4);
+      & .card-header,
+      & .card-header-title {
+        background-color: #0098DA;
+        color: white;
+      }
     }
 
     &.is-negative {
-      box-shadow: 0 2px 3px rgba($negative-color, 0.4), 0 0 0 1px rgba($negative-color, 0.4);
+      & .card-header,
+      & .card-header-title {
+        background-color: #DB3438;
+        color: white;
+      }
     }
   }
 </style>

@@ -25,6 +25,7 @@ query getMyCards ($uid: String!, $page: Int!) {
         }
         likes {
           id
+          reaction
           user {
             uid
             name

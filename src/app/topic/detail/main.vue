@@ -8,6 +8,7 @@
   import RenderCards from '@/components/render-cards/main.vue'
   import AppVoteTopic from './vote/main.vue'
   import CreateCard from './create-card/main.vue'
+  import AppPagination from './pagination'
 
   import { refreshQueryMixin } from '@/mixins'
 
@@ -18,11 +19,13 @@
       AppProgress,
       RenderCards,
       AppVoteTopic,
-      CreateCard
+      CreateCard,
+      AppPagination
     },
     data () {
       return {
-        topic: schemaTopicView
+        topic: schemaTopicView,
+        page: 1
       }
     },
     computed: {
@@ -36,7 +39,8 @@
           query: queySingleTopic,
           variables: () => {
             return {
-              uid: this.$route.params.topic
+              uid: this.$route.params.topic,
+              page: this.page
             }
           }
         }
@@ -78,6 +82,10 @@
         :topic="topic"/>
 
       <hr v-if="isLogged">
+
+      <app-pagination
+        :total="topic.cards.count"
+        :current.sync="page"/>
 
       <render-cards
         :cards="topic.cards"

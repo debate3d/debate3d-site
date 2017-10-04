@@ -1,4 +1,4 @@
-query getSingleTopic ($uid: String!) {
+query getSingleTopic ($uid: String!, $page: Int!) {
   topic (uid: $uid) {
     uid
     title
@@ -38,7 +38,7 @@ query getSingleTopic ($uid: String!) {
         }
       }
     }
-    cards(page: 1) {
+    cards(page: $page) {
       count
       records {
         uid

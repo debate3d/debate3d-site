@@ -1,6 +1,6 @@
 const schemaUserBox = {
   name: 'Carregando usuário',
-  url_photo: null,
+  avatar_id: null,
   ponts: 0
 }
 

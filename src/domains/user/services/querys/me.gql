@@ -3,7 +3,7 @@
     name
     uid
     email
-    url_photo
+    avatar_id
     created
     cpf
     cep

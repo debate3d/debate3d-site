@@ -19,8 +19,7 @@ export default curry((loading, store, router, user) => {
   const data = {
     id: get(user, 'id'),
     name: get(user, 'name'),
-    email: get(user, 'email'),
-    url_photo: get(user, 'picture.data.url')
+    email: get(user, 'email')
   }
 
   return loginFacebook(data)

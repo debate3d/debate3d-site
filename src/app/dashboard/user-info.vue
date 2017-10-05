@@ -15,7 +15,7 @@
 
 <template lang="html">
   <div class="user-info">
-    <app-avatar :url="user.url_photo" :name="user.name" length="is-small"></app-avatar>
+    <app-avatar :number="user.avatar_id"></app-avatar>
     <h2 class="subtitle"> {{ user.name }} </h2>
     <span class="tag is-large is-info"> {{ user.ponts }} pontos </span>
   </div>

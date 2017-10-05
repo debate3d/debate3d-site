@@ -4,7 +4,7 @@ query allUsers ($page: Int!) {
     records(page: $page) {
       uid
       name
-      url_photo
+      avatar_id
       ponts
     }
   }

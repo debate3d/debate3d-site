@@ -14,7 +14,7 @@
     </div>
     <div class="card-content">
       <app-avatar
-        :url="author.url_photo"
+        :url="author.avatar_id"
         :name="null"
         length="is-medium"></app-avatar>
       <div class="content has-text-centered">

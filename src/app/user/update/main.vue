@@ -1,10 +1,11 @@
 <script>
-  import { isEmpty, pick, defaultsDeep } from 'lodash'
+  import { isEmpty, pick } from 'lodash'
   import submitForm from './submit-form'
   import MaskedInput from 'vue-masked-input'
+  import AvatarContainer from './update-avatar'
 
   export default {
-    components: { MaskedInput },
+    components: { MaskedInput, AvatarContainer },
     computed: {
       btnDisabled () {
         return isEmpty(this.user.name)
@@ -17,20 +18,13 @@
     },
     methods: {
       update () {
+        const loading = this.$loading.open()
         submitForm(this)
-          .then(result => {
-            this.$snackbar.open('Dados atualizados')
-            const user = result.data.UpdateUser
-            const storeUser = this.$store.state.auth.user
-            const merged = defaultsDeep({ }, user, storeUser)
-            this.$store.dispatch('setUser', merged)
+          .then(() => {
+            loading.close()
           })
-          .catch(err => {
-            console.error(err)
-            this.$snackbar.open({
-              message: 'Não foi possível atualizar os dados',
-              type: 'is-warning'
-            })
+          .catch(() => {
+            loading.close()
           })
       }
     },
@@ -44,7 +38,8 @@
         'twitter',
         'instagram',
         'site',
-        'email'
+        'email',
+        'avatar_id'
       ]
       this.user = pick(this.$store.state.auth.user, props)
     }
@@ -59,6 +54,12 @@
       <div class="column is-6">
         <div class="box">
           <h2 class="subtitle has-text-centered"> Dados principais </h2>
+
+          <avatar-container
+            :avatar_id="user.avatar_id"
+            @choose-avatar="value => user.avatar_id = value"/>
+
+          <p class="has-text-centered">Clique no avatar acima para modificar</p>
 
           <b-field>
             <b-input

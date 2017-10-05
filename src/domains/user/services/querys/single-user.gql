@@ -44,7 +44,7 @@ query getSingleUser ($uid: String!) {
         author {
           name
           uid
-          url_photo
+          avatar_id
         }
         content
         position

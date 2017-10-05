@@ -11,7 +11,7 @@ query getMyCards ($uid: String!, $page: Int!) {
         author {
           name
           uid
-          url_photo
+          avatar_id
         }
         content
         position

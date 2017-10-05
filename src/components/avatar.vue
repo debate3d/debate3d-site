@@ -1,51 +1,44 @@
 <script>
-  /**
-   * Avatar component
-   * @url {String} image url
-   * @name {String} name for alt image text
-   * @length {String} image length
-   * @return {VuejsComponent}
-   */
-
-  import { isEmpty } from 'lodash'
-
   export default {
     name: 'avatar',
-    computed: {
-      image () {
-        return (isEmpty(this.url)) ? '/static/placeholder.jpg' : this.url
+    props: {
+      number: Number,
+      length: {
+        type: Number,
+        default: 50
       }
     },
-    props: ['url', 'name', 'length']
+    computed: {
+      styleClass () {
+        return `is-${this.number}`
+      },
+      style () {
+        return {
+          width: `${this.length}px`,
+          height: `${this.length}px`
+        }
+      }
+    }
   }
 </script>
 
 <template lang="html">
-  <figure class="image avatar" :class="length">
-    <img :src="image" :alt="`Avatar do usuário ${name}`">
-  </figure>
+  <div
+    class="avatar"
+    :class="styleClass"
+    :style="style"></div>
 </template>
 
 <style lang="scss" scoped>
-  $avatar-length: 50px;
-
-  .image {
+  @import "../assets/sass/extend";
+  .avatar {
     border-radius: 100%;
-    overflow: hidden;
-  }
 
-  .image.is-large {
-    width: $avatar-length * 3;
-    height: $avatar-length * 3;
-  }
-
-  .image.is-medium {
-    width: $avatar-length * 2;
-    height: $avatar-length * 2;
-  }
-
-  .image.is-small {
-    width: $avatar-length;
-    height: $avatar-length;
+    @for $i from 1 through 11 {
+      &.is-#{$i} {
+        background: url('../assets/img/avatars/avatar#{$i}.jpeg') no-repeat;
+        background-size: contain;
+      }
+    }
   }
 </style>

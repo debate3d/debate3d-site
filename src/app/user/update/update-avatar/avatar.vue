@@ -1,4 +1,6 @@
 <script>
+  import { isNull, isUndefined } from 'lodash'
+
   export default {
     name: 'avatar',
     props: {
@@ -11,18 +13,22 @@
     computed: {
       style () {
         return this.active
-          ? `is-active is-${this.number}`
-          : `is-${this.number}`
+          ? 'is-active'
+          : ''
+      },
+      urlAvatar () {
+        return (isNull(this.number) || isUndefined(this.number))
+          ? 'static/avatars/placeholder.jpg'
+          : `static/avatars/avatar${this.number}.jpg`
       }
     }
   }
 </script>
 
 <template lang="html">
-  <div
-    class="avatar"
-    :class="style"
-    @click="$emit('update-select', number)"></div>
+  <figure class="avatar" :class="style">
+    <img :src="urlAvatar" @click="$emit('update-select', number)">
+  </figure>
 </template>
 
 <style lang="scss" scoped>
@@ -37,13 +43,6 @@
 
     &.is-active {
       border: 3px solid $primary;
-    }
-
-    @for $i from 1 through 11 {
-      &.is-#{$i} {
-        background: url('static/avatars/avatar#{$i}.jpg') no-repeat;
-        background-size: contain;
-      }
     }
   }
 </style>

@@ -1,4 +1,6 @@
 <script>
+  import { isNull, isUndefined } from 'lodash'
+
   import List from './list-avatars.vue'
   import Avatar from './avatar.vue'
 
@@ -22,8 +24,10 @@
       }
     },
     computed: {
-      styleSelected () {
-        return `is-${this.avatar_id}`
+      urlAvatar () {
+        return (isNull(this.avatar_id) || isUndefined(this.avatar_id))
+          ? 'static/avatars/placeholder.jpg'
+          : `static/avatars/avatar${this.avatar_id}.jpg`
       }
     }
   }
@@ -34,7 +38,9 @@
     <div
       class="avatar-container"
       @click="activeModal = true">
-      <div class="inner" :class="styleSelected"></div>
+      <figure class="inner">
+        <img :src="urlAvatar">
+      </figure>
       <div class="bg">
         <b-icon
           pack="fa"
@@ -87,15 +93,6 @@
       opacity: 0;
       background-color: rgba(0, 0, 0, .3);
       transition: all 1s ease;
-    }
-
-    .inner {
-      @for $i from 1 through 11 {
-        &.is-#{$i} {
-          background: url('static/avatars/avatar#{$i}.jpg') no-repeat;
-          background-size: contain;
-        }
-      }
     }
   }
 </style>

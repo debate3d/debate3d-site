@@ -53,7 +53,7 @@
     background-color: $white;
     color: $text;
     width: 295px;
-    height: 410px;
+    height: 450px;
     position: relative;
     margin: .8em auto;
     border-radius: 2px;

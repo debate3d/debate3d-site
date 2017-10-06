@@ -5,22 +5,34 @@
 
   export default {
     components: { AppForm },
-    props: [ 'topic' ],
+    props: {
+      topic: Object
+    },
     data () {
       return {
-        state: false
+        state: false,
+        canCreate: false
+      }
+    },
+    watch: {
+      topic () {
+        if (!this.canCreate) return
+        const { uid } = this.user
+        const cards = this.topic.cards.records
+        const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
+        this.canCreate = isEmpty(anyCardCreate)
       }
     },
     computed: {
       ...mapGetters({
         'user': 'getUser'
-      }),
-      canCreate () {
-        const { uid } = this.user
-        const cards = this.topic.cards.records
-        const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
-        return isEmpty(anyCardCreate)
-      }
+      })
+    },
+    mounted () {
+      const { uid } = this.user
+      const cards = this.topic.cards.records
+      const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
+      this.canCreate = isEmpty(anyCardCreate)
     }
   }
 </script>

@@ -31,6 +31,9 @@
     computed: {
       isLogged () {
         return !isEmpty(this.$store.state.auth.user)
+      },
+      hasCards () {
+        return this.topic.cards.count !== 0
       }
     },
     apollo: {
@@ -81,9 +84,10 @@
         v-if="isLogged"
         :topic="topic"/>
 
-      <hr v-if="isLogged">
+      <hr v-if="isLogged && hasCards">
 
       <app-pagination
+        v-if="hasCards"
         :total="topic.cards.count"
         :current.sync="page"/>
 

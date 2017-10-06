@@ -92,7 +92,7 @@
     .inner {
       @for $i from 1 through 11 {
         &.is-#{$i} {
-          background: url('../../../../assets/img/avatars/avatar#{$i}.jpeg') no-repeat;
+          background: url('/static/avatars/avatar#{$i}.jpg') no-repeat;
           background-size: contain;
         }
       }

@@ -1,4 +1,6 @@
 <script>
+  import { isNull, isUndefined } from 'lodash'
+
   export default {
     name: 'avatar',
     props: {
@@ -9,8 +11,10 @@
       }
     },
     computed: {
-      styleClass () {
-        return `is-${this.number}`
+      url () {
+        return (isNull(this.number) || isUndefined(this.number))
+          ? 'static/avatars/placeholder.jpg'
+          : `static/avatars/avatar${this.number}.jpg`
       },
       style () {
         return {
@@ -23,22 +27,17 @@
 </script>
 
 <template lang="html">
-  <div
+  <figure
     class="avatar"
-    :class="styleClass"
-    :style="style"></div>
+    :style="style">
+    <img :src="url">
+  </figure>
 </template>
 
 <style lang="scss" scoped>
   @import "../assets/sass/extend";
   .avatar {
     border-radius: 100%;
-
-    @for $i from 1 through 11 {
-      &.is-#{$i} {
-        background: url('../assets/img/avatars/avatar#{$i}.jpeg') no-repeat;
-        background-size: contain;
-      }
-    }
+    overflow: hidden;
   }
 </style>

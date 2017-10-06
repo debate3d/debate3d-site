@@ -41,7 +41,7 @@ const schemaSingleUser = {
         author: {
           name: '',
           uid: '',
-          avatar_id: ''
+          avatar_id: null
         },
         topic: {
           uid: '',

@@ -3,7 +3,12 @@
 
   export default {
     name: 'render-cards',
-    props: ['cards', 'successMessage', 'errorMessage', 'column'],
+    props: {
+      cards: Object,
+      successMessage: String,
+      errorMessage: String,
+      column: String
+    },
     components: { AppCard },
     computed: {
       count () {
@@ -18,10 +23,10 @@
 
 <template lang="html">
   <div>
-    <p class="title is-5 has-text-centered" v-if="count > '0'">
+    <p class="title is-5 has-text-centered" v-if="count > 0">
       {{ successMessage }}
     </p>
-    <p class="title is-5 has-text-centered" v-if="count === '0'">
+    <p class="title is-5 has-text-centered" v-if="count === 0">
       {{ errorMessage }}
     </p>
     <div class="columns is-multiline is-centered">

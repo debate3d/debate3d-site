@@ -4,10 +4,11 @@
   import { schemaSingleUser } from '@/domains/user/schemas'
   import querySingleUser from '@/domains/user/services/querys/single-user.gql'
   import { refreshQueryMixin } from '@/mixins'
+  import AppAvatar from '@/components/avatar.vue'
 
   export default {
     name: 'user-view',
-    components: { RenderTopics, RenderCards },
+    components: { RenderTopics, RenderCards, AppAvatar },
     mixins: [ refreshQueryMixin('user') ],
     data () {
       return {
@@ -37,6 +38,9 @@
 <template lang="html">
   <div class="user-view">
     <div class="user-view__header">
+      <app-avatar
+        :number="user.avatar_id"
+        :length="100"></app-avatar>
       <h1 class="title has-text-centered"> {{ user.name }} </h1>
       <p class="subtitle has-text-centered"> Email: {{ user.email }} </p>
       <p class="subtitle has-text-centered"> Membro desde {{ created }} </p>
@@ -66,6 +70,11 @@
 
     .title:not(.is-spaced) + .subtitle {
       margin-top: 0;
+    }
+
+    .avatar {
+      margin: 0 auto;
+      display: block;
     }
 
     &__header {

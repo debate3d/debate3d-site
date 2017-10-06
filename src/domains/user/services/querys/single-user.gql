@@ -5,6 +5,7 @@ query getSingleUser ($uid: String!) {
     email
     created
     ponts
+    avatar_id
     topics(page: 1) {
       count
       records {

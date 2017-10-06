@@ -3,7 +3,9 @@
 
   export default {
     components: { AppAvatar },
-    props: ['author']
+    props: {
+      author: Object
+    }
   }
 </script>
 
@@ -14,9 +16,8 @@
     </div>
     <div class="card-content">
       <app-avatar
-        :url="author.avatar_id"
-        :name="null"
-        length="is-medium"></app-avatar>
+        :number="author.avatar_id"
+        :length="100"></app-avatar>
       <div class="content has-text-centered">
         Email: {{ author.email }}
       </div>

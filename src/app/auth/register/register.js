@@ -1,9 +1,10 @@
 import { register } from '@/services/auth'
 
-export default (context, payload, loading) => {
+export default (context, payload, loading, router) => {
   return register(payload, context.$store)
     .then(response => {
       loading.close()
+      router.push('/dashboard')
     })
     .catch(err => {
       console.error(err)

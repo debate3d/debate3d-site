@@ -35,7 +35,7 @@ export default {
           email,
           password
         }
-        register(this, payload, loading)
+        register(this, payload, loading, this.$router)
       }
     }
   },

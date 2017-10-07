@@ -28,6 +28,9 @@
       toogleMenu () {
         this.condition = arguments[0]
         this.$refs.container.classList.toggle('is-active')
+      },
+      removeClassMenu () {
+        this.$refs.container.classList.remove('is-active')
       }
     }
   }
@@ -35,7 +38,7 @@
 
 <template>
   <div class="app-dashboard" ref="container">
-    <app-menu />
+    <app-menu @remove-class-menu="removeClassMenu"/>
     <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
     <main>
       <app-header />

@@ -45,7 +45,8 @@
         :key="item.key"
         :route="item.route"
         :label="item.label"
-        v-if="item.needAuth(isLogged, isSubscriber)" />
+        v-if="item.needAuth(isLogged, isSubscriber)"
+        @remove-class-menu="$emit('remove-class-menu')" />
 
     <button class="button" @click="logout"> Sair </button>
     </ul>

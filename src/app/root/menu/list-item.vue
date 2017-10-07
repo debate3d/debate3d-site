@@ -4,13 +4,21 @@
     computed: {
       routeAtual () { return this.$route.path },
       isActive () { return (this.routeAtual === this.route) ? 'is-active' : '' }
+    },
+    methods: {
+      removeClassMenu () {
+        this.$emit('remove-class-menu')
+      }
     }
   }
 </script>
 
 <template>
   <li class="menu-item">
-    <router-link :class="isActive" :to="route"> {{ label }} </router-link>
+    <router-link
+      :class="isActive"
+      :to="route"
+      @click.native="removeClassMenu"> {{ label }} </router-link>
   </li>
 </template>
 

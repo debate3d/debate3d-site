@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="copyright">
+    <hr>
     <p>
       Desenvolvido por
       <a
@@ -14,14 +15,23 @@
   </div>
 </template>
 
-<style media="screen">
+<style scoped lang="scss" media="screen">
   .copyright {
+    position: relative;
     width: 100%;
     font-size: 1.1em;
     text-align: center;
     color: white;
     padding: .5em;
-    background-color: #1b1a20;
+    background-color: #3a4752;
+
+    hr {
+      display: block;
+      margin: 20px auto;
+      max-width: 1022px;
+      height: 2px;
+      background-color: whitesmoke;
+    }
   }
 
   .copyright a:hover {

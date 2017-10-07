@@ -12,6 +12,11 @@ query getSingleTopic ($uid: String!, $page: Int!) {
       uid
       email
       avatar_id
+      facebook
+      instagram
+      site
+      twitter
+      youtube
     }
     tags {
       uid

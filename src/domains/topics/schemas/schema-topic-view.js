@@ -20,7 +20,12 @@ const schemaTopicView = {
     name: 'Carregando autor',
     uid: '',
     email: '',
-    avatar_id: null
+    avatar_id: null,
+    facebook: '',
+    instagram: '',
+    site: '',
+    twitter: '',
+    youtube: ''
   },
   tags: [
     {

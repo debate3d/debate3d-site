@@ -5,10 +5,11 @@
   import querySingleUser from '@/domains/user/services/querys/single-user.gql'
   import { refreshQueryMixin } from '@/mixins'
   import AppAvatar from '@/components/avatar.vue'
+  import SharedList from '@/domains/user/view/shared-list'
 
   export default {
     name: 'user-view',
-    components: { RenderTopics, RenderCards, AppAvatar },
+    components: { RenderTopics, RenderCards, AppAvatar, SharedList },
     mixins: [ refreshQueryMixin('user') ],
     data () {
       return {
@@ -46,6 +47,7 @@
       <p class="subtitle has-text-centered"> Membro desde {{ created }} </p>
       <p class="subtitle has-text-centered"> Pontos: {{ user.ponts }} </p>
     </div>
+    <shared-list :user="user" />
     <div class="user-view__topics" v-if="user.topics.records.length > 0">
       <h2 class="title is-4 has-text-centered"> Temas do usuário </h2>
       <render-topics

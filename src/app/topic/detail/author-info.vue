@@ -1,8 +1,9 @@
 <script>
   import AppAvatar from '@/components/avatar.vue'
+  import SharedList from '@/domains/user/view/shared-list'
 
   export default {
-    components: { AppAvatar },
+    components: { AppAvatar, SharedList },
     props: {
       author: Object
     }
@@ -12,7 +13,9 @@
 <template lang="html">
   <div class="card">
     <div class="card-header">
-      <p class="card-header-title"> {{ author.name }} </p>
+      <router-link class="card-header-title" :to="`/user/${author.uid}/detail`">
+        {{ author.name }}
+      </router-link>
     </div>
     <div class="card-content">
       <app-avatar
@@ -21,6 +24,7 @@
       <div class="content has-text-centered">
         Email: {{ author.email }}
       </div>
+      <shared-list :user="author"/>
     </div>
   </div>
 </template>

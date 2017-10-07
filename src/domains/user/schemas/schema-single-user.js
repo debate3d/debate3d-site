@@ -3,6 +3,11 @@ const schemaSingleUser = {
   uid: '',
   email: '',
   created: '',
+  facebook: '',
+  instagram: '',
+  site: '',
+  twitter: '',
+  youtube: '',
   topics: {
     count: '',
     records: [

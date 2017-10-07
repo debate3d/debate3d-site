@@ -1,12 +1,15 @@
 <script>
 export default {
-  name: 'topics-pagination',
+  name: 'pagination',
   props: {
     total: Number,
-    current: Number
+    current: Number,
+    perPage: {
+      type: Number,
+      default: 10
+    }
   },
   data: () => ({
-    perPage: 10,
     isSimple: false
   })
 }
@@ -23,7 +26,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-  @import "../../../assets/sass/_extend";
+  @import "../assets/sass/_extend";
 
   .pagination {
     margin: $space / 2;

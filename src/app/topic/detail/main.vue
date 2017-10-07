@@ -8,7 +8,7 @@
   import RenderCards from '@/components/render-cards/main.vue'
   import AppVoteTopic from './vote/main.vue'
   import CreateCard from './create-card/main.vue'
-  import AppPagination from './pagination'
+  import AppPagination from '@/components/pagination.vue'
 
   import { refreshQueryMixin } from '@/mixins'
 

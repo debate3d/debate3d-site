@@ -1,5 +1,10 @@
 export default [
   {
+    route: '/ranking',
+    label: 'Ranking de usuários',
+    needAuth: bool => bool || true
+  },
+  {
     route: '/me/cards',
     label: 'Meus cards',
     needAuth: bool => bool && true

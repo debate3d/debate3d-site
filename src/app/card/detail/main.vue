@@ -25,6 +25,9 @@
         return (cardPosition === 'true')
           ? positionsTopic.positive
           : positionsTopic.negative
+      },
+      positioning () {
+        return (this.card.position === 'true') ? 'is-positive' : 'is-negative'
       }
     },
     apollo: {
@@ -48,7 +51,7 @@
 </script>
 
 <template lang="html">
-  <div class="card">
+  <div class="card" :class="positioning">
     <div class="card-title">
       <h2 class="card-header-title title is-4">
         {{ card.author.name }}
@@ -94,6 +97,22 @@
   .card {
     max-width: 800px;
     margin: $space auto;
+
+    &.is-positive {
+      & .card-header,
+      & .card-header-title {
+        background-color: #0098DA;
+        color: white;
+      }
+    }
+
+    &.is-negative {
+      & .card-header,
+      & .card-header-title {
+        background-color: #DB3438;
+        color: white;
+      }
+    }
 
     .card-content.content {
       margin-bottom: 0;

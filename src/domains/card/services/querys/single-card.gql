@@ -17,6 +17,7 @@ query getSingleCard ($uid: String!) {
     author {
       uid
       name
+      avatar_id
     }
     likes {
       reaction

@@ -22,7 +22,7 @@
     font-size: 1.1em;
     text-align: center;
     color: white;
-    padding: .5em;
+    padding: .5em .5em 20px .5em;
     background-color: #3a4752;
 
     hr {

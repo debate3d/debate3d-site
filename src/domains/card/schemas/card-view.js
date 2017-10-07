@@ -20,7 +20,8 @@ export default {
   },
   author: {
     uid: '',
-    name: 'Carregando autor'
+    name: 'Carregando autor',
+    avatar_id: null
   },
   likes: [
     {

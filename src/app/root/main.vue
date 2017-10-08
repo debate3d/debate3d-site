@@ -30,6 +30,7 @@
         this.$refs.container.classList.toggle('is-active')
       },
       removeClassMenu () {
+        this.condition = false
         this.$refs.container.classList.remove('is-active')
       }
     }

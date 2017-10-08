@@ -1,16 +1,17 @@
 <script type="text/javascript">
   export default {
     name: 'menu-button',
-    props: ['text'],
-    data () {
-      return {
-        condition: false
+    props: {
+      text: String
+    },
+    computed: {
+      condition () {
+        return this.text === 'Fechar'
       }
     },
     methods: {
       toogleMenu () {
-        this.condition = !this.condition
-        this.$emit('toogleMenu', this.condition)
+        this.$emit('toogleMenu', !this.condition)
       }
     }
   }

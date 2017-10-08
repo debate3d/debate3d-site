@@ -5,12 +5,13 @@
   export default {
     props: {
       position: Object,
+      card_position: Boolean,
       uid_topic: String
     },
     data () {
       return {
-        card_position: true,
-        content: ''
+        content: '',
+        position_card: true
       }
     },
     computed: {
@@ -33,6 +34,11 @@
         return this.content === ''
       }
     },
+    watch: {
+      position_card (newValue) {
+        this.$emit('update:card_position', newValue)
+      }
+    },
     methods: {
       createCard () {
         return createCard(this)
@@ -48,7 +54,7 @@
       label="Se posicione">
       <b-select
         placeholder="Sua posição em relação ao tema"
-        v-model="card_position">
+        v-model="position_card">
         <option
           v-for="option in options"
           :value="option.value"

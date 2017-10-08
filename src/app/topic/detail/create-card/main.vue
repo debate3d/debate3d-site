@@ -11,7 +11,8 @@
     data () {
       return {
         state: false,
-        canCreate: false
+        canCreate: false,
+        card_position: true
       }
     },
     watch: {
@@ -26,13 +27,20 @@
     computed: {
       ...mapGetters({
         'user': 'getUser'
-      })
+      }),
+      statePosition () {
+        return this.card_position ? 'is-positive' : 'is-negative'
+      }
     },
     mounted () {
+      this.card_position = true
       const { uid } = this.user
       const cards = this.topic.cards.records
       const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
       this.canCreate = isEmpty(anyCardCreate)
+    },
+    beforeDestroy () {
+      this.card_position = true
     }
   }
 </script>
@@ -50,11 +58,16 @@
         <i class="fa fa-plus"></i>
       </span>
     </button>
-    <b-modal :active.sync="state" v-if="canCreate">
+    <b-modal
+      :active.sync="state"
+      v-if="canCreate"
+      class="card-form"
+      :class="statePosition">
       <app-form
         @done="$emit('done')"
         :uid_topic="topic.uid"
-        :position="topic.position"></app-form>
+        :position="topic.position"
+        :card_position.sync="card_position"></app-form>
     </b-modal>
   </div>
 </template>
@@ -81,6 +94,20 @@
         width: 65px;
         height: 65px;
       }
+    }
+  }
+
+  .modal-background {
+    background-color: transparent;
+  }
+
+  .card-form {
+    &.is-positive {
+      background-color: rgba(0, 152, 218, .8);
+    }
+
+    &.is-negative {
+      background-color: rgba(219, 52, 56, .8);
     }
   }
 </style>

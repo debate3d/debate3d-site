@@ -30,7 +30,7 @@
     },
     computed: {
       number () {
-        return this.page === 1 ? 0 : (this.page - 1) * 10
+        return this.page === 1 ? 0 : (this.page - 1) * 20
       }
     }
   }

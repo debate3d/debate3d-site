@@ -1,6 +1,7 @@
 import AddDeck from './mutation.gql'
 
 import {
+  EventBus,
   mutationResolveHelper,
   mutationRejectHelper,
   pontuation
@@ -26,5 +27,8 @@ export default (context, uid_card) => { // eslint-disable-line
     }
   })
     .then(mutationResolveHelper(...successArgs))
+    .then(() => {
+      EventBus.$emit('refresh:apollo')
+    })
     .catch(mutationRejectHelper(...errorArgs))
 }

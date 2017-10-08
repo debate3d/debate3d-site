@@ -39,7 +39,8 @@
             return {
               uid: this.getUser.uid
             }
-          }
+          },
+          fetchPolicy: 'network-only'
         }
       }
     }

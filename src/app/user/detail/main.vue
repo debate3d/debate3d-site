@@ -29,7 +29,8 @@
             return {
               uid: this.$route.params.user
             }
-          }
+          },
+          fetchPolicy: 'network-only'
         }
       }
     }

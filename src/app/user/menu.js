@@ -16,7 +16,7 @@ export default [
   },
   {
     route: '/me/deck',
-    label: 'Meus deck',
+    label: 'Meu deck',
     needAuth: bool => bool && true
   },
   {

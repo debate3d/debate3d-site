@@ -17,7 +17,6 @@ query getMyCards ($uid: String!) {
         ponts
         deck {
           id
-          reaction
           user {
             uid
             name

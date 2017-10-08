@@ -33,7 +33,8 @@
               uid: this.getUser.uid,
               page: 1
             }
-          }
+          },
+          fetchPolicy: 'network-only'
         }
       }
     }

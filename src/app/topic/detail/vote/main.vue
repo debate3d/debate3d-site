@@ -116,8 +116,15 @@
 
   .field {
     display: flex;
-    width: 80%;
     margin: 0 auto;
+
+    @media (min-width: 769px) {
+      width: 80%;
+    }
+
+    @media (max-width: 768px) {
+      width: 95%;
+    }
 
     .control {
       flex-grow: 1;

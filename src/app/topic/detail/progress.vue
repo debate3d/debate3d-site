@@ -87,6 +87,11 @@
     height: auto;
     border-radius: 2px;
 
+    @media (max-width: 768px) {
+      margin: 0;
+      width: 100%;
+    }
+
     .labels,
     .values {
       display: flex;

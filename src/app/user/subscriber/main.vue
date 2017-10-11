@@ -29,18 +29,28 @@
 </script>
 
 <template>
-  <div class="be-subscriber content">
+  <div class="be-subscriber content box">
     <h1 class="title has-text-centered"> Seja um assinante! </h1>
 
     <hr>
 
-    <p> Sabe qual o privilégio de um assinante? </p>
+    <blockquote>
+      "O café, a notícia matutina e o debate estão sempre presentes em nosso cotidiano"
+    </blockquote>
+
+    <p> O Debate3D é fundamental para você que tem seguidores, clientes, funcionários e amigos. </p>
+
+    <p> Uma excelente oportunidade para ampliar a experiência de seus relacionamentos. </p>
+
+    <p class="has-text-weight-bold"> Por apenas R$ 49.9, você pode: </p>
 
     <ul>
-      <li> Poder criar temas para discussão ilimitadamente </li>
+      <li> Conhecer melhor o posicionamento dos seus seguidores; </li>
+      <li> Melhorar a experiência dos seus clientes; </li>
+      <li> Construir melhor ambiente para seus funcionários; </li>
+      <li> E muito mais... </li>
+      <li> Já imaginou? [...] </li>
     </ul>
-
-    <p> Por apenas <span class="has-text-weight-bold">R$ 6.90</span> por mês você pode criar um tema para discussão na sua roda de amigos, na igreja, na faculdade, no colégio... Já imaginou? E isso ganhando pontos quando as pessoas interagem e assim ganhando mais notoriedade na plataforma? Quer partipar disso? </p>
 
     <p class="has-text-weight-bold"> Faça sua assinatura pelo PagSeguro e ganhe o cupom para desbloquear sua assinatura!</p>
 
@@ -62,7 +72,7 @@
 <style lang="scss" scoped>
   .be-subscriber {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
   }
 </style>

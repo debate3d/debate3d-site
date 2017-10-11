@@ -1,5 +1,10 @@
 export default [
   {
+    route: '/users/subscriber',
+    label: 'Seja um assinante',
+    needAuth: (bool, subscriber) => bool && !subscriber
+  },
+  {
     route: '/ranking',
     label: 'Ranking de usuários',
     needAuth: bool => bool || true

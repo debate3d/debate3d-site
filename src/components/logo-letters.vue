@@ -6,6 +6,6 @@ export default {
 
 <template lang="html">
   <figure class="image logo-letters">
-    <img src="../assets/img/letters-d3d.png" alt="Debate3D">
+    <img src="/static/logo-debate3d-white.png" alt="Debate3D">
   </figure>
 </template>

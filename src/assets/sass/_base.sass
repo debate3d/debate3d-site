@@ -1,5 +1,12 @@
 body
   min-height: 100vh
+  background: url('/static/bg-body.jpg')
+  background-attachment: fixed
+  background-position: center
+  background-size: 100%
+
+  @media screen and (max-width: 768px)
+    background: url('/static/bg-body-mobile.jpg') no-repeat
 
 .help
   text-align: right

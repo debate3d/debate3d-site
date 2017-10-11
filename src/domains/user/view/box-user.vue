@@ -1,6 +1,11 @@
 <script>
+  import Avatar from '@/components/avatar'
+
   export default {
     name: 'box-user',
+    components: {
+      Avatar
+    },
     props: {
       user: Object,
       position: Number
@@ -18,7 +23,8 @@
 
 <template lang="html">
   <div class="box">
-    <span class="tag is-primary is-medium is-rounded"> {{ position }} </span>
+    <!-- <span class="tag is-primary is-medium is-rounded"> {{ position }} </span> -->
+    <avatar :number="user.avatar_id" :length="30" />
     <router-link
       :to="`/user/${user.uid}/detail`"
       class="title is-5"> {{ user.name }} </router-link>
@@ -33,6 +39,10 @@
     position: relative;
     display: flex;
     align-items: center;
+
+    .avatar {
+      margin-right: 10px;
+    }
 
     > .tag.is-primary {
       margin: 0 $space / 2 0 0;

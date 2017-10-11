@@ -1,0 +1,3 @@
+mutation createSubscriber($data: InputToSubscriber!) {
+  CreateSubscriber(data: $data)
+}

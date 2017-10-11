@@ -23,7 +23,7 @@
         return !isEmpty(this.user)
       },
       isSubscriber () {
-        return this.user.is_subscriber
+        return this.user.subscriber
       }
     },
     methods: {
@@ -35,9 +35,6 @@
 <template>
   <aside class="menu">
     <logo-letters></logo-letters>
-    <p class="menu-label">
-      Conheça a plataforma
-    </p>
 
     <ul class="menu-list">
       <list-item

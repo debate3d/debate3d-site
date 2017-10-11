@@ -5,6 +5,7 @@ import Detail from './detail/main.vue'
 import Update from './update/main.vue'
 import Ranking from './ranking/main.vue'
 import TermsOfUse from './terms-of-use'
+import BeSubscriber from './subscriber/main.vue'
 
 export default beforeEnter => [
   {
@@ -51,9 +52,16 @@ export default beforeEnter => [
   },
   {
     path: '/terms-of-use',
-    name: 'Termos-de-Uso',
+    name: 'termos-de-uso',
     component: TermsOfUse,
     meta: { requireAuth: false },
+    beforeEnter
+  },
+  {
+    path: '/users/subscriber',
+    name: 'seja-um-assinante',
+    component: BeSubscriber,
+    meta: { requireAuth: true },
     beforeEnter
   }
 ]

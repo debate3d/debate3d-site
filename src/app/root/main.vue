@@ -56,7 +56,7 @@
   // Dashboard container
   .app-dashboard {
     min-height: 100vh;
-    // background-color: #f1f1f1;
+    background-color: #f1f1f1;
     // background: url('../../../static/bg-site.jpg');
 
     main {

@@ -4,8 +4,9 @@ import MeTopics from './topics/main.vue'
 import Detail from './detail/main.vue'
 import Update from './update/main.vue'
 import Ranking from './ranking/main.vue'
-import TermsOfUse from './terms-of-use'
+import TermsOfUse from './terms-of-use/main.vue'
 import BeSubscriber from './subscriber/main.vue'
+import Administrator from './administrator/main.vue'
 
 export default beforeEnter => [
   {
@@ -61,6 +62,13 @@ export default beforeEnter => [
     path: '/users/subscriber',
     name: 'seja-um-assinante',
     component: BeSubscriber,
+    meta: { requireAuth: true },
+    beforeEnter
+  },
+  {
+    path: '/users/administrator',
+    name: 'manager-users',
+    component: Administrator,
     meta: { requireAuth: true },
     beforeEnter
   }

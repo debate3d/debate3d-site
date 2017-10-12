@@ -1,0 +1,9 @@
+query userSearch($email: String!) {
+  userSearch(email: $email) {
+    uid
+    name
+    email
+    avatar_id
+    ponts
+  }
+}

@@ -5,6 +5,11 @@ export default [
     needAuth: (bool, subscriber) => bool && !subscriber
   },
   {
+    route: '/users/administrator',
+    label: 'Gerencia de usuários',
+    needAuth: (bool, _, administrator) => bool && administrator
+  },
+  {
     route: '/ranking',
     label: 'Ranking de usuários',
     needAuth: bool => bool || true

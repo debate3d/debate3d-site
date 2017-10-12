@@ -13,6 +13,7 @@
     instagram
     site
     subscriber
+    administrator
     votes {
       id
       uid_topic

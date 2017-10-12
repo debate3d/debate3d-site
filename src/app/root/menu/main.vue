@@ -24,6 +24,9 @@
       },
       isSubscriber () {
         return this.user.subscriber
+      },
+      isAdministrator () {
+        return this.user.administrator
       }
     },
     methods: {
@@ -42,7 +45,7 @@
         :key="item.key"
         :route="item.route"
         :label="item.label"
-        v-if="item.needAuth(isLogged, isSubscriber)"
+        v-if="item.needAuth(isLogged, isSubscriber, isAdministrator)"
         @remove-class-menu="$emit('remove-class-menu')" />
 
     <button class="button" @click="logout"> Sair </button>

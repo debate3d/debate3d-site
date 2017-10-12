@@ -1,0 +1,3 @@
+mutation lala ($data: InputToUpdateUserToSubscriber!) {
+  UpdateUserToSubscriber(data: $data)
+}

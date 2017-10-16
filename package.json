@@ -9,7 +9,8 @@
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "deploy-github": "node build/build.js github"
+    "deploy-github": "node build/build.js github",
+    "deploy-site": "node build/build.js site"
   },
   "dependencies": {
     "apollo-client": "^1.9.1",

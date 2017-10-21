@@ -1,41 +1,10 @@
 <script>
   import mostVotedQuery from '@/domains/topics/services/querys/most-voted.gql'
-  import { schemaTopicBox } from '@/domains/topics/schemas'
-  import { boxTopic } from '@/domains/topics/view'
+  import { paginationMixin } from '../helpers'
 
   export default {
     name: 'most-voted',
-    components: { boxTopic },
-    computed: {
-      allTopics () {
-        return this.topics.mostVoted
-      }
-    },
-    data () {
-      return {
-        topics: {
-          mostVoted: [
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox
-          ]
-        }
-      }
-    },
-    apollo: {
-      topics () {
-        return {
-          query: mostVotedQuery,
-          variables () {
-            return {
-              page: 1
-            }
-          }
-        }
-      }
-    }
+    mixins: [ paginationMixin('mostVoted', mostVotedQuery) ]
   }
 </script>
 
@@ -46,6 +15,3 @@
     </div>
   </div>
 </template>
-
-<style lang="css">
-</style>

@@ -2,9 +2,10 @@
   import mostPonts from './most-ponts.vue'
   import mostCards from './most-cards.vue'
   import mostVoted from './most-voted.vue'
+  import AppPagination from '@/components/pagination.vue'
 
   export default {
-    components: { mostPonts, mostCards, mostVoted },
+    components: { mostPonts, mostCards, mostVoted, AppPagination },
     data () {
       return {
         selected: 3,
@@ -12,7 +13,9 @@
           { label: 'Mais votados', value: 1 },
           { label: 'Com mais cards', value: 2 },
           { label: 'Mais pontos', value: 3 }
-        ]
+        ],
+        count: 0,
+        page: 1
       }
     }
   }
@@ -29,9 +32,25 @@
           :key="option.value"> {{ option.label }} </option>
       </b-select>
     </b-field>
-    <most-ponts v-if="selected === 3"></most-ponts>
-    <most-cards v-if="selected === 2"></most-cards>
-    <most-voted v-if="selected === 1"></most-voted>
+
+    <app-pagination
+      :total="count"
+      :current.sync="page"/>
+
+    <most-ponts
+      :page="page"
+      v-if="selected === 3"
+      @set-count="value => count = value" />
+
+    <most-cards
+      :page="page"
+      v-if="selected === 2"
+      @set-count="value => count = value" />
+
+    <most-voted
+      :page="page"
+      v-if="selected === 1"
+      @set-count="value => count = value" />
   </section>
 </template>
 

@@ -1,40 +1,33 @@
 <script>
+  import { isEmpty } from 'lodash'
+
   import mostPontsQuery from '@/domains/topics/services/querys/most-ponts.gql'
-  import { schemaTopicBox } from '@/domains/topics/schemas'
-  import { boxTopic } from '@/domains/topics/view'
+  import { paginationMixin } from '../helpers'
 
   export default {
     name: 'most-ponts',
-    components: { boxTopic },
+    mixins: [ paginationMixin('mostPonts', mostPontsQuery) ],
+    methods: {
+      emitCount (value) {
+        this.$emit('set-count', value)
+      }
+    },
+    watch: {
+      count: {
+        handler (newValue) {
+          this.emitCount(newValue)
+        },
+        deep: true
+      }
+    },
     computed: {
-      allTopics () {
-        return this.topics.mostPonts
+      count () {
+        const topics = this.topics
+        return isEmpty(topics) ? 1 : topics.count
       }
     },
-    data () {
-      return {
-        topics: {
-          mostPonts: [
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox,
-            schemaTopicBox
-          ]
-        }
-      }
-    },
-    apollo: {
-      topics () {
-        return {
-          query: mostPontsQuery,
-          variables () {
-            return {
-              page: 1
-            }
-          }
-        }
-      }
+    mounted () {
+      this.emitCount(1)
     }
   }
 </script>
@@ -46,6 +39,3 @@
     </div>
   </div>
 </template>
-
-<style lang="css">
-</style>

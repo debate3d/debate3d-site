@@ -48,7 +48,7 @@
         v-if="item.needAuth(isLogged, isSubscriber, isAdministrator)"
         @remove-class-menu="$emit('remove-class-menu')" />
 
-    <button class="button" @click="logout"> Sair </button>
+    <button class="button" @click="logout" v-if="isLogged"> Sair </button>
     </ul>
   </aside>
 </template>

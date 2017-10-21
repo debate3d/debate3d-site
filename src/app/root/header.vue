@@ -19,12 +19,12 @@
 
 <template lang="html">
   <header class="header">
-    <logo-letters @click.native="$router.push('/dashboard')" />
     <router-link
       v-if="!isLogged"
       to="/auth/login"
       tag="button"
       class="button"> Login </router-link>
+    <logo-letters @click.native="$router.push('/dashboard')" />
   </header>
 </template>
 
@@ -44,7 +44,10 @@
     }
 
     .button {
-      margin-left: $space;
+      margin-right: $space;
+      background-color: #ff7c24;
+      border-color: #ff7c24;
+      color: $white;
     }
   }
 </style>

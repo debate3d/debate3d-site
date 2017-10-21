@@ -1,5 +1,5 @@
 <script>
-  import { isEmpty } from 'lodash'
+  import { isEmpty, toNumber } from 'lodash'
 
   import mostPontsQuery from '@/domains/topics/services/querys/most-ponts.gql'
   import { paginationMixin } from '../helpers'
@@ -23,7 +23,7 @@
     computed: {
       count () {
         const topics = this.topics
-        return isEmpty(topics) ? 1 : topics.count
+        return isEmpty(topics) ? 1 : toNumber(topics.count)
       }
     },
     mounted () {

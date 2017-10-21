@@ -1,14 +1,26 @@
 <script>
   import { mapGetters } from 'vuex'
+
   import AppAvatar from '@/components/avatar.vue'
+  import UserStats from '@/domains/user/view/user-stats/main.vue'
 
   export default {
     name: 'dashboard-user-info',
-    components: { AppAvatar },
+    data () {
+      return {
+        modalActive: false
+      }
+    },
+    components: { AppAvatar, UserStats },
     computed: {
       ...mapGetters({
         'user': 'getUser'
       })
+    },
+    methods: {
+      openStats () {
+        this.modalActive = true
+      }
     }
   }
 </script>
@@ -17,11 +29,17 @@
   <div class="user-info">
     <app-avatar :number="user.avatar_id"></app-avatar>
     <h2 class="subtitle"> {{ user.name }} </h2>
-    <span class="tag is-large is-info"> {{ user.ponts }} pontos </span>
+    <span
+      class="tag is-large is-info"
+      @click="openStats"> {{ user.ponts }} pontos </span>
+
+    <b-modal :active.sync="modalActive">
+      <user-stats :uid="user.uid"/>
+    </b-modal>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../assets/sass/extend.sass";
 
   .user-info {
@@ -62,6 +80,7 @@
         position: absolute;
         top: $space - 5px;
         right: $space - 5px;
+        cursor: pointer;
       }
     }
   }

@@ -36,7 +36,7 @@
         v-if="social.url !== null">
           <a :href="social.url" target="_blank">
             <span class="icon is-large">
-              <i class="fa" :class="social.label"></i>
+              <i class="fa fa-2x" :class="social.label"></i>
             </span>
           </a>
         </li>

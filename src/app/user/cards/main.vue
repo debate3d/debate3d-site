@@ -1,49 +1,22 @@
 <script>
   import queryMyCards from '@/domains/user/services/querys/my-cards.gql'
-  import { mapGetters } from 'vuex'
   import RenderCards from '@/components/render-cards/main'
+  import { paginationMixin } from '../helpers'
 
   export default {
     name: 'my-cards',
-    components: { RenderCards },
-    data () {
-      return {
-        user: {
-          cards: {
-            count: 0,
-            records: []
-          }
-        }
-      }
-    },
-    computed: {
-      ...mapGetters({
-        'getUser': 'getUser'
-      }),
-      cards () {
-        return this.user.cards
-      }
-    },
-    apollo: {
-      user () {
-        return {
-          query: queryMyCards,
-          variables () {
-            return {
-              uid: this.getUser.uid,
-              page: 1
-            }
-          },
-          fetchPolicy: 'network-only'
-        }
-      }
-    }
+    mixins: [ paginationMixin('cards', queryMyCards) ],
+    components: { RenderCards }
   }
 </script>
 
 <template lang="html">
   <div class="my-cards">
     <h1 class="title has-text-centered"> Meus cards </h1>
+    <app-pagination
+      v-if="hasPagination"
+      :total="cards.count"
+      :current.sync="page"/>
     <render-cards
       :cards="cards"
       successMessage=""

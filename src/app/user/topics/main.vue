@@ -1,50 +1,23 @@
 <script>
   import queryMyTopics from '@/domains/user/services/querys/my-topics.gql'
-  import { mapGetters } from 'vuex'
   import RenderTopics from '@/components/render-topics/main'
   import NegativeFace from '@/components/negative'
+  import { paginationMixin } from '../helpers'
 
   export default {
-    name: 'my-cards',
-    components: { RenderTopics, NegativeFace },
-    data () {
-      return {
-        user: {
-          topics: {
-            count: 0,
-            records: []
-          }
-        }
-      }
-    },
-    computed: {
-      ...mapGetters({
-        'getUser': 'getUser'
-      }),
-      topics () {
-        return this.user.topics
-      }
-    },
-    apollo: {
-      user () {
-        return {
-          query: queryMyTopics,
-          variables () {
-            return {
-              uid: this.getUser.uid,
-              page: 1
-            }
-          },
-          fetchPolicy: 'network-only'
-        }
-      }
-    }
+    name: 'my-topics',
+    mixins: [ paginationMixin('topics', queryMyTopics) ],
+    components: { RenderTopics, NegativeFace }
   }
 </script>
 
 <template lang="html">
   <div class="my-cards">
     <h1 class="title has-text-centered"> Meus temas </h1>
+    <app-pagination
+      v-if="hasPagination"
+      :total="topics.count"
+      :current.sync="page"/>
     <render-topics
       :topics="topics"
       successMessage=""

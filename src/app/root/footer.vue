@@ -24,16 +24,16 @@
         <p class="subtitle"> Redes sociais </p>
         <div class="social-blocks">
           <a href="https://www.facebook.com/debate3d/" target="_blank">
-            <b-icon icon="facebook" pack="fa"></b-icon>
+            <b-icon icon="facebook fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
           <a href="https://twitter.com/Debate_3D" target="_blank">
-            <b-icon icon="twitter" pack="fa"></b-icon>
+            <b-icon icon="twitter fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
           <a href="https://www.instagram.com/debate_3d/" target="_blank">
-            <b-icon icon="instagram" pack="fa"></b-icon>
+            <b-icon icon="instagram fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
           <a href="https://www.linkedin.com/company-beta/16230450/" target="_blank">
-            <b-icon icon="linkedin" pack="fa"></b-icon>
+            <b-icon icon="linkedin fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
         </div>
       </div>

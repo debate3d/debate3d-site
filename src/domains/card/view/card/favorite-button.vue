@@ -14,7 +14,7 @@
         'user': 'getUser'
       }),
       style () {
-        return this.acted ? 'fa fa-star' : 'fa fa-star-o'
+        return this.acted ? 'fa fa-star fa-lg' : 'fa fa-star-o fa-lg'
       }
     },
     methods: {

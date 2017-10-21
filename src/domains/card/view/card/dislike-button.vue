@@ -17,7 +17,7 @@
       style () {
         const reaction = get(this.reaction, 'reaction')
         const condition = (this.acted && reaction === 'false  ')
-        return condition ? 'fa fa-thumbs-down' : 'fa fa-thumbs-o-down'
+        return condition ? 'fa fa-thumbs-down fa-lg' : 'fa fa-thumbs-o-down fa-lg'
       },
       disliked () {
         return this.acted && this.reaction.reaction === 'false  '

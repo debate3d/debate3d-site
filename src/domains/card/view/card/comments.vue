@@ -3,7 +3,7 @@
     <span
       class="icon is-medium"
       aria-hidden="true">
-      <i class="fa fa-comments"></i>
+      <i class="fa fa-comments fa-lg"></i>
     </span>
     <span class="fb-comments-count vote" :data-href="url"></span>
   </div>

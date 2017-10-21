@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="wrapper content">
-    <span class="icon is-medium"><i class="fa fa-balance-scale"></i></span>
+    <span class="icon is-large"><i class="fa fa-balance-scale fa-3x"></i></span>
     <h1 class="has-text-centered"> Termos de Uso  </h1>
     <hr>
     <p>
@@ -80,7 +80,7 @@ export default {
   .wrapper
     padding: 2em 1em
 
-  .icon.is-medium
+  .icon.is-large
     display: block
     margin: 0 auto
 

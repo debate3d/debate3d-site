@@ -19,7 +19,7 @@
 
 <template>
   <div class="column is-half-mobile" :class="col">
-    <b-icon size="is-medium" :icon="icon"></b-icon>
+    <!-- <b-icon size="is-medium" :icon="icon"></b-icon> -->
     <b-tag size="is-medium"> {{ count }} </b-tag>
     <p class="has-text-centered"> {{ label }} </p>
   </div>

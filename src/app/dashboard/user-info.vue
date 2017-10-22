@@ -28,7 +28,9 @@
 <template lang="html">
   <div class="user-info">
     <app-avatar :number="user.avatar_id"></app-avatar>
-    <h2 class="subtitle"> {{ user.name }} </h2>
+    <router-link
+      class="subtitle" :to="`/user/${user.uid}/detail`">
+      {{ user.name }} </router-link>
     <span
       class="tag is-large is-info"
       @click="openStats"> {{ user.ponts }} pontos </span>

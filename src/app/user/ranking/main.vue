@@ -1,11 +1,9 @@
 <script>
-  import AllUsers from './all-users'
-  import Moderators from './moderators'
-  import Debaters from './debaters'
+  import * as RankingComponents from './components'
 
   export default {
     name: 'ranking',
-    components: { AllUsers, Moderators, Debaters },
+    components: { ...RankingComponents },
     data () {
       return {
         selected: 1,

@@ -3,10 +3,14 @@
   import RenderTopics from '@/components/render-topics/main'
   import NegativeFace from '@/components/negative'
   import { paginationMixin } from '../helpers'
+  import { loadingMixin } from '../../../mixins'
 
   export default {
     name: 'my-topics',
-    mixins: [ paginationMixin('topics', queryMyTopics) ],
+    mixins: [
+      paginationMixin('topics', queryMyTopics),
+      loadingMixin('user')
+    ],
     components: { RenderTopics, NegativeFace }
   }
 </script>

@@ -37,6 +37,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    box-shadow: 0 6px 6px -3px rgba(0,0,0,.2),
+                0 10px 14px 1px rgba(0,0,0,.14),
+                0 4px 18px 3px rgba(0,0,0,.12);
 
     .image {
       max-width: 150px;

@@ -10,10 +10,10 @@
   import CreateCard from './create-card/main.vue'
   import AppPagination from '@/components/pagination.vue'
 
-  import { refreshQueryMixin } from '@/mixins'
+  import { refreshQueryMixin, loadingMixin } from '@/mixins'
 
   export default {
-    mixins: [ refreshQueryMixin('topic') ],
+    mixins: [ refreshQueryMixin('topic'), loadingMixin('topic') ],
     components: {
       AuthorInfo,
       AppProgress,

@@ -2,10 +2,11 @@
   import queryMyCards from '@/domains/user/services/querys/my-cards.gql'
   import RenderCards from '@/components/render-cards/main'
   import { paginationMixin } from '../helpers'
+  import { loadingMixin } from '@/mixins'
 
   export default {
     name: 'my-cards',
-    mixins: [ paginationMixin('cards', queryMyCards) ],
+    mixins: [ paginationMixin('cards', queryMyCards), loadingMixin('cards') ],
     components: { RenderCards }
   }
 </script>

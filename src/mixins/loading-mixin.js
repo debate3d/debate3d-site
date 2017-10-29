@@ -9,10 +9,15 @@ export default keyApollo => ({
   }),
   watch: {
     [ keyApollo ] () {
-      this.$__loading.close()
+      setTimeout(() => {
+        this.$__loading.close()
+      }, 1000)
     }
   },
   mounted () {
     this.$__loading = this.$loading.open()
+  },
+  beforeDestroy () {
+    this.$__loading.close()
   }
 })

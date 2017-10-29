@@ -1,5 +1,6 @@
 import { schemaTopicBox } from '@/domains/topics/schemas'
 import { boxTopic } from '@/domains/topics/view'
+import { loadingMixin } from '@/mixins'
 
 /**
  * mixin to abstract pagination
@@ -9,6 +10,7 @@ import { boxTopic } from '@/domains/topics/view'
  */
 export default (prop, query) => ({
   components: { boxTopic },
+  mixins: [ loadingMixin('topics') ],
   props: {
     page: {
       type: Number,

@@ -5,10 +5,12 @@
   import AppCard from '@/domains/card/view/card/main'
   import NegativeFace from '@/components/negative'
   import { miniCard } from '@/domains/card/schemas'
+  import { loadingMixin } from '@/mixins'
 
   export default {
     name: 'my-deck',
     components: { AppCard, NegativeFace },
+    mixins: [ loadingMixin('user') ],
     data () {
       return {
         user: {

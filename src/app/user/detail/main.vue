@@ -1,12 +1,12 @@
 <script>
   import { schemaSingleUser } from '@/domains/user/schemas'
-  import { refreshQueryMixin } from '@/mixins'
+  import { refreshQueryMixin, loadingMixin } from '@/mixins'
   import querySingleUser from '@/domains/user/services/querys/single-user.gql'
   import * as Components from './components'
 
   export default {
     name: 'user-view',
-    mixins: [ refreshQueryMixin('user') ],
+    mixins: [ refreshQueryMixin('user'), loadingMixin('user') ],
     components: {
       ...Components
     },

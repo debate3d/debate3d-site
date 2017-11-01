@@ -4,7 +4,7 @@ export default (context, payload, loading, router) => {
   return register(payload, context.$store)
     .then(response => {
       loading.close()
-      router.push('/dashboard')
+      router.push('/auth/finish')
     })
     .catch(err => {
       console.error(err)

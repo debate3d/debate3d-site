@@ -14,11 +14,12 @@ export default (payload, store, router) => http.post('/auth/login', payload)
   .then(token => {
     return setUser(store)
       .then(result => {
+        const isVerified = result.is_verified
+        if (!isVerified) {
+          router.push('/auth/finish')
+          return
+        }
         router.push('/dashboard')
         return Promise.resolve(result)
       })
-  })
-  .catch(error => {
-    console.error(error)
-    Promise.reject(error)
   })

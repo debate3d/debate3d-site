@@ -4,6 +4,7 @@ import { userRoutes } from '../user'
 import { cardRoutes } from '../card'
 import { tagRoutes } from '../tag'
 import DashboardMain from '../dashboard/main.vue'
+import { finishRoute } from '../auth/routes'
 
 /**
  * Return dashboard children routes
@@ -13,6 +14,7 @@ export default [
   ...userRoutes(beforeEnter),
   ...cardRoutes(beforeEnter),
   ...tagRoutes(beforeEnter),
+  finishRoute,
   {
     path: '/dashboard',
     name: 'dashboard-main',

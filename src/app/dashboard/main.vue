@@ -27,6 +27,19 @@
           }
         })
       }
+
+      if (!this.user.is_verified) {
+        this.$snackbar.open({
+          message: 'Termine seu cadastro em nossa plataforma',
+          type: 'is-warning',
+          position: 'is-bottom-left',
+          duration: 10000,
+          actionText: 'Ok',
+          onAction: () => {
+            this.$router.push('/auth/finish')
+          }
+        })
+      }
     }
   }
 </script>

@@ -10,6 +10,11 @@ const setTokenMethod = token => setToken(token)
 export default curry((loading, store, router, user) => {
   const finished = result => {
     loading.close()
+    const isVerified = result.is_verified
+    if (!isVerified) {
+      router.push('/auth/finish')
+      return
+    }
     router.push('/dashboard')
     return Promise.resolve(result)
   }

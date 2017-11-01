@@ -1,0 +1,6 @@
+query searchNickname ($filter: UserFilter!) {
+  userSearch (filter: $filter) {
+    uid
+    nickname
+  }
+}

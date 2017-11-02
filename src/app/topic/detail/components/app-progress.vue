@@ -2,6 +2,8 @@
   import numeral from 'numeral'
   import { isEmpty } from 'lodash'
 
+  import AppVoteChart from '@/components/app-vote-chart.vue'
+
   const getValue = (context, property) => {
     const total = (context.total) ? context.total : 1
     const val = (context.data[property].length / total) * 100
@@ -26,6 +28,7 @@
 
   export default {
     props: ['data', 'height', 'position'],
+    components: { AppVoteChart },
     computed: {
       total () {
         const count = numeral(this.data.count)
@@ -48,71 +51,41 @@
       },
       negativePosition () {
         return this.position.negative
+      },
+      labels () {
+        return [ this.positivePosition, this.negativePosition ]
+      },
+      dataset () {
+        return [
+          {
+            backgroundColor: [ '#0098DA', '#DB3438' ],
+            data: [ this.positive, this.negative ]
+          }
+        ]
+      },
+      dataPie () {
+        return {
+          labels: this.labels,
+          datasets: this.dataset
+        }
       }
     }
   }
 </script>
 
 <template>
-  <div class="progress">
-    <div class="labels">
-      <div class="label1" :style="widthFavor">
-        <p class="subtitle"> {{ positivePosition }} </p>
-      </div>
-      <div class="label1" :style="widthNotFavor">
-        <p class="subtitle"> {{ negativePosition }} </p>
-      </div>
-    </div>
-    <div class="values">
-      <div
-        class="positiveVoteProgess"
-        :style="widthFavor">
-          <p> {{ positive }}% </p>
-        </div>
-      <div
-        class="negativeFavorVoteProgress"
-        :style="widthNotFavor">
-          <p> {{ negative }}% </p>
+  <div class="column is-6">
+    <div class="card">
+      <div class="card-content">
+        <app-vote-chart class="app-progress" :data="dataPie" />
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-  @import "../../../assets/sass/extend.sass";
-
-  .progress {
-    width: 80%;
-    margin: auto;
-    height: auto;
-    border-radius: 2px;
-
-    @media (max-width: 768px) {
-      margin: 0;
-      width: 100%;
-    }
-
-    .labels,
-    .values {
-      display: flex;
-    }
-
-    div {
-      display: block;
-      text-align: center;
-      padding: 0.25em;
-
-      &.positiveVoteProgess {
-        background-color: $positive-color;
-        color: #FFF;
-        border-radius: 2px 0 0 2px;
-      }
-
-      &.negativeFavorVoteProgress {
-        background-color: $negative-color;
-        color: #FFF;
-        border-radius: 0 2px 2px 0;
-      }
-    }
+<style media="screen" scoped>
+  .app-progress {
+    max-width: 250px;
+    margin: 0 auto;
   }
 </style>

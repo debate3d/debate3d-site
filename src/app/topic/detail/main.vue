@@ -3,24 +3,18 @@
   import queySingleTopic from '@/domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '@/domains/topics/schemas'
 
-  import AuthorInfo from './author-info.vue'
-  import AppProgress from './progress'
   import RenderCards from '@/components/render-cards/main.vue'
-  import AppVoteTopic from './vote/main.vue'
-  import CreateCard from './create-card/main.vue'
   import AppPagination from '@/components/pagination.vue'
+  import * as TopicComponents from './components'
 
   import { refreshQueryMixin, loadingMixin } from '@/mixins'
 
   export default {
     mixins: [ refreshQueryMixin('topic'), loadingMixin('topic') ],
     components: {
-      AuthorInfo,
-      AppProgress,
       RenderCards,
-      AppVoteTopic,
-      CreateCard,
-      AppPagination
+      AppPagination,
+      ...TopicComponents
     },
     data () {
       return {
@@ -55,34 +49,24 @@
 <template lang="html">
   <div class="topic-info">
     <header class="view-header">
+
       <div class="author-info">
-        <author-info :author="topic.author"></author-info>
+        <author-info :author="topic.author" />
       </div>
-      <div class="topic-info content card">
-        <h1 class="title"> {{ topic.title }} </h1>
-        <p class="content"> {{ topic.content }} </p>
-        <span
-          v-for="tag in topic.tags"
-          class="tag is-info"
-          @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
+
+      <div class="content">
+        <topic-info :topic="topic"/>
       </div>
     </header>
+
     <section class="view-section">
-      <app-progress
-        :data="topic.votes_topic"
-        :position="topic.position"></app-progress>
+      <div class="columns">
+        <app-progress
+          :data="topic.votes_topic"
+          :position="topic.position"></app-progress>
 
-      <hr>
-
-      <app-vote-topic
-        v-if="isLogged"
-        :topic="topic"/>
-
-      <hr v-if="isLogged">
-
-      <create-card
-        v-if="isLogged"
-        :topic="topic"/>
+        <topic-actions :topic="topic"/>
+      </div>
 
       <hr v-if="isLogged && hasCards">
 

@@ -5,13 +5,13 @@
   import Avatar from './avatar.vue'
 
   export default {
-    name: 'update-avatar',
+    name: 'app-update-avatar',
     components: {
       Avatar,
       List
     },
     props: {
-      avatar_id: Number
+      avatar_id: [ Number, String ]
     },
     data: () => ({
       avatar: 1,

@@ -4,7 +4,7 @@
   export default {
     name: 'avatar',
     props: {
-      number: Number,
+      number: [ Number, String ],
       active: {
         type: Boolean,
         default: false

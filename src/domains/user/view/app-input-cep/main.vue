@@ -1,11 +1,10 @@
 <script>
-  import { debounce, isEmpty } from 'lodash'
-
-  import query from './search-nickname.gql'
-  import { getInformations } from './helpers'
+  import { isEmpty } from 'lodash'
+  import MaskedInput from 'vue-masked-input'
 
   export default {
-    name: 'app-input-nicname',
+    name: 'app-input-cep',
+    components: { MaskedInput },
     data: () => ({
       text: '',
       helperText: '',
@@ -14,27 +13,15 @@
     }),
     props: {
       value: {
-        type: String,
+        type: [ String ],
         default: '',
         required: true
       }
     },
     watch: {
-      text: debounce(function () {
-        if (isEmpty(this.text)) {
-          this.reset()
-          return
-        }
-
-        this.$apollo.query({
-          query,
-          variables: {
-            filter: {
-              nickname: this.text
-            }
-          }
-        }).then(getInformations(this))
-      }, 500),
+      text () {
+        this.$emit('input', this.text)
+      },
       value (newValue) {
         this.text = isEmpty(newValue) ? '' : newValue
       }
@@ -62,12 +49,19 @@
     :type="typeColor"
     :message="helperText">
 
-    <b-input
-      placeholder="Nickname"
-      type="text"
-      size="is-medium"
-      expanded
-      icon="user"
-      v-model="text"></b-input>
+    <b-field>
+      <p class="control has-icons-left has-icons-right">
+        <masked-input
+          v-model="text"
+          class="input is-medium"
+          @input="text = arguments[1]"
+          mask="11111-111"
+          placeholder="00000-000" />
+
+        <span class="icon is-small is-left">
+          <i class="fa fa-sticky-note"></i>
+        </span>
+      </p>
+    </b-field>
   </b-field>
 </template>

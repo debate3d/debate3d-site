@@ -12,7 +12,10 @@
     computed: {
       ...mapGetters({
         'user': 'getUser'
-      })
+      }),
+      isVerified () {
+        return this.user.is_verified
+      }
     },
     mounted () {
       if (isNull(this.user.avatar_id)) {
@@ -28,7 +31,7 @@
         })
       }
 
-      if (!this.user.is_verified) {
+      if (!this.isVerified) {
         this.$snackbar.open({
           message: 'Termine seu cadastro em nossa plataforma',
           type: 'is-warning',

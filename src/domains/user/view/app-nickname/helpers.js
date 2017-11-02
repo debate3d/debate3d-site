@@ -12,7 +12,6 @@ export const getInformations = curry((context, result) => {
   const text = get(context, 'text')
 
   if (isTheSameUser(context.textBkp, value)) {
-    context.reset()
     context.emitInput(text)
     return
   }

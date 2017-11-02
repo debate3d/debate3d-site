@@ -4,7 +4,7 @@
   export default {
     name: 'avatar',
     props: {
-      number: Number,
+      number: String,
       length: {
         type: Number,
         default: 50

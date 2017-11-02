@@ -15,6 +15,7 @@
     props: {
       value: {
         type: String,
+        default: '',
         required: true
       }
     },
@@ -33,9 +34,9 @@
             }
           }
         }).then(getInformations(this))
-      }, 1000),
+      }, 500),
       value (newValue) {
-        this.text = newValue
+        this.text = isEmpty(newValue) ? '' : newValue
       }
     },
     methods: {
@@ -48,9 +49,10 @@
       }
     },
     mounted () {
-      this.text = this.value
-      this.textBkp = this.value
-      this.emitInput(this.value)
+      const value = isEmpty(this.value) ? '' : this.value
+      this.text = value
+      this.textBkp = value
+      this.emitInput(value)
     }
   }
 </script>

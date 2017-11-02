@@ -1,8 +1,8 @@
 import { curry } from 'ramda'
-import { isEmpty, get } from 'lodash'
+import { isEmpty, get, gt } from 'lodash'
 
 const isTheSameUser = (nickname, list) => {
-  if (list.length > 1) return false
+  if (isEmpty(list) || gt(list.length, 1)) return false
 
   return list[0].nickname === nickname
 }

@@ -55,7 +55,9 @@
       class="button is-primary is-large create-card-button"
       @click="state = true"
       v-if="canCreate">
-      Crie seu card
+        <span class="icon is-small">
+          <i class="fa fa-plus"></i>
+        </span>
     </button>
     <b-modal
       :active.sync="state"
@@ -76,6 +78,21 @@
     margin: 0 auto;
     display: block;
   }
+
+  .create-card-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3;
+      border-radius: 100%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 1px 1px 4px 0px rgba(92,92,92,1);
+      @media (max-width: 768px) {
+        width: 65px;
+        height: 65px;
+      }
+    }
 
   .modal-background {
     background-color: transparent;

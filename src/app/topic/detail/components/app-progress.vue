@@ -27,7 +27,7 @@
   }
 
   export default {
-    props: ['data', 'height', 'position'],
+    props: ['data', 'height', 'position', 'isLoading'],
     components: { AppVoteChart },
     computed: {
       total () {
@@ -77,15 +77,26 @@
   <div class="column is-6">
     <div class="card">
       <div class="card-content">
-        <app-vote-chart class="app-progress" :data="dataPie" />
+        <app-vote-chart
+          v-if="!isLoading"
+          class="app-progress" :data="dataPie" />
+
+        <span class="icon is-large" v-if="isLoading">
+          <i class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+        </span>
       </div>
     </div>
   </div>
 </template>
 
-<style media="screen" scoped>
+<style media="screen" scoped lang="scss">
   .app-progress {
     max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .icon {
+    display: block;
     margin: 0 auto;
   }
 </style>

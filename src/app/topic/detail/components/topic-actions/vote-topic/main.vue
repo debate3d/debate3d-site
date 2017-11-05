@@ -49,8 +49,14 @@
     },
     methods: {
       vote (vote) {
+        if (this.hasVoted) {
+          this.$snackbar.open({
+            message: 'Você já votou neste tópico',
+            type: 'is-warning'
+          })
+          return
+        }
         if (this.hasVoted || this.btnDisabled || !this.isLogged) return
-        console.log('a')
         const data = {
           uid_topic: this.topic.uid,
           vote

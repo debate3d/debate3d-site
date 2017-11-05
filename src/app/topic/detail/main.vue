@@ -1,5 +1,6 @@
 <script>
   import { isEmpty } from 'lodash'
+  import { path } from 'ramda'
   import queySingleTopic from '@/domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '@/domains/topics/schemas'
 
@@ -19,7 +20,8 @@
     data () {
       return {
         topic: schemaTopicView,
-        page: 1
+        page: 1,
+        isLoading: true
       }
     },
     computed: {
@@ -34,7 +36,12 @@
       topic () {
         return {
           query: queySingleTopic,
-          variables: () => {
+          update: path([ 'data', 'topic' ]),
+          result (queryResult) {
+            this.topic = path([ 'data', 'topic' ], queryResult)
+            this.isLoading = false
+          },
+          variables () {
             return {
               uid: this.$route.params.topic,
               page: this.page
@@ -54,14 +61,17 @@
         <author-info :author="topic.author" />
       </div>
 
-      <div class="content">
-        <topic-info :topic="topic"/>
-      </div>
+      <topic-image :topic="topic" />
     </header>
+
+    <section>
+      <topic-info :topic="topic"/>
+    </section>
 
     <section class="view-section">
       <div class="columns">
         <app-progress
+          :is-loading="isLoading"
           :data="topic.votes_topic"
           :position="topic.position"></app-progress>
 
@@ -97,6 +107,7 @@
   .view-header {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 
     .tag {
       cursor: pointer;

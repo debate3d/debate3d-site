@@ -24,13 +24,20 @@
 <template lang="html">
   <section class="topics-info">
     <h2 class="title is-4"> Temas da plataforma </h2>
-    <b-field label="Filtre por">
+    <b-field class="has-addons">
+
       <b-select v-model="selected" placeholder="Selecione um filtro">
         <option
           v-for="option in options"
           :value="option.value"
           :key="option.value"> {{ option.label }} </option>
       </b-select>
+
+      <p class="control">
+        <router-link to="/topic/search" class="button is-primary">
+          Pesquise temas
+        </router-link>
+      </p>
     </b-field>
 
     <app-pagination
@@ -73,6 +80,10 @@
 
     .field {
       margin-bottom: $space;
+
+      .label {
+        margin-right: 10px;
+      }
     }
   }
 </style>

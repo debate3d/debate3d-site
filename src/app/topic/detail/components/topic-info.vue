@@ -25,5 +25,6 @@
 <style media="screen" lang="scss">
   .content {
     word-wrap: break-word;
+    flex-grow: 1;
   }
 </style>

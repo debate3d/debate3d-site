@@ -43,7 +43,6 @@
       voteObj () {
         const { uid } = this.user
         const vote = this.votes.filter(vote => vote.user.uid === uid)[0]
-        console.log(vote)
         return isEmpty(vote) ? {} : vote
       }
     },

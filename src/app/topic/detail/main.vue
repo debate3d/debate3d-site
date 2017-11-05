@@ -64,7 +64,7 @@
       <topic-image :topic="topic" />
     </header>
 
-    <section>
+    <section class="view-topic-info">
       <topic-info :topic="topic"/>
     </section>
 
@@ -104,24 +104,33 @@
     }
   }
 
+  .author-info {
+    flex-grow: 1;
+  }
+
   .view-header {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
 
     .tag {
       cursor: pointer;
       margin-right: 5px;
     }
 
+    // On mobile
     @media (max-width: 768px) {
       flex-direction: column;
 
+      .topic-image {
+        order: 1;
+      }
+
       .author-info {
-        margin-bottom: $space / 2;
+        order: 2;
       }
     }
 
+    // On desktop
     @media (min-width: 769px) {
       flex-direction: row;
 
@@ -134,5 +143,9 @@
 
   .view-section {
     margin: $space auto;
+  }
+
+  .view-topic-info {
+    margin-top: $space;
   }
 </style>

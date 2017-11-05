@@ -5,6 +5,8 @@ query allTopics($page: Int!) {
       uid
       ponts
       title
+      nickname
+      url_image
       cards(page: 1) {
         count
       }

@@ -1,7 +1,10 @@
 <script>
+  import AppBoxTopicImage from './topic-image.vue'
+
   export default {
     name: 'box-topic',
     props: ['topic', 'position'],
+    components: { AppBoxTopicImage },
     computed: {
       namePositive () {
         return this.topic.position.positive
@@ -29,6 +32,8 @@
   <div
     class="box box-theme"
     @click="$router.push(`/topic/${topic.uid}/detail`)">
+
+    <app-box-topic-image :topic="topic"/>
 
     <span class="subtitle is-4">
       {{ topic.title }}
@@ -60,10 +65,9 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../../assets/sass/_extend";
+  @import "../../../../assets/sass/_extend";
 
   .box-theme {
-    color: #363636;
     position: relative;
     min-height: 150px;
     display: flex;
@@ -93,6 +97,8 @@
       text-align: center;
       transition: all .3s ease;
       width: 100%;
+      z-index: 1;
+      color: $white;
     }
 
     .box__description {
@@ -106,6 +112,7 @@
       background-color: $menu-color;
       color: white;
       padding: 0.5em;
+      z-index: 1;
 
       .button {
         position: absolute;

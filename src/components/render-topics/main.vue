@@ -1,5 +1,5 @@
 <script>
-  import BoxTopic from '@/domains/topics/view/box-topic.vue'
+  import BoxTopic from '@/domains/topics/view/box-topic'
 
   export default {
     name: 'render-topics',

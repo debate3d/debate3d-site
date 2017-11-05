@@ -3,6 +3,8 @@ query getSingleTopic ($uid: String!, $page: Int!) {
     uid
     title
     content
+    nickname
+    url_image
     position {
       positive
       negative

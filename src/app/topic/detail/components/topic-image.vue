@@ -16,7 +16,7 @@
 </script>
 
 <template lang="html">
-  <div class="card">
+  <div class="card topic-image">
     <div class="card-content">
       <figure class="image">
         <img :src="urlImage">
@@ -26,7 +26,13 @@
 </template>
 
 <style lang="scss" scoped>
+  .topic-image {
+    margin-bottom: 10px;
+  }
+
   .card-content {
     padding: 0;
+    max-height: 300px;
+    overflow: hidden;
   }
 </style>

@@ -12,12 +12,15 @@
       onSubmit () {
         const loading = this.$loading.open()
         submitForm(this)
-          .then(() => {
+          .then(result => {
             loading.close()
-            this.$router.push('/dashboard')
+            if (result) {
+              this.$router.push('/dashboard')
+            }
           })
           .catch(() => {
             loading.close()
+            return false
           })
       }
     }

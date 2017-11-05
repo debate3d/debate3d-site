@@ -1,6 +1,9 @@
-query searchNickname ($filter: UserFilter!) {
+query searchNickname ($filter: InputUserFilter!) {
   userSearch (filter: $filter) {
-    uid
-    nickname
+    count
+    records {
+      uid
+      nickname
+    }
   }
 }

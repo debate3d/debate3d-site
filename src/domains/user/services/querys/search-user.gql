@@ -1,0 +1,12 @@
+query userSearch ($filter: InputUserFilter!) {
+  userSearch (filter: $filter) {
+    count
+    records {
+      uid
+      name
+      nickname
+      ponts
+      avatar_id
+    }
+  }
+}

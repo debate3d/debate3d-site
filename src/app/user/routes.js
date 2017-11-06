@@ -7,6 +7,7 @@ import Ranking from './ranking/main.vue'
 import TermsOfUse from './terms-of-use/main.vue'
 import BeSubscriber from './subscriber/main.vue'
 import Administrator from './administrator/main.vue'
+import UserSearch from './search/main.vue'
 
 export default beforeEnter => [
   {
@@ -71,5 +72,11 @@ export default beforeEnter => [
     component: Administrator,
     meta: { requireAuth: true },
     beforeEnter
+  },
+  {
+    path: '/user/search',
+    name: 'search-users',
+    component: UserSearch,
+    meta: { requireAuth: false }
   }
 ]

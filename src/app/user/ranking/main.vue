@@ -20,13 +20,19 @@
 <template lang="html">
   <div class="ranking">
     <h1 class="title has-text-centered"> Ranking de usuários </h1>
-    <b-field label="Filtre por">
+    <b-field class="has-addons">
       <b-select v-model="selected" placeholder="Selecione um filtro">
         <option
           v-for="option in options"
           :value="option.value"
           :key="option.value"> {{ option.label }} </option>
       </b-select>
+
+      <p class="control">
+        <router-link to="/user/search" class="button is-primary">
+          Pesquise usuários
+        </router-link>
+      </p>
     </b-field>
 
     <all-users v-if="selected === 1" />

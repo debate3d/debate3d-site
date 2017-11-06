@@ -1,5 +1,5 @@
 <script>
-  import { pick } from 'lodash'
+  import { pick, isEmpty, isNumber } from 'lodash'
 
   import AvatarContainer from '../app-update-avatar'
   import AppInputCpf from '../app-input-cpf'
@@ -33,6 +33,9 @@
         default: () => ({ })
       }
     },
+    data: () => ({
+      isNicknameValid: false
+    }),
     watch: {
       user: {
         handler: 'updateUser',
@@ -41,10 +44,28 @@
     },
     methods: {
       submit () {
+        const { avatar_id } = this.user
+        if (isEmpty(avatar_id) && !isNumber(avatar_id)) {
+          this.openSnackbar('Escolha um avatar')
+          return
+        }
+
+        if (!this.isNicknameValid) {
+          this.openSnackbar('Nickname inválido')
+          return
+        }
         this.$emit('app:submit')
       },
       updateUser (user) {
         this.$emit('update:user', user)
+      },
+      openSnackbar (message) {
+        this.$snackbar.open({
+          message,
+          type: 'is-warning',
+          position: 'is-top-left',
+          actionText: 'Ok'
+        })
       }
     },
     mounted () {
@@ -89,7 +110,9 @@
             disabled="true"></b-input>
         </b-field>
 
-        <app-input-nickname v-model="user.nickname" />
+        <app-input-nickname
+          v-model="user.nickname"
+          :nickname-valid.sync="isNicknameValid" />
 
         <app-input-cpf v-model="user.cpf" />
 

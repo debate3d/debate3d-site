@@ -1,10 +1,12 @@
 import { register } from '@/services/auth'
 
 export default (context, payload, loading, router) => {
-  return register(payload, context.$store)
+  register(payload, context.$store)
     .then(response => {
+      if (response) {
+        router.push('/auth/finish')
+      }
       loading.close()
-      router.push('/auth/finish')
     })
     .catch(err => {
       console.error(err)
@@ -18,6 +20,7 @@ export default (context, payload, loading, router) => {
           onAction: () => {
             context.email = ''
             context.password = ''
+            context.nickname = ''
             context.$refs.inputName.focus()
             loading.close()
           }

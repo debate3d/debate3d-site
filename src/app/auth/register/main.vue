@@ -4,15 +4,18 @@ import { isEmpty } from 'lodash'
 import LogoGlasses from '@/components/logo-glasses.vue'
 import register from './register'
 import loginWithFacebook from '../facebook/main.vue'
+import AppNickname from '@/domains/user/view/app-nickname/main.vue'
 
 export default {
-  components: { LogoGlasses, loginWithFacebook },
+  components: { LogoGlasses, loginWithFacebook, AppNickname },
   data () {
     return {
+      nickname: '',
       email: '',
       newPassword: '',
       password: '',
-      name: ''
+      name: '',
+      nicknameValid: false
     }
   },
   computed: {
@@ -25,18 +28,33 @@ export default {
   },
   methods: {
     register () {
+      if (!this.nicknameValid) {
+        this.openSnackbar('Nickname inválido')
+        return
+      }
+
       if (this.isValid && this.isEqualPwd) {
         const loading = this.$loading.open()
-        const name = this.name
-        const email = this.email
-        const password = this.password
+        const { name, email, password, nickname } = this
+
         const payload = {
           name,
           email,
-          password
+          password,
+          nickname
         }
-        register(this, payload, loading, this.$router)
+        return register(this, payload, loading, this.$router)
       }
+
+      this.openSnackbar('Senhas não iguais')
+    },
+    openSnackbar (message) {
+      this.$snackbar.open({
+        message,
+        type: 'is-warning',
+        position: 'is-top-left',
+        actionText: 'Ok'
+      })
     }
   },
   mounted () {
@@ -70,6 +88,8 @@ export default {
             ref="inputName"
             v-model="name"></b-input>
         </b-field>
+
+        <app-nickname v-model="nickname" :nicknameValid.sync="nicknameValid" />
 
         <b-field>
           <b-input
@@ -110,7 +130,7 @@ export default {
   @import "../../../assets/sass/extend.sass";
 
   .container {
-    padding-top: $space * 2;
+    padding: $space * 2 0;
 
     .image {
       max-width: 150px;

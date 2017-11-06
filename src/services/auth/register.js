@@ -14,10 +14,6 @@ export default (payload, store) => http.post('/auth/users', payload)
  .then(token => {
    return setUser(store)
      .then(result => {
-       Promise.resolve(result)
+       return Promise.resolve(result)
      })
- })
- .catch(error => {
-   console.error(error)
-   Promise.reject(error)
  })

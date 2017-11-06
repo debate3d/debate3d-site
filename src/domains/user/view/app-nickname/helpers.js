@@ -8,23 +8,26 @@ const isTheSameUser = (nickname, list) => {
 }
 
 export const getInformations = curry((context, result) => {
-  const value = get(result, 'data.userSearch.records', [ ])
+  const list = get(result, 'data.userSearch.records', [ ])
   const text = get(context, 'text')
 
-  if (isTheSameUser(context.textBkp, value)) {
+  if (isTheSameUser(context.textBkp, list)) {
+    context.updateNicknameValid(true)
     context.emitInput(text)
     return
   }
 
-  if (!isEmpty(value)) {
+  if (!isEmpty(list)) {
     // show helper text
     context.helperText = 'Este nickname já está sendo usado'
     context.typeColor = 'is-danger'
+    context.updateNicknameValid(false)
     context.emitInput(text)
     return
   }
 
   context.helperText = ''
   context.typeColor = 'is-success'
+  context.updateNicknameValid(true)
   context.emitInput(text)
 })

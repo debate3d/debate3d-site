@@ -17,6 +17,9 @@
         type: String,
         default: '',
         required: true
+      },
+      nicknameValid: {
+        type: Boolean
       }
     },
     watch: {
@@ -37,6 +40,7 @@
       }, 500),
       value (newValue) {
         this.text = isEmpty(newValue) ? '' : newValue
+        this.textBkp = isEmpty(this.textBkp) ? newValue : ''
       }
     },
     methods: {
@@ -46,6 +50,9 @@
       },
       emitInput (value) {
         this.$emit('input', value)
+      },
+      updateNicknameValid (value) {
+        this.$emit('update:nicknameValid', value)
       }
     },
     mounted () {

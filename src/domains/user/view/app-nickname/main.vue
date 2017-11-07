@@ -75,6 +75,8 @@
       size="is-medium"
       expanded
       icon="user"
+      maxlength="15"
+      :has-counter="true"
       v-model="text"></b-input>
   </b-field>
 </template>

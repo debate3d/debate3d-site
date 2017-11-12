@@ -5,7 +5,9 @@ import {
   pontuation
 } from '@/helpers'
 
-export default (context, topic) => {
+import { uploadImage } from '@/domains/cloudnary/services'
+
+export default (context, file, topic) => {
   const successArgs = [
     context,
     `Você ganhou ${pontuation.USER.CREATE_TOPIC} pontos`,
@@ -18,12 +20,16 @@ export default (context, topic) => {
     'Tópico não cadastrado'
   ]
 
-  return context.$apollo.mutate({
-    mutation: MutationCreateTopic,
-    variables: {
-      topic
-    }
-  })
-    .then(mutationResolveHelper(...successArgs))
-    .catch(mutationRejectHelper(...errorArgs))
+  return uploadImage(file)
+    .then(res => {
+      topic.url_image = res.data.secure_url
+      return context.$apollo.mutate({
+        mutation: MutationCreateTopic,
+        variables: {
+          topic
+        }
+      })
+        .then(mutationResolveHelper(...successArgs))
+        .catch(mutationRejectHelper(...errorArgs))
+    })
 }

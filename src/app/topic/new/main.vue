@@ -2,13 +2,14 @@
   import { isEmpty } from 'lodash'
   import { prop } from 'ramda'
 
+  import FileComponent from '@/components/file-component.vue'
   import PositionsQuery from './positions.gql'
   import addTags from './add-tags/main'
   import submitForm from './submit-form'
 
   export default {
     name: 'create-topic',
-    components: { addTags },
+    components: { addTags, FileComponent },
     data () {
       return {
         positions: [],
@@ -17,7 +18,9 @@
         title: '',
         selected: [],
         isActive: false,
-        selectedTags: []
+        selectedTags: [],
+        file: {},
+        hasImageError: null
       }
     },
     apollo: {
@@ -25,26 +28,6 @@
         return {
           query: PositionsQuery
         }
-      }
-    },
-    methods: {
-      submit () {
-        const loading = this.$loading.open()
-        submitForm(this, this.topic)
-          .then(user => {
-            loading.close()
-            this.reset()
-          })
-          .catch(console.error)
-      },
-      getSelects (tags) {
-        this.selectedTags = [ ...tags ]
-      },
-      reset () {
-        this.id_position = ''
-        this.content = ''
-        this.title = ''
-        this.selectedTags = []
       }
     },
     computed: {
@@ -64,6 +47,33 @@
           id_position: this.id_position,
           tag: this.tags
         }
+      }
+    },
+    methods: {
+      submit () {
+        const loading = this.$loading.open()
+        submitForm(this, this.file, this.topic)
+          .then(user => {
+            loading.close()
+            this.reset()
+          })
+          .catch(console.error)
+      },
+      getSelects (tags) {
+        this.selectedTags = [ ...tags ]
+      },
+      reset () {
+        this.id_position = ''
+        this.content = ''
+        this.title = ''
+        this.selectedTags = []
+        this.files = []
+      },
+      onLoadFile (file) {
+        this.file = file
+      },
+      onLoadImageError (hasImageError) {
+        this.hasImageError = hasImageError
       }
     }
   }
@@ -108,6 +118,15 @@
         </b-select>
       </b-field>
 
+      <file-component
+        label="Selecione a imagem"
+        message="Imagem requerida: 1000px por 300px"
+        :widthAccepted="1000"
+        :heightAccepted="300"
+        :willCheck="true"
+        @load-file="onLoadFile"
+        @load-errors="onLoadImageError" />
+
       <b-field
         label="Tags selecionadas"
         v-if="hasSelectedTags">
@@ -147,6 +166,11 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .upload.control {
+    display: block;
+    margin-bottom: 10px;
   }
 
   .tags {

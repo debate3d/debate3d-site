@@ -15,6 +15,7 @@
     site
     subscriber
     administrator
+    is_moderator
     is_verified
     is_moderator_verified
     votes {

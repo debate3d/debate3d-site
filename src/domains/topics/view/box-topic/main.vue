@@ -1,4 +1,7 @@
 <script>
+  import { mapGetters } from 'vuex'
+  import { eq } from 'lodash'
+
   import AppBoxTopicImage from './topic-image.vue'
 
   export default {
@@ -6,6 +9,12 @@
     props: ['topic', 'position'],
     components: { AppBoxTopicImage },
     computed: {
+      ...mapGetters({
+        user: 'getUser'
+      }),
+      hasOwner () {
+        return eq(this.user.uid === this.topic.author.uid)
+      },
       namePositive () {
         return this.topic.position.positive
       },

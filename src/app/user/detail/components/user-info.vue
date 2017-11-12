@@ -13,15 +13,19 @@
 </script>
 
 <template>
-  <div class="user-view__header">
-    <app-avatar
-      :number="user.avatar_id"
-      :length="100"></app-avatar>
-    <h1 class="title has-text-centered"> {{ user.name }} </h1>
-    <p class="subtitle has-text-centered"> Email: {{ user.email }} </p>
-    <p class="subtitle has-text-centered"> Pontos: {{ user.ponts }} </p>
-    <p class="subtitle has-text-centered"> Membro desde {{ user.created }} </p>
-    <shared-list :user="user" />
+  <div class="card">
+    <div class="card-content">
+      <app-avatar
+        :number="user.avatar_id"
+        :length="100"></app-avatar>
+
+      <h1 class="title has-text-centered"> {{ user.name }} </h1>
+
+      <p class="subtitle has-text-centered"> Email: {{ user.email }} </p>
+      <p class="subtitle has-text-centered user-ponts"> Pontos: {{ user.ponts }} </p>
+
+      <shared-list :user="user" />
+    </div>
   </div>
 </template>
 
@@ -33,19 +37,11 @@
   }
 
   .avatar {
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
     display: block;
   }
 
-  .user-view__header {
-    padding: 0 0 1em 0;
-
-    .subtitle:first-child {
-      margin-top: $space;
-    }
-
-    .subtitle:last-child {
-      font-weight: 500;
-    }
+  .user-ponts {
+    margin-bottom: 0;
   }
 </style>

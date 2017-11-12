@@ -9,7 +9,7 @@
     computed: {
       socials () {
         return [
-          { label: 'fa-facebook', url: get(this.user, 'facebook') },
+          { label: 'fa-facebook-official', url: get(this.user, 'facebook') },
           { label: 'fa-instagram', url: get(this.user, 'instagram') },
           { label: 'fa-link', url: get(this.user, 'site') },
           { label: 'fa-twitter', url: get(this.user, 'twitter') },
@@ -28,7 +28,7 @@
 
 <template>
   <div class="list-shared" v-if="hasSocialLink">
-    <h4 class="subtitle has-text-centered"> Siga ele(a) nas redes sociais </h4>
+    <!-- <h4 class="subtitle has-text-centered"> Siga ele(a) nas redes sociais </h4> -->
     <ul>
       <li
         v-for="(social, index) in socials"

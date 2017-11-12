@@ -6,11 +6,13 @@ query getSingleUser ($uid: String!) {
     created
     ponts
     avatar_id
+    banner_url
     facebook
     instagram
     site
     twitter
     youtube
+    is_moderator
     topics(page: 1) {
       count
       records {

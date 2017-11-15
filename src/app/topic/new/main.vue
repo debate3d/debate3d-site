@@ -6,10 +6,15 @@
   import PositionsQuery from './positions.gql'
   import addTags from './add-tags/main'
   import submitForm from './submit-form'
+  import * as FormComponents from '@/domains/topics/view/form-components'
 
   export default {
     name: 'create-topic',
-    components: { addTags, FileComponent },
+    components: {
+      addTags,
+      FileComponent,
+      ...FormComponents
+    },
     data () {
       return {
         positions: [],
@@ -35,7 +40,7 @@
         return !isEmpty(this.selectedTags)
       },
       isFormValid () {
-        return !isEmpty(this.content) && !isEmpty(this.id_position) && !isEmpty(this.title) && !isEmpty(this.selectedTags)
+        return !isEmpty(this.title) && !isEmpty(this.content) && !isEmpty(this.selectedTags)
       },
       tags () {
         return this.selectedTags.map(prop('uid'))
@@ -85,38 +90,9 @@
     <hr>
 
     <div class="form">
-      <b-field
-        label="Título">
-        <b-input
-          maxlength="45"
-          placeholder="Digite um titulo"
-          v-model="title"
-          type="text"/>
-      </b-field>
+      <form-title :title.sync="title" />
 
-      <b-field
-        label="Conteúdo">
-        <b-input
-          maxlength="2000"
-          type="textarea"
-          placeholder="Digite aqui o conteúdo para o seu tema"
-          v-model="content"></b-input>
-      </b-field>
-
-      <b-field
-        label="Qual dicotomia quer para o seu tema?">
-        <b-select
-          placeholder="Dicotomias"
-          v-model="id_position"
-          expanded>
-          <option
-            v-for="position in positions"
-            :value="position.id"
-            :key="position.id">
-            {{ position.positive }} | {{ position.negative }}
-          </option>
-        </b-select>
-      </b-field>
+      <form-content :content.sync="content" />
 
       <file-component
         label="Selecione a imagem"

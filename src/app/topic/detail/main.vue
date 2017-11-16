@@ -58,7 +58,7 @@
     <header class="view-header">
 
       <div class="author-info">
-        <author-info :author="topic.author" />
+        <author-info :topic="topic" />
       </div>
 
       <topic-image :topic="topic" />

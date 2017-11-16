@@ -1,0 +1,3 @@
+mutation EditTopic ($topic: InputToEditTopic!) {
+  UpdateTopic (data: $topic)
+}

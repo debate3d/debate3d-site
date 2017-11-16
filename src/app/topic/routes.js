@@ -2,6 +2,7 @@ import TopicList from './list/main.vue'
 import TopicDetail from './detail/main.vue'
 import NewTopic from './new/main.vue'
 import SearchTopic from './search/main.vue'
+import EditTopic from './edit/main.vue'
 
 export default beforeEnter => [
   {
@@ -28,5 +29,11 @@ export default beforeEnter => [
     name: 'topic-search',
     component: SearchTopic,
     meta: { requireAuth: false }
+  },
+  {
+    path: '/topic/:topic/edit',
+    name: 'topic-edit',
+    component: EditTopic,
+    meta: { requireAuth: true }
   }
 ]

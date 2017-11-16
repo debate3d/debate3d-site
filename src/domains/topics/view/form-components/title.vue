@@ -3,8 +3,14 @@ import { DataMixin, PropMixin } from './mixins'
 
 export default {
   name: 'app-title-component',
+  props: {
+    disable: {
+      type: Boolean,
+      default: false
+    }
+  },
   mixins: [
-    DataMixin('text', ''),
+    DataMixin('text', '', 'title'),
     PropMixin('title', String, '')
   ]
 }
@@ -17,6 +23,7 @@ export default {
       maxlength="45"
       placeholder="Título"
       v-model="text"
-      type="text"/>
+      type="text"
+      :disabled="disable" />
   </b-field>
 </template>

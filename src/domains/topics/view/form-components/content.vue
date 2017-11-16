@@ -4,7 +4,7 @@
   export default {
     name: 'app-content-component',
     mixins: [
-      DataMixin('text', ''),
+      DataMixin('text', '', 'content'),
       PropMixin('content', String, '')
     ]
   }

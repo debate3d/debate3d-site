@@ -1,16 +1,16 @@
-export default (prop, defaultValue) => {
+export default (prop, defaultValue, property) => {
   return {
     data: () => ({
       [ prop ]: defaultValue
     }),
     watch: {
       [ prop ] () {
-        console.log('watch')
-        this.updateToSync()
+        this.updateToSync(this[ prop ])
       }
     },
     mounted () {
-      this.updateToSync()
+      this[ prop ] = this[ property ]
+      this.updateToSync(this[ property ])
     }
   }
 }

@@ -7,8 +7,8 @@ export default (prop, type, defaultValue) => {
       }
     },
     methods: {
-      updateToSync () {
-        this.$emit(`update:${prop}`, this.text)
+      updateToSync (value) {
+        this.$emit(`update:${prop}`, value)
       }
     }
   }

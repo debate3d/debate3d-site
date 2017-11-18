@@ -19,6 +19,7 @@ query getSingleUser ($uid: String!) {
         uid
         ponts
         title
+        url_image
         cards(page: 1) {
           count
         }

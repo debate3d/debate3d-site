@@ -13,7 +13,10 @@
       FileComponent,
       ...FormComponents
     },
-    mixins: [ refreshQueryMixin('topic'), loadingMixin('topic') ],
+    mixins: [
+      refreshQueryMixin('topic'),
+      loadingMixin('topic')
+    ],
     data () {
       return {
         topic: schemaTopicView,
@@ -31,7 +34,7 @@
         return !isEmpty(this.$store.state.auth.user)
       },
       isFormValid () {
-        return !isEmpty(this.title) && !isEmpty(this.content)
+        return !isEmpty(this.title) && !isEmpty(this.content) && !this.hasImageError
       },
       hasImage () {
         return !isEmpty(this.url_image)

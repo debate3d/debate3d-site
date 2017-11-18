@@ -2,8 +2,6 @@ import { isEmpty } from 'lodash'
 import axios from 'axios'
 import config from '../config'
 
-console.log(config)
-
 export default file => {
   if (isEmpty(file.name)) {
     return Promise.resolve({ })

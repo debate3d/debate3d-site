@@ -5,6 +5,7 @@
   import AppInputCpf from '../app-input-cpf'
   import AppInputCep from '../app-input-cep'
   import AppInputNickname from '../app-nickname'
+  import FileComponent from '@/components/file-component'
 
   const PROPS = [
     'name',
@@ -17,12 +18,19 @@
     'site',
     'email',
     'avatar_id',
-    'nickname'
+    'nickname',
+    'is_moderator'
   ]
 
   export default {
     name: 'app-update-user',
-    components: { AvatarContainer, AppInputCpf, AppInputCep, AppInputNickname },
+    components: {
+      AvatarContainer,
+      AppInputCpf,
+      AppInputCep,
+      AppInputNickname,
+      FileComponent
+    },
     props: {
       btnLabel: {
         type: String,
@@ -36,6 +44,11 @@
     data: () => ({
       isNicknameValid: false
     }),
+    computed: {
+      isModerator () {
+        return this.user.is_moderator
+      }
+    },
     watch: {
       user: {
         handler: 'updateUser',
@@ -45,7 +58,7 @@
     methods: {
       submit () {
         const { avatar_id } = this.user
-        if (isEmpty(avatar_id) && !isNumber(avatar_id)) {
+        if (isEmpty(avatar_id) && !isNumber(avatar_id) && !this.isModerator) {
           this.openSnackbar('Escolha um avatar')
           return
         }
@@ -70,6 +83,8 @@
     },
     mounted () {
       const user = pick(this.$store.state.auth.user, PROPS)
+      user.file = {}
+      user.bannerFile = {}
       this.updateUser(user)
     }
   }
@@ -81,7 +96,26 @@
       <div class="box">
         <h2 class="subtitle has-text-centered"> Dados principais </h2>
 
+        <template v-if="isModerator">
+          <file-component
+            label="Selecione a imagem para o seu banner"
+            message="Imagem requerida: 1000px por 400px"
+            :widthAccepted="1000"
+            :heightAccepted="400"
+            :willCheck="true"
+            @load-file="value => user.bannerFile = value" />
+
+          <file-component
+            label="Selecione a imagem para o seu avatar"
+            message="Imagem requerida: 300px por 300px"
+            :widthAccepted="300"
+            :heightAccepted="300"
+            :willCheck="true"
+            @load-file="value => user.file = value" />
+        </template>
+
         <avatar-container
+          v-if="!isModerator"
           :avatar_id="user.avatar_id"
           @choose-avatar="value => user.avatar_id = value"/>
 

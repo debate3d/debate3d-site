@@ -64,8 +64,10 @@
     methods: {
       checkImageInformation (image) {
         const { width, height } = image
-        this.widthError = this.validatorWidth(width, image)
-        this.heightError = this.validatorHeight(height, image)
+        this.$nextTick(() => {
+          this.widthError = this.validatorWidth(width, image)
+          this.heightError = this.validatorHeight(height, image)
+        })
       },
       emitFile (file) {
         this.$emit('load-file', file)
@@ -89,7 +91,11 @@
 </script>
 
 <template lang="html">
-  <b-field :label="label" :message="message" :type="type">
+  <b-field
+    class="app-file-component"
+    :label="label"
+    :message="message"
+    :type="type">
 
     <b-upload v-model="files">
       <a class="button" :class="type">
@@ -99,3 +105,9 @@
     </b-upload>
   </b-field>
 </template>
+
+<style media="screen" scoped>
+  .app-file-component >>> .upload.control input {
+    display: none;
+  }
+</style>

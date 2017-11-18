@@ -18,14 +18,11 @@ export default (context, file, topic) => {
     'Tópico não editado'
   ]
 
-  console.log(file)
-
   return uploadImage(file)
     .then(res => {
       if (!isEmpty(res)) {
         topic.url_image = res.data.secure_url
       }
-      console.log(topic)
       return context.$apollo.mutate({
         mutation: MutationCreateTopic,
         variables: {

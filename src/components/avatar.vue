@@ -1,5 +1,5 @@
 <script>
-  import { isNull, isUndefined } from 'lodash'
+  import { isNull, isUndefined, isString, isEmpty, isNaN } from 'lodash'
 
   export default {
     name: 'avatar',
@@ -11,10 +11,18 @@
       }
     },
     computed: {
+      isEmptyAvatarId () {
+        if (isString(this.number)) {
+          return isEmpty(this.number)
+        }
+        return isNull(this.number) || isUndefined(this.number)
+      },
       url () {
-        return (isNull(this.number) || isUndefined(this.number))
+        return this.isEmptyAvatarId
           ? 'static/avatars/placeholder.jpg'
-          : `static/avatars/avatar${this.number}.jpg`
+          : isString(this.number) && isNaN(this.number)
+            ? this.number
+            : `static/avatars/avatar${this.number}.jpg`
       },
       style () {
         return {

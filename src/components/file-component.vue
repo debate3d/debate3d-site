@@ -11,6 +11,18 @@
       willCheck: {
         type: Boolean,
         default: true
+      },
+      validatorWidth: {
+        type: Function,
+        default (width) {
+          return width !== this.widthAccepted
+        }
+      },
+      validatorHeight: {
+        type: Function,
+        default (height) {
+          return height !== this.heightAccepted
+        }
       }
     },
     data: () => ({
@@ -22,7 +34,7 @@
     }),
     computed: {
       hasErrors () {
-        return this.widthError && this.heightError
+        return this.widthError || this.heightError
       },
       type () {
         return isEmpty(this.files)
@@ -52,26 +64,8 @@
     methods: {
       checkImageInformation (image) {
         const { width, height } = image
-        this.checkWidth(image, width)
-        this.checkHeight(image, height)
-      },
-      checkWidth (image, width) {
-        if (width !== this.widthAccepted) {
-          this.widthError = true
-          return
-        }
-
-        this.widthError = false
-        return
-      },
-      checkHeight (image, height) {
-        if (height !== this.heightAccepted) {
-          this.heightError = true
-          return
-        }
-
-        this.heightError = false
-        return
+        this.widthError = this.validatorWidth(width, image)
+        this.heightError = this.validatorHeight(height, image)
       },
       emitFile (file) {
         this.$emit('load-file', file)

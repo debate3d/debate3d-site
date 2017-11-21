@@ -34,7 +34,7 @@
         <router-link :to="`/card/${card.uid}/detail`">
           Ver mais detalhes
         </router-link>
-        <router-link :to="`/topic/${card.topic.uid}/detail`">
+        <router-link :to="`/topic/${card.topic.nickname}/detail`">
           Tema: {{ card.topic.title }}
         </router-link>
       </div>

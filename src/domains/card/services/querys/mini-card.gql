@@ -21,5 +21,6 @@ query getMiniCard ($uid: String!) {
   author {
     uid
     name
+    nickname
   }
 }

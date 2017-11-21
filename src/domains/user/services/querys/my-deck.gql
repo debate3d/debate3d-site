@@ -10,6 +10,7 @@ query getMyCards ($uid: String!) {
         author {
           name
           uid
+          nickname
           avatar_id
         }
         content
@@ -19,6 +20,7 @@ query getMyCards ($uid: String!) {
           id
           user {
             uid
+            nickname
             name
           }
         }
@@ -27,6 +29,7 @@ query getMyCards ($uid: String!) {
           reaction
           user {
             uid
+            nickname
             name
           }
         }
@@ -35,6 +38,7 @@ query getMyCards ($uid: String!) {
           reaction
           user {
             uid
+            nickname
             name
           }
         }

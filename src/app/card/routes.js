@@ -5,7 +5,6 @@ export default beforeEnter => [
     path: '/card/:card/detail',
     name: 'card-detail',
     component: CardDetail,
-    meta: { requireAuth: false },
-    beforeEnter
+    meta: { requireAuth: false }
   }
 ]

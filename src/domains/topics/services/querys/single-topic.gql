@@ -1,5 +1,5 @@
-query getSingleTopic ($uid: String!, $page: Int!) {
-  topic (uid: $uid) {
+query getSingleTopic ($nickname: String, $page: Int!) {
+  topic (nickname: $nickname) {
     uid
     title
     content
@@ -13,6 +13,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
       name
       uid
       email
+      nickname
       avatar_id
       facebook
       instagram
@@ -33,6 +34,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
           uid
           name
           avatar_id
+          nickname
         }
       }
       negative {
@@ -42,6 +44,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
           uid
           name
           avatar_id
+          nickname
         }
       }
     }
@@ -52,11 +55,13 @@ query getSingleTopic ($uid: String!, $page: Int!) {
         topic {
           uid
           title
+          nickname
         }
         author {
           name
           uid
           avatar_id
+          nickname
         }
         content
         position
@@ -66,6 +71,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
           user {
             uid
             name
+            nickname
           }
         }
         likes {
@@ -74,6 +80,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
           user {
             uid
             name
+            nickname
           }
         }
         dislikes {
@@ -81,6 +88,7 @@ query getSingleTopic ($uid: String!, $page: Int!) {
           reaction
           user {
             uid
+            nickname
             name
           }
         }

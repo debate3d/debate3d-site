@@ -1,8 +1,9 @@
-query getSingleUser ($uid: String!) {
-  user(uid: $uid) {
+query getSingleUser ($nickname: String) {
+  user(nickname: $nickname) {
     name
     uid
     email
+    nickname
     created
     ponts
     avatar_id
@@ -49,11 +50,13 @@ query getSingleUser ($uid: String!) {
         topic {
           uid
           title
+          nickname
         }
         author {
           name
           uid
           avatar_id
+          nickname
         }
         content
         position
@@ -63,6 +66,7 @@ query getSingleUser ($uid: String!) {
           user {
             uid
             name
+            nickname
           }
         }
         likes {
@@ -71,6 +75,7 @@ query getSingleUser ($uid: String!) {
           user {
             uid
             name
+            nickname
           }
         }
         dislikes {
@@ -79,6 +84,7 @@ query getSingleUser ($uid: String!) {
           user {
             uid
             name
+            nickname
           }
         }
       }

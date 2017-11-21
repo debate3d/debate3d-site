@@ -29,7 +29,7 @@
   <div class="user-info">
     <app-avatar :number="user.avatar_id"></app-avatar>
     <router-link
-      class="subtitle" :to="`/user/${user.uid}/detail`">
+      class="subtitle" :to="`/user/${user.nickname}/detail`">
       {{ user.name }} </router-link>
     <span
       class="tag is-large is-info"

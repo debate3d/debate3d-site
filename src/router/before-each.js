@@ -1,15 +1,13 @@
 import { isLogged } from '../helpers'
 
-const isGuarded = to => to.meta.requireAuth
+const needAuth = to => to.meta.requireAuth
 
 export default (to, from, next) => {
-  window.scrollTo(0, 0)
-  if (isLogged()) {
+  if (!needAuth(to)) {
     next()
     return
   }
-  console.log(from.path)
-  if (!isGuarded(to)) {
+  if (needAuth(to) && isLogged()) {
     next()
     return
   }

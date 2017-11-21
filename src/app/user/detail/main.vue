@@ -32,7 +32,7 @@
           query: querySingleUser,
           variables () {
             return {
-              uid: this.$route.params.user
+              nickname: this.$route.params.user
             }
           },
           result (apolloResult) {

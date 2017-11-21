@@ -17,6 +17,7 @@ query getSingleCard ($uid: String!) {
     author {
       uid
       name
+      nickname
       avatar_id
     }
     likes {
@@ -24,6 +25,7 @@ query getSingleCard ($uid: String!) {
       user {
         uid
         name
+        nickname
       }
     }
     dislikes {
@@ -31,12 +33,14 @@ query getSingleCard ($uid: String!) {
       user {
         uid
         name
+        nickname
       }
     }
     deck {
       user {
         uid
         name
+        nickname
       }
     }
   }

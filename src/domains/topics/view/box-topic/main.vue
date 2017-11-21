@@ -40,7 +40,7 @@
 <template lang="html">
   <div
     class="box box-theme"
-    @click="$router.push(`/topic/${topic.uid}/detail`)">
+    @click="$router.push(`/topic/${topic.nickname}/detail`)">
 
     <app-box-topic-image :topic="topic"/>
 

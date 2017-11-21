@@ -21,8 +21,7 @@ export default beforeEnter => [
     path: '/topic/new',
     name: 'topic-new',
     component: NewTopic,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/topic/search',

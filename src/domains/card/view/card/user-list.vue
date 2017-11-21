@@ -9,7 +9,7 @@
     <b-icon icon="user" pack="fa" size="is-medium"></b-icon>
     <router-link
       class="subtitle"
-      :to="`/user/${user.uid}/detail`"> {{ user.name }} </router-link>
+      :to="`/user/${user.nickname}/detail`"> {{ user.name }} </router-link>
   </li>
 </template>
 

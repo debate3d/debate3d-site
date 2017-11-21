@@ -43,7 +43,7 @@
           },
           variables () {
             return {
-              uid: this.$route.params.topic,
+              nickname: this.$route.params.topic,
               page: this.page
             }
           }

@@ -19,7 +19,6 @@ export default [
     path: '/dashboard',
     name: 'dashboard-main',
     component: DashboardMain,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   }
 ]

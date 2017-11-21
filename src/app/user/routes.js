@@ -14,64 +14,55 @@ export default beforeEnter => [
     path: '/me/cards',
     name: 'me-cards',
     component: MeCards,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/me/deck',
     name: 'me-deck',
     component: MeDeck,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/me/topics',
     name: 'me-topics',
     component: MeTopics,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/user/:user/detail',
     name: 'user-detail',
     component: Detail,
-    meta: { requireAuth: false },
-    beforeEnter
+    meta: { requireAuth: false }
   },
   {
     path: '/me/update',
     name: 'user-update',
     component: Update,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/ranking',
     name: 'ranking',
     component: Ranking,
-    meta: { requireAuth: false },
-    beforeEnter
+    meta: { requireAuth: false }
   },
   {
     path: '/terms-of-use',
     name: 'termos-de-uso',
     component: TermsOfUse,
-    meta: { requireAuth: false },
-    beforeEnter
+    meta: { requireAuth: false }
   },
   {
     path: '/users/subscriber',
     name: 'seja-um-assinante',
     component: BeSubscriber,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/users/administrator',
     name: 'manager-users',
     component: Administrator,
-    meta: { requireAuth: true },
-    beforeEnter
+    meta: { requireAuth: true }
   },
   {
     path: '/user/search',

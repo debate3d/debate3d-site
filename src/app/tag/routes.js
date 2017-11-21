@@ -5,7 +5,6 @@ export default beforeEnter => [
     path: '/tag/:label',
     name: 'dashboard-tags',
     component: TagsMain,
-    meta: { requireAuth: false },
-    beforeEnter
+    meta: { requireAuth: false }
   }
 ]

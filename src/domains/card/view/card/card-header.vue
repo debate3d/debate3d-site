@@ -14,8 +14,8 @@
         const split = this.author.name.split(' ')
         return [split[0], split[1], split[2]].join(' ')
       },
-      uidAuthor () {
-        return this.author.uid
+      nicknameAuthor () {
+        return this.author.nickname
       }
     }
   }
@@ -26,7 +26,7 @@
     <app-avatar
       :number="author.avatar_id"
       :length="60"></app-avatar>
-    <router-link :to="`/user/${uidAuthor}/detail`" class="card-header-title">
+    <router-link :to="`/user/${nicknameAuthor}/detail`" class="card-header-title">
       {{ authorName }}
     </router-link>
   </div>

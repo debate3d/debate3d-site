@@ -1,6 +1,6 @@
 <script type="text/javascript">
   import { mapGetters } from 'vuex'
-  import { isNull } from 'lodash'
+  import { isNull, isEmpty } from 'lodash'
 
   import AppUserInfo from './user-info.vue'
   import AppTopicsInfo from './topics-info.vue'
@@ -17,31 +17,35 @@
         return this.user.is_verified
       }
     },
-    mounted () {
-      if (isNull(this.user.avatar_id)) {
-        this.$snackbar.open({
-          message: 'Ainda não tem um avatar?? Escolha o seu!',
-          type: 'is-warning',
-          position: 'is-top-left',
-          duration: 10000,
-          actionText: 'Escolher',
-          onAction: () => {
-            this.$router.push('/me/update')
+    watch: {
+      user () {
+        if (!isEmpty(this.user)) {
+          if (isNull(this.user.avatar_id)) {
+            this.$snackbar.open({
+              message: 'Ainda não tem um avatar?? Escolha o seu!',
+              type: 'is-warning',
+              position: 'is-top-left',
+              duration: 10000,
+              actionText: 'Escolher',
+              onAction: () => {
+                this.$router.push('/me/update')
+              }
+            })
           }
-        })
-      }
 
-      if (!this.isVerified) {
-        this.$snackbar.open({
-          message: 'Termine seu cadastro em nossa plataforma',
-          type: 'is-warning',
-          position: 'is-bottom-left',
-          duration: 10000,
-          actionText: 'Ok',
-          onAction: () => {
-            this.$router.push('/auth/finish')
+          if (!this.isVerified) {
+            this.$snackbar.open({
+              message: 'Termine seu cadastro em nossa plataforma',
+              type: 'is-warning',
+              position: 'is-bottom-left',
+              duration: 10000,
+              actionText: 'Ok',
+              onAction: () => {
+                this.$router.push('/auth/finish')
+              }
+            })
           }
-        })
+        }
       }
     }
   }

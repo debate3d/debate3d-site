@@ -8,7 +8,7 @@ export default [
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardComponent,
-    meta: { requireAuth: false },
+    meta: { requireAuth: true },
     children: dashboardChildren
   }
 ]

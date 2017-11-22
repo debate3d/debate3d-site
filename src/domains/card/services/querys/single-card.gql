@@ -9,6 +9,7 @@ query getSingleCard ($uid: String!) {
     topic {
       uid
       title
+      nickname
       position {
         positive
         negative

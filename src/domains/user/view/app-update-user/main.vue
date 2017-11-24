@@ -100,8 +100,8 @@
           <file-component
             label="Selecione a imagem para o seu banner"
             message="Imagem requerida: 1000px por 400px"
-            :widthAccepted="1000"
-            :heightAccepted="400"
+            :widthAccepted="1360"
+            :heightAccepted="350"
             :willCheck="true"
             @load-file="value => user.bannerFile = value" />
 

@@ -59,8 +59,10 @@
         const loading = this.$loading.open()
         submitForm(this, this.file, this.topic)
           .then(user => {
+            window.scrollTo(0, 0)
             loading.close()
             this.reset()
+            this.$router.push('/dashboard')
           })
           .catch(console.error)
       },
@@ -102,6 +104,19 @@
         :willCheck="true"
         @load-file="onLoadFile"
         @load-errors="onLoadImageError" />
+
+      <b-field label="Selecione a dicotomia">
+        <b-select
+          v-model="id_position"
+          expanded>
+          <option
+            v-for="position in positions"
+            :key="position.id"
+            :value="position.id">
+
+            {{ position.positive }} | {{ position.negative }} </option>
+        </b-select>
+      </b-field>
 
       <b-field
         label="Tags selecionadas"

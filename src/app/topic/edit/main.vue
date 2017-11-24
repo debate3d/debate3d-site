@@ -61,7 +61,7 @@
           },
           variables () {
             return {
-              uid: this.$route.params.topic,
+              nickname: this.$route.params.topic,
               page: this.page
             }
           }
@@ -80,6 +80,8 @@
         submitForm(this, this.file, this.model)
           .then(user => {
             loading.close()
+            window.scrollTo(0, 0)
+            this.$router.push(`/topic/${this.topic.nickname}/detail`)
           })
           .catch(console.error)
       }

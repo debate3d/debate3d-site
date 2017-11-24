@@ -1,6 +1,6 @@
 <script>
   import numeral from 'numeral'
-  import { isEmpty } from 'lodash'
+  import { isEmpty, gt } from 'lodash'
 
   import AppVoteChart from '@/components/app-vote-chart.vue'
 
@@ -68,6 +68,9 @@
           labels: this.labels,
           datasets: this.dataset
         }
+      },
+      hasVotes () {
+        return gt(this.data.count, 0)
       }
     }
   }
@@ -75,7 +78,7 @@
 
 <template>
   <div class="column is-6">
-    <div class="card">
+    <div class="card" v-if="hasVotes">
       <div class="card-content">
         <app-vote-chart
           v-if="!isLoading"

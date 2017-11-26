@@ -1,0 +1,5 @@
+export { default as AppHeader } from './header.vue'
+export { default as AppMenu } from './menu/main.vue'
+export { default as AppButton } from './menu/menu-button.vue'
+export { default as AppFooter } from './footer.vue'
+export { default as Copyright } from './copyright.vue'

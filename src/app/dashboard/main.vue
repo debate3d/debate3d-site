@@ -1,14 +1,11 @@
 <script type="text/javascript">
   import { mapGetters } from 'vuex'
   import { isNull, isEmpty } from 'lodash'
-
-  import AppUserInfo from './user-info.vue'
-  import AppTopicsInfo from './topics-info.vue'
-  import AppUsersInfo from './top-users.vue'
+  import * as Components from './components'
 
   export default {
     name: 'main-dashboard',
-    components: { AppUserInfo, AppTopicsInfo, AppUsersInfo },
+    components: { ...Components },
     computed: {
       ...mapGetters({
         'user': 'getUser'
@@ -53,11 +50,11 @@
 
 <template>
   <div class="app">
-    <app-user-info></app-user-info>
+    <user-info></user-info>
     <hr>
-    <app-topics-info></app-topics-info>
+    <topics-info></topics-info>
     <hr>
-    <app-users-info></app-users-info>
+    <top-users></top-users>
   </div>
 </template>
 

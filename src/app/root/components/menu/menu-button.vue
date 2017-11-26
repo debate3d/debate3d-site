@@ -24,7 +24,7 @@
 </template>
 
 <style lang="scss" media="screen" scoped>
-  @import "../../../assets/sass/_extend";
+  @import "../../../../assets/sass/_extend";
 
   .button {
     position: absolute;

@@ -1,19 +1,9 @@
 <script>
-  import AppHeader from './header.vue'
-  import AppMenu from './menu/main.vue'
-  import AppButton from './menu/menu-button.vue'
-  import AppFooter from './footer.vue'
-  import Copyright from './copyright.vue'
+  import * as Components from './components'
 
   export default {
     name: 'app',
-    components: {
-      AppHeader,
-      AppMenu,
-      AppButton,
-      AppFooter,
-      Copyright
-    },
+    components: { ...Components },
     data () {
       return {
         condition: false
@@ -53,11 +43,9 @@
 <style lang="scss" scoped>
   @import "../../assets/sass/_extend";
 
-  // Dashboard container
   .app-dashboard {
     min-height: 100vh;
     background-color: #f1f1f1;
-    // background: url('../../../static/bg-site.jpg');
 
     main {
       min-height: 100vh;

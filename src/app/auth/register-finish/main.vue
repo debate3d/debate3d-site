@@ -33,7 +33,10 @@
       Só mais algumas informações
     </h1>
 
-    <p> É importante para nós as informações abaixo. Não se preocupe, <span class="has-text-weight-bold">materemos sigilo sobre seu CPF</span>. Os dados das redes sociais são interessantes para que as outras pessoas em nossa plataforma possam te encontrar no Twitter, Facebook... </p>
+    <p> É importante para nós as informações abaixo para evitar perfis falsos. <span class="has-text-weight-bold"> Não se preocupe, materemos sigilo sobre seu CPF. </span> </p>
+
+    <p> Os dados das redes sociais são interessantes para você que busca mais seguidores nas suas páginas ou perfis. </p>
+
     <p> Por fim, é importante ter um avatar. Escolha o seu! </p>
 
     <app-update-user

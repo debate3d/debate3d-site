@@ -43,7 +43,7 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/extend.sass";
+  @import "../../../assets/sass/extend.sass";
 
   .topics-info {
     padding: $space;

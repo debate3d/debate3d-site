@@ -1,5 +1,5 @@
 <script>
-  import debatersQuery from '@/domains/user/services/querys/debaters.gql'
+  import moderatorsQuery from '@/domains/user/services/querys/moderators.gql'
   import { boxUser } from '@/domains/user/view'
   import { isEmpty } from 'lodash'
   import { schemaUserBox } from '@/domains/user/schemas'
@@ -8,24 +8,24 @@
     components: { boxUser },
     computed: {
       allUsers () {
-        const debatersSchema = [
+        const moderatorSchema = [
           schemaUserBox,
           schemaUserBox,
           schemaUserBox,
           schemaUserBox,
           schemaUserBox
         ]
-        return (isEmpty(this.debaters.records)) ? debatersSchema : this.debaters.records.slice(0, 5)
+        return (isEmpty(this.moderators.records)) ? moderatorSchema : this.moderators.records.slice(0, 5)
       }
     },
     data () {
       return {
-        debaters: {}
+        moderators: {}
       }
     },
     apollo: {
-      debaters: {
-        query: debatersQuery,
+      moderators: {
+        query: moderatorsQuery,
         variables () {
           return {
             page: 1
@@ -37,8 +37,8 @@
 </script>
 
 <template lang="html">
-  <section class="debaters-info">
-    <h2 class="title is-4"> Top Debatedores </h2>
+  <section class="moderators-info">
+    <h2 class="title is-4"> Top Moderadores </h2>
     <box-user
       v-for="(user, index) in allUsers"
       :user="user"
@@ -48,13 +48,17 @@
 </template>
 
 <style scoped lang="scss">
-  @import "../../assets/sass/extend.sass";
+  @import "../../../../../assets/sass/extend.sass";
 
-  .debaters-info {
+  .moderators-info {
     flex-grow: 1;
 
     @media (min-width: 769px) {
-      margin-right: $space / 2;
+      margin-left: $space / 2;
+    }
+
+    @media (max-width: 768px) {
+      margin-top: $space;
     }
 
     .title {

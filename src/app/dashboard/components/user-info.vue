@@ -42,7 +42,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/sass/extend.sass";
+  @import "../../../assets/sass/extend.sass";
 
   .user-info {
     position: relative;

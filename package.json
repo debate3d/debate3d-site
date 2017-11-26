@@ -1,7 +1,7 @@
 {
   "name": "debated3d-site",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Debate3D, sua plataforma para detalhes",
   "author": "Emanuel G <emanuelgdesouza@gmail.com>",
   "private": true,
   "scripts": {

@@ -12,7 +12,7 @@
             </a>
           </li>
           <li>
-            <router-link to="/terms-of-use">
+            <router-link to="/app/terms-of-use">
               Termos de uso da plataforma
             </router-link>
           </li>

@@ -40,7 +40,7 @@
 <template lang="html">
   <div
     class="box box-theme"
-    @click="$router.push(`/topic/${topic.nickname}/detail`)">
+    @click="$router.push(`/app/topic/${topic.nickname}/detail`)">
 
     <app-box-topic-image :topic="topic"/>
 
@@ -67,7 +67,7 @@
         <span
           v-for="tag in tags"
           class="tag is-info"
-          @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
+          @click="$router.push(`/app/tag/${tag.label}`)"> {{ tag.label }} </span>
       </b-taglist>
     </div>
   </div>

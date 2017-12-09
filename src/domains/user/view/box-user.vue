@@ -26,7 +26,7 @@
     <!-- <span class="tag is-primary is-medium is-rounded"> {{ position }} </span> -->
     <avatar :number="user.avatar_id" :length="30" />
     <router-link
-      :to="`/user/${user.nickname}/detail`"
+      :to="`/app/user/${user.nickname}/detail`"
       class="title is-5"> {{ user.name }} </router-link>
     <span class="tag is-info is-medium"> {{ user.ponts }} pts </span>
   </div>

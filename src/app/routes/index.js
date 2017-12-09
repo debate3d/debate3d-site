@@ -5,10 +5,10 @@ import DashboardComponent from '../root/main.vue'
 export default [
   ...authRoutes,
   {
-    path: '/dashboard',
+    path: '/app',
     name: 'dashboard',
     component: DashboardComponent,
-    meta: { requireAuth: true },
+    redirect: '/app/dashboard',
     children: dashboardChildren
   }
 ]

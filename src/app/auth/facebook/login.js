@@ -15,7 +15,7 @@ export default curry((loading, store, router, user) => {
       router.push('/auth/finish')
       return
     }
-    router.push('/dashboard')
+    router.push('/app/dashboard')
     return Promise.resolve(result)
   }
 

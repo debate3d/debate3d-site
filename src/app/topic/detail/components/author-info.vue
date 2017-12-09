@@ -38,14 +38,14 @@
         <b-dropdown-item :value="true">
           <router-link
             class="button is-info is-fullwidth"
-            :to="`/topic/${topic.nickname}/edit`">
+            :to="`/app/topic/${topic.nickname}/edit`">
             Editar
           </router-link>
         </b-dropdown-item>
       </b-dropdown>
 
       <p class="card-header-title">
-        <router-link :to="`/user/${author.nickname}/detail`">
+        <router-link :to="`/app/user/${author.nickname}/detail`">
           {{ author.name }}
         </router-link>
       </p>

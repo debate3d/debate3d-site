@@ -15,7 +15,7 @@
           .then(result => {
             loading.close()
             if (result) {
-              this.$router.push('/dashboard')
+              this.$router.push('/app/dashboard')
             }
           })
           .catch(() => {

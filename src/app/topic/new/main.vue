@@ -62,7 +62,7 @@
             window.scrollTo(0, 0)
             loading.close()
             this.reset()
-            this.$router.push('/dashboard')
+            this.$router.push('/app/dashboard')
           })
           .catch(console.error)
       },

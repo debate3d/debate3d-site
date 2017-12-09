@@ -25,7 +25,7 @@
               duration: 10000,
               actionText: 'Escolher',
               onAction: () => {
-                this.$router.push('/me/update')
+                this.$router.push('/app/me/update')
               }
             })
           }

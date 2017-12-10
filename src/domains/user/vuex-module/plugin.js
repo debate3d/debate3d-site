@@ -15,10 +15,6 @@ export default store => {
     setToken(token)
       .then(_ => {
         setUser(store)
-          .then(user => {
-            router.push('/dashboard')
-            return true
-          })
           .catch(err => {
             console.error(err)
             router.push('/auth/login')

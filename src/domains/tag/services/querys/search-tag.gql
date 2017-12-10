@@ -6,6 +6,7 @@ query searchTag ($label: String!) {
       uid
       ponts
       title
+      nickname
       cards(page: 1) {
         count
       }

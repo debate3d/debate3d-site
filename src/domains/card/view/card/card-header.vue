@@ -26,7 +26,7 @@
     <app-avatar
       :number="author.avatar_id"
       :length="60"></app-avatar>
-    <router-link :to="`/user/${nicknameAuthor}/detail`" class="card-header-title">
+    <router-link :to="`/app/user/${nicknameAuthor}/detail`" class="card-header-title">
       {{ authorName }}
     </router-link>
   </div>

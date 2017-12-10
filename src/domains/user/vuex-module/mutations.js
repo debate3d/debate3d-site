@@ -20,6 +20,6 @@ export default {
     store.reactions = obj
   },
   [ TYPES.IS_LOGGED ] (store, state) {
-    store.hasLogged = state
+    store.isLogged = state
   }
 }

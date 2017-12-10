@@ -64,10 +64,8 @@
     methods: {
       checkImageInformation (image) {
         const { width, height } = image
-        this.$nextTick(() => {
-          this.widthError = this.validatorWidth(width, image)
-          this.heightError = this.validatorHeight(height, image)
-        })
+        this.widthError = this.validatorWidth(width, image)
+        this.heightError = this.validatorHeight(height, image)
       },
       emitFile (file) {
         this.$emit('load-file', file)

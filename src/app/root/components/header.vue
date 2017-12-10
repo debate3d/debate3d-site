@@ -24,7 +24,7 @@
       to="/auth/login"
       tag="button"
       class="button"> Login </router-link>
-    <logo-letters @click.native="$router.push('/dashboard')" />
+    <logo-letters @click.native="$router.push('/app/dashboard')" />
   </header>
 </template>
 

@@ -17,7 +17,7 @@
       <span
         v-for="tag in topic.tags"
         class="tag is-info"
-        @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
+        @click="$router.push(`/app/tag/${tag.label}`)"> {{ tag.label }} </span>
     </div>
   </div>
 </template>

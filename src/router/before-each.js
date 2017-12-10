@@ -4,7 +4,7 @@ const needAuth = to => to.meta.requireAuth
 
 export default (to, from, next) => {
   window.scrollTo(0, 0)
-  if (needAuth(to) || isLogged()) {
+  if (needAuth(to) && isLogged()) {
     return next()
   }
 

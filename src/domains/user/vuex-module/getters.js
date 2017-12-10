@@ -5,5 +5,6 @@ export default {
   getCards: state => state.cards,
   getTopics: state => state.topics,
   getVotes: state => state.user.votes,
-  getIsLogged: state => state.isLogged
+  getIsLogged: state => state.isLogged,
+  getIsModerator: state => state.user.is_moderator
 }

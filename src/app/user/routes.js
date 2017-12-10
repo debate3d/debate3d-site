@@ -11,61 +11,61 @@ import UserSearch from './search/main.vue'
 
 export default beforeEnter => [
   {
-    path: '/me/cards',
+    path: '/app/me/cards',
     name: 'me-cards',
     component: MeCards,
     meta: { requireAuth: true }
   },
   {
-    path: '/me/deck',
+    path: '/app/me/deck',
     name: 'me-deck',
     component: MeDeck,
     meta: { requireAuth: true }
   },
   {
-    path: '/me/topics',
+    path: '/app/me/topics',
     name: 'me-topics',
     component: MeTopics,
     meta: { requireAuth: true }
   },
   {
-    path: '/user/:user/detail',
+    path: '/app/user/:user/detail',
     name: 'user-detail',
     component: Detail,
     meta: { requireAuth: false }
   },
   {
-    path: '/me/update',
+    path: '/app/me/update',
     name: 'user-update',
     component: Update,
     meta: { requireAuth: true }
   },
   {
-    path: '/ranking',
+    path: '/app/ranking',
     name: 'ranking',
     component: Ranking,
     meta: { requireAuth: false }
   },
   {
-    path: '/terms-of-use',
+    path: '/app/terms-of-use',
     name: 'termos-de-uso',
     component: TermsOfUse,
     meta: { requireAuth: false }
   },
   {
-    path: '/users/subscriber',
+    path: '/app/users/subscriber',
     name: 'seja-um-assinante',
     component: BeSubscriber,
     meta: { requireAuth: true }
   },
   {
-    path: '/users/administrator',
+    path: '/app/users/administrator',
     name: 'manager-users',
     component: Administrator,
     meta: { requireAuth: true }
   },
   {
-    path: '/user/search',
+    path: '/app/user/search',
     name: 'search-users',
     component: UserSearch,
     meta: { requireAuth: false }

@@ -11,8 +11,7 @@
     mixins: [ refreshQueryMixin('card') ],
     data () {
       return {
-        card: cardView,
-        url: ''
+        card: cardView
       }
     },
     computed: {
@@ -28,6 +27,9 @@
       },
       positioning () {
         return (this.card.position === 'true') ? 'is-positive' : 'is-negative'
+      },
+      url () {
+        return location.href
       }
     },
     apollo: {

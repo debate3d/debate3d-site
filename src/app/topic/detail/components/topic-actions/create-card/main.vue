@@ -73,38 +73,35 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
   .button {
     margin: 0 auto;
     display: block;
   }
 
   .create-card-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 3;
-      border-radius: 100%;
-      width: 60px;
-      height: 60px;
-      box-shadow: 1px 1px 4px 0px rgba(92,92,92,1);
-      @media (max-width: 768px) {
-        width: 65px;
-        height: 65px;
-      }
-    }
-
-  .modal-background {
-    background-color: transparent;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 1px 1px 4px 0px rgba(92,92,92,1);
   }
 
-  .card-form {
-    &.is-positive {
-      background-color: rgba(0, 152, 218, .8);
+  @media screen (max-width: 768px) {
+    .create-card-button {
+      width: 65px;
+      height: 65px;
     }
+  }
 
-    &.is-negative {
-      background-color: rgba(219, 52, 56, .8);
-    }
+  .card-form.is-positive >>> .modal-background {
+    background-color: rgba(0, 152, 218, .8);
+  }
+
+  .card-form.is-negative >>> .modal-background {
+    background-color: rgba(219, 52, 56, .8);
   }
 </style>

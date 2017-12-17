@@ -3,9 +3,11 @@
   import { isEmpty } from 'lodash'
 
   import voteAction from './vote'
+  import { loginMixin } from '@/support/mixins'
 
   export default {
     name: 'app-vote-topic',
+    mixins: [ loginMixin ],
     props: {
       topic: Object
     },
@@ -48,6 +50,11 @@
     },
     methods: {
       vote (vote) {
+        if (!this.isLogged) {
+          this.$__loadLoginMixin()
+          return
+        }
+
         if (this.hasVoted) {
           this.$snackbar.open({
             message: 'Você já votou neste tópico',
@@ -55,6 +62,7 @@
           })
           return
         }
+
         if (this.hasVoted || this.btnDisabled || !this.isLogged) return
         const data = {
           uid_topic: this.topic.uid,
@@ -99,6 +107,9 @@
       </p>
 
     </div>
+
+    <!-- Modal when user is not logged -->
+    <modal-form-login ref="modalFormLogin" />
   </div>
 </template>
 

@@ -25,7 +25,7 @@ export default (context, data) => {
       data
     }
   })
-    .then(mutationResolveHelper(...successArgs))
+    .then(() => mutationResolveHelper(...successArgs))
     .then(() => {
       EventBus.$emit('refresh:apollo')
     })

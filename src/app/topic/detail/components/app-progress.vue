@@ -78,16 +78,14 @@
 
 <template>
   <div class="column is-6">
-    <div class="card" v-if="hasVotes">
-      <div class="card-content">
-        <app-vote-chart
-          v-if="!isLoading"
-          class="app-progress" :data="dataPie" />
+    <div v-if="hasVotes">
+      <app-vote-chart
+        v-if="!isLoading"
+        class="app-progress" :data="dataPie" />
 
-        <span class="icon is-large" v-if="isLoading">
-          <i class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></i>
-        </span>
-      </div>
+      <span class="icon is-large" v-if="isLoading">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+      </span>
     </div>
   </div>
 </template>

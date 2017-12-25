@@ -3,6 +3,7 @@
   import { isEmpty } from 'lodash'
 
   import voteAction from './vote'
+  import { setLastRoute, EventBus } from '@/helpers'
 
   export default {
     name: 'app-vote-topic',
@@ -48,6 +49,13 @@
     },
     methods: {
       vote (vote) {
+        if (!this.isLogged) {
+          return setLastRoute(this.$route.path)
+            .then(() => {
+              return EventBus.$emit('open:login:modal')
+            })
+        }
+
         if (this.hasVoted) {
           this.$snackbar.open({
             message: 'Você já votou neste tópico',
@@ -55,6 +63,7 @@
           })
           return
         }
+
         if (this.hasVoted || this.btnDisabled || !this.isLogged) return
         const data = {
           uid_topic: this.topic.uid,

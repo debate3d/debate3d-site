@@ -26,7 +26,7 @@ export default (context, uid_card) => { // eslint-disable-line
       data
     }
   })
-    .then(mutationResolveHelper(...successArgs))
+    .then(() => mutationResolveHelper(...successArgs))
     .then(() => {
       EventBus.$emit('refresh:apollo')
     })

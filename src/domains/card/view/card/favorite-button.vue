@@ -19,6 +19,10 @@
     },
     methods: {
       favorite () {
+        if (!this.isLogged) {
+          return this.$__openLoginModal()
+        }
+
         if (!this.acted && !this.isMyCard) {
           const { uid } = this.card
           favoriteMethod(this, uid)

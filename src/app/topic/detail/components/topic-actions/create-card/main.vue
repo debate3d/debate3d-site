@@ -3,6 +3,7 @@
   import { isEmpty } from 'lodash'
 
   import AppForm from './form.vue'
+  import { setLastRoute, EventBus } from '@/helpers'
 
   export default {
     components: { AppForm },
@@ -12,17 +13,7 @@
     data () {
       return {
         state: false,
-        canCreate: false,
         card_position: true
-      }
-    },
-    watch: {
-      topic () {
-        if (!this.canCreate) return
-        const { uid } = this.user
-        const cards = this.topic.cards.records
-        const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
-        this.canCreate = isEmpty(anyCardCreate)
       }
     },
     computed: {
@@ -31,14 +22,40 @@
       }),
       statePosition () {
         return this.card_position ? 'is-positive' : 'is-negative'
+      },
+      isLogged () {
+        return !isEmpty(this.user)
+      },
+      cards () {
+        return this.topic.cards.records
+      },
+      canCreate () {
+        if (!this.isLogged) {
+          return false
+        }
+        const { uid } = this.user
+        console.log(uid)
+        return !this.cards.some(card => card.author.uid === uid)
+      },
+      hasCreated () {
+        const { uid } = this.user
+        return this.isLogged && this.cards.some(card => card.author.uid === uid)
+      }
+    },
+    methods: {
+      openModal () {
+        if (this.canCreate) {
+          this.state = true
+          return
+        }
+        return setLastRoute(this.$route.path)
+          .then(() => {
+            return EventBus.$emit('open:login:modal')
+          })
       }
     },
     mounted () {
       this.card_position = true
-      const { uid } = this.user
-      const cards = this.topic.cards.records
-      const anyCardCreate = cards.filter(card => card.author.uid === uid)[0]
-      this.canCreate = isEmpty(anyCardCreate)
     },
     beforeDestroy () {
       this.card_position = true
@@ -48,13 +65,15 @@
 
 <template lang="html">
   <div>
+    <hr v-if="hasCreated">
+
     <h5
       class="title is-4 has-text-centered"
-      v-if="!canCreate"> Você já possui card cadastrado </h5>
+      v-if="hasCreated"> Você já possui card cadastrado </h5>
     <button
       class="button is-primary is-large create-card-button"
-      @click="state = true"
-      v-if="canCreate">
+      @click="openModal"
+      v-if="!hasCreated">
         <span class="icon is-small">
           <i class="fa fa-plus"></i>
         </span>

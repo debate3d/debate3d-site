@@ -11,8 +11,7 @@ export default (context, file, topic) => {
   const successArgs = [
     context,
     `Você ganhou ${pontuation.USER.CREATE_TOPIC} pontos`,
-    'InsertTopic',
-    10
+    'InsertTopic'
   ]
 
   const errorArgs = [
@@ -29,7 +28,7 @@ export default (context, file, topic) => {
           topic
         }
       })
-        .then(mutationResolveHelper(...successArgs))
+        .then(() => mutationResolveHelper(...successArgs))
         .catch(mutationRejectHelper(...errorArgs))
     })
 }

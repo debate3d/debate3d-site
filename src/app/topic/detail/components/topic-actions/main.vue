@@ -21,8 +21,6 @@
       <div class="card-content">
         <vote-topic :topic="topic" />
 
-        <hr>
-
         <create-card :topic="topic" />
       </div>
     </div>

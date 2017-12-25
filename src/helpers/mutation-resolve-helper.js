@@ -20,5 +20,4 @@ export default curry((context, msgSuccess, result) => {
       })
       return Promise.resolve(user)
     })
-    .catch(console.error)
 })

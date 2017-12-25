@@ -5,6 +5,8 @@ import setToken from '@/services/set-token'
 import setUser from '@/domains/user/services/set-user'
 import loginFacebook from '@/domains/user/services/login-facebook'
 
+import { getLastRoute, removeLastRoute, EventBus } from '@/helpers'
+
 const setTokenMethod = token => setToken(token)
 
 export default curry((loading, store, router, user) => {
@@ -15,7 +17,11 @@ export default curry((loading, store, router, user) => {
       router.push('/auth/finish')
       return
     }
-    router.push('/app/dashboard')
+    const lastRoute = getLastRoute()
+    const toRoute = lastRoute || '/app/dashboard'
+    removeLastRoute()
+    EventBus.$emit('close:login:modal')
+    router.push(toRoute)
     return Promise.resolve(result)
   }
 

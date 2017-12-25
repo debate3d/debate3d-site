@@ -1,6 +1,7 @@
 import http from '../http.js'
 import setToken from '../set-token'
 import setUser from '../../domains/user/services/set-user'
+import { getLastRoute } from '@/helpers'
 
 /**
  * Login function
@@ -20,7 +21,9 @@ export default (payload, store, router) => {
             router.push('/auth/finish')
             return
           }
-          router.push('/app/dashboard')
+          const lastRoute = getLastRoute()
+          const toRoute = lastRoute || '/app/dashboard'
+          router.push(toRoute)
           return Promise.resolve(result)
         })
     })

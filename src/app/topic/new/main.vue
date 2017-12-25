@@ -64,7 +64,11 @@
             this.reset()
             this.$router.push('/app/dashboard')
           })
-          .catch(console.error)
+          .catch(err => {
+            loading.close()
+            this.reset()
+            return err
+          })
       },
       getSelects (tags) {
         this.selectedTags = [ ...tags ]
@@ -98,9 +102,9 @@
 
       <file-component
         label="Selecione a imagem"
-        message="Imagem requerida: 1000px por 300px"
+        message="Imagem requerida: 1000px por 400px"
         :widthAccepted="1000"
-        :heightAccepted="300"
+        :heightAccepted="400"
         :willCheck="true"
         @load-file="onLoadFile"
         @load-errors="onLoadImageError" />

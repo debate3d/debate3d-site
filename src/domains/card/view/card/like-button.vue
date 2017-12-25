@@ -25,6 +25,10 @@
     },
     methods: {
       like () {
+        if (!this.isLogged) {
+          return this.$__openLoginModal()
+        }
+
         if (!this.acted && !this.isMyCard) {
           const data = {
             uid_card: this.card.uid,

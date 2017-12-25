@@ -24,7 +24,7 @@
     <p class="title is-5 has-text-centered" v-if="count === '0'">
       {{ errorMessage }}
     </p>
-    <div class="columns is-multiline is-centered">
+    <div class="columns is-multiline">
       <div class="column" :class="column" v-for="(topic, index) in records">
         <box-topic
           :key="index"

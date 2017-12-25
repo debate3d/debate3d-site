@@ -3,11 +3,10 @@
   import { isEmpty } from 'lodash'
 
   import voteAction from './vote'
-  import { loginMixin } from '@/support/mixins'
+  import { setLastRoute, EventBus } from '@/helpers'
 
   export default {
     name: 'app-vote-topic',
-    mixins: [ loginMixin ],
     props: {
       topic: Object
     },
@@ -51,8 +50,10 @@
     methods: {
       vote (vote) {
         if (!this.isLogged) {
-          this.$__loadLoginMixin()
-          return
+          return setLastRoute(this.$route.path)
+            .then(() => {
+              return EventBus.$emit('open:login:modal')
+            })
         }
 
         if (this.hasVoted) {
@@ -107,9 +108,6 @@
       </p>
 
     </div>
-
-    <!-- Modal when user is not logged -->
-    <modal-form-login ref="modalFormLogin" />
   </div>
 </template>
 

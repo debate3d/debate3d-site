@@ -1,12 +1,18 @@
 <script>
+  import { loginMixin } from './support/mixins'
+
   export default {
-    name: 'root'
+    name: 'root',
+    mixins: [ loginMixin ]
   }
 </script>
 
 <template>
   <div id="app">
     <router-view></router-view>
+
+    <!-- Modal when user is not logged -->
+    <modal-form-login ref="modalFormLogin" />
   </div>
 </template>
 

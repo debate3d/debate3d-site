@@ -3,10 +3,9 @@
   import { isEmpty } from 'lodash'
 
   import AppForm from './form.vue'
-  import { loginMixin } from '@/support/mixins'
+  import { setLastRoute, EventBus } from '@/helpers'
 
   export default {
-    mixins: [ loginMixin ],
     components: { AppForm },
     props: {
       topic: Object
@@ -48,8 +47,10 @@
           this.state = true
           return
         }
-
-        this.$__loadLoginMixin()
+        return setLastRoute(this.$route.path)
+          .then(() => {
+            return EventBus.$emit('open:login:modal')
+          })
       }
     },
     mounted () {
@@ -87,9 +88,6 @@
         :position="topic.position"
         :card_position.sync="card_position"></app-form>
     </b-modal>
-
-    <!-- Modal when user is not logged -->
-    <modal-form-login ref="modalFormLogin" />
   </div>
 </template>
 

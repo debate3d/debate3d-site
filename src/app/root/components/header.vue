@@ -2,6 +2,7 @@
   import LogoLetters from '@/components/logo-letters.vue'
   import { mapGetters } from 'vuex'
   import { isEmpty } from 'lodash'
+  import { setLastRoute } from '@/helpers'
 
   export default {
     name: 'dashboard-main-header',
@@ -13,17 +14,21 @@
       isLogged () {
         return !isEmpty(this.user)
       }
+    },
+    methods: {
+      login () {
+        return setLastRoute(this.$route.path)
+          .then(() => {
+            return this.$router.push('/auth/login')
+          })
+      }
     }
   }
 </script>
 
 <template lang="html">
   <header class="header">
-    <router-link
-      v-if="!isLogged"
-      to="/auth/login"
-      tag="button"
-      class="button"> Login </router-link>
+    <button class="button" v-if="!isLogged" @click="login"> Login </button>
     <logo-letters @click.native="$router.push('/app/dashboard')" />
   </header>
 </template>

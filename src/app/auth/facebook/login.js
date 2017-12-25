@@ -18,13 +18,10 @@ export default curry((loading, store, router, user) => {
       return
     }
     const lastRoute = getLastRoute()
-    if (lastRoute) {
-      router.push(lastRoute)
-      removeLastRoute()
-      EventBus.$emit('close:login:modal')
-      return Promise.resolve(result)
-    }
-    router.push('/app/dashboard')
+    const toRoute = lastRoute || '/app/dashboard'
+    removeLastRoute()
+    EventBus.$emit('close:login:modal')
+    router.push(toRoute)
     return Promise.resolve(result)
   }
 

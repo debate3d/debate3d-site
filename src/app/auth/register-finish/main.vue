@@ -1,6 +1,7 @@
 <script>
   import AppUpdateUser from '@/domains/user/view/app-update-user'
   import submitForm from '../../user/update/submit-form'
+  import { getLastRoute } from '@/helpers'
 
   export default {
     name: 'register-finish',
@@ -15,7 +16,9 @@
           .then(result => {
             loading.close()
             if (result) {
-              this.$router.push('/app/dashboard')
+              const lastRoute = getLastRoute()
+              const toRoute = lastRoute || '/app/dashboard'
+              return this.$router.push(toRoute)
             }
           })
           .catch(() => {

@@ -9,8 +9,7 @@ export default (context, data) => {
   const successArgs = [
     context,
     `Agora você é um assinante`,
-    'CreateSubscriber',
-    0
+    'CreateSubscriber'
   ]
 
   const errorArgs = [
@@ -24,6 +23,6 @@ export default (context, data) => {
       data
     }
   })
-    .then(mutationResolveHelper(...successArgs))
+    .then(() => mutationResolveHelper(...successArgs))
     .catch(mutationRejectHelper(...errorArgs))
 }

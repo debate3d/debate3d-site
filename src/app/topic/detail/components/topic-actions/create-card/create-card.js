@@ -24,8 +24,7 @@ export default context => {
   const successArgs = [
     context,
     `Você ganhou ${pontuation.USER.CREATE_CARD} pontos`,
-    'InsertCard',
-    10
+    'InsertCard'
   ]
 
   const errorArgs = [
@@ -34,7 +33,7 @@ export default context => {
   ]
 
   return mutationHelper(context, CreateCardMutation, data)
-    .then(mutationResolveHelper(...successArgs))
+    .then(() => mutationResolveHelper(...successArgs))
     .then(user => {
       EventBus.$emit('refresh:apollo')
       context.$parent.close()

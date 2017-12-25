@@ -15,4 +15,5 @@ export default curry((context, msgError, err) => {
     position: 'is-bottom-left',
     actionText: 'OK'
   })
+  return Promise.reject(new Error(err))
 })

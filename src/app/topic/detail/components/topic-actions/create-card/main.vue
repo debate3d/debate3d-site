@@ -34,7 +34,8 @@
           return false
         }
         const { uid } = this.user
-        return this.cards.some(card => card.author.uid === uid)
+        console.log(uid)
+        return !this.cards.some(card => card.author.uid === uid)
       },
       hasCreated () {
         const { uid } = this.user

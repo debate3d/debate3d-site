@@ -1,5 +1,5 @@
 <script>
-  import { isNull, isUndefined, isString, isEmpty } from 'lodash'
+  import { isNull, isUndefined, isString, isEmpty, toSafeInteger } from 'lodash'
 
   export default {
     name: 'avatar',
@@ -20,7 +20,7 @@
       url () {
         return this.isEmptyAvatarId
           ? 'static/avatars/placeholder.jpg'
-          : isString(this.number)
+          : toSafeInteger(this.number) === 0
             ? this.number
             : `static/avatars/avatar${this.number}.jpg`
       },

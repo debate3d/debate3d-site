@@ -19,6 +19,6 @@ export default [
     path: '/app/dashboard',
     name: 'dashboard-main',
     component: DashboardMain,
-    meta: { requireAuth: true }
+    meta: { requireAuth: false }
   }
 ]

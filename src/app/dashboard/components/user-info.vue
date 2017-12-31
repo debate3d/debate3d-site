@@ -1,4 +1,5 @@
 <script>
+  import { get } from 'lodash'
   import { mapGetters } from 'vuex'
 
   import AppAvatar from '@/components/avatar.vue'
@@ -14,8 +15,17 @@
     components: { AppAvatar, UserStats },
     computed: {
       ...mapGetters({
+        'isLogged': 'getIsLogged',
         'user': 'getUser'
-      })
+      }),
+      ponts () {
+        if (!this.isLogged) return 0
+        return get(this.user, 'ponts', 0)
+      },
+      username () {
+        if (!this.isLogged) return 'Visitante'
+        return get(this.user, 'name', '')
+      }
     },
     methods: {
       openStats () {
@@ -28,12 +38,14 @@
 <template lang="html">
   <div class="user-info">
     <app-avatar :number="user.avatar_id"></app-avatar>
+    <span class="subtitle" v-if="!isLogged"> {{username }} </span>
     <router-link
-      class="subtitle" :to="`/app/user/${user.nickname}/detail`">
-      {{ user.name }} </router-link>
+      v-else
+      class="subtitle"
+      :to="`/app/user/${user.nickname}/detail`"> {{ username }} </router-link>
     <span
       class="tag is-large is-info"
-      @click="openStats"> {{ user.ponts }} pontos </span>
+      @click="openStats"> {{ ponts }} pontos </span>
 
     <b-modal :active.sync="modalActive">
       <user-stats :uid="user.uid"/>

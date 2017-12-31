@@ -6,7 +6,7 @@ import Update from './update/main.vue'
 import Ranking from './ranking/main.vue'
 import TermsOfUse from './terms-of-use/main.vue'
 import BeSubscriber from './subscriber/main.vue'
-import Administrator from './administrator/main.vue'
+import Administrator from './administrator'
 import UserSearch from './search/main.vue'
 
 export default beforeEnter => [

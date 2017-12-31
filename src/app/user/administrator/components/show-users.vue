@@ -1,6 +1,6 @@
 <script>
   import BoxUser from '@/domains/user/view/box-user'
-  import update from './update-mutation'
+  import update from '../support/update-mutation'
 
   export default {
     name: 'show-users',

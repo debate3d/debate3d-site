@@ -6,13 +6,16 @@
         <ul>
           <li>
             <a
+              class="has-text-light"
               href="mailto:debated3d@gmail.com"
               title="Envie-nos um email">
               debated3d@gmail.com
             </a>
           </li>
           <li>
-            <router-link to="/app/terms-of-use">
+            <router-link
+              class="has-text-light"
+              to="/app/terms-of-use">
               Termos de uso da plataforma
             </router-link>
           </li>
@@ -23,16 +26,16 @@
       <div class="app-footer__social">
         <p class="subtitle"> Redes sociais </p>
         <div class="social-blocks">
-          <a href="https://www.facebook.com/debate3d/" target="_blank">
+          <a class="has-text-light" href="https://www.facebook.com/debate3d/" target="_blank">
             <b-icon icon="facebook fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
-          <a href="https://twitter.com/Debate_3D" target="_blank">
+          <a class="has-text-light" href="https://twitter.com/Debate_3D" target="_blank">
             <b-icon icon="twitter fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
-          <a href="https://www.instagram.com/debate_3d/" target="_blank">
+          <a class="has-text-light" href="https://www.instagram.com/debate_3d/" target="_blank">
             <b-icon icon="instagram fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
-          <a href="https://www.linkedin.com/company-beta/16230450/" target="_blank">
+          <a class="has-text-light" href="https://www.linkedin.com/company-beta/16230450/" target="_blank">
             <b-icon icon="linkedin fa-3x" size="is-large" pack="fa"></b-icon>
           </a>
         </div>
@@ -42,9 +45,14 @@
 </template>
 
 <style scoped lang="scss">
+  @import "../../../assets/sass/_extend";
+
   .app-footer {
-    background-color: #3a4752;
-    padding: 20px 0;
+    background-color: $menu-color;
+    padding: $space 0;
+    box-shadow: 0 -6px 6px -3px rgba(0,0,0,.2),
+                0 -10px 14px 1px rgba(0,0,0,.14),
+                0 -4px 18px 3px rgba(0,0,0,.12);
 
     .container {
       display: flex;

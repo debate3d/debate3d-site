@@ -7,7 +7,8 @@
         href="http://emanuelgdev.com.br"
         title="Ir para o site de Emanuel G Web Developer"> EmanuelGDev </a>
       e mantido por
-      <a href="https://www.facebook.com/AlanCostaSM"
+      <a
+        href="https://www.facebook.com/AlanCostaSM"
         title="Conheça o perfil de Alan Costa, mantenedor do site Debate3D">
           Alan Costa
       </a>
@@ -16,6 +17,8 @@
 </template>
 
 <style scoped lang="scss" media="screen">
+  @import "../../../assets/sass/_extend";
+
   .copyright {
     position: relative;
     width: 100%;
@@ -27,15 +30,18 @@
 
     hr {
       display: block;
-      margin: 20px auto;
+      margin: 0 auto $space auto;
       max-width: 1022px;
       height: 2px;
       background-color: whitesmoke;
     }
+
+    a {
+      color: #3399ee;
+    }
   }
 
   .copyright a:hover {
-    color: #00aa9e;
-    text-decoration: underline;
+    color: white;
   }
 </style>

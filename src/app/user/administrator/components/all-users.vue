@@ -1,5 +1,6 @@
 <script>
-  import userSearch from './user-search.gql'
+  import { get } from 'lodash'
+  import userSearch from '@/domains/user/services/querys/search-user.gql'
 
   export default {
     name: 'user-list',
@@ -9,17 +10,26 @@
           query: userSearch,
           variables () {
             return {
-              email: this.email
+              filter: {
+                email: this.email
+              }
             }
           }
         }
       }
     },
     data: () => ({
-      userSearch: [ ],
+      userSearch: {
+        records: []
+      },
       usersList: [ ],
       email: 'emanuel'
     }),
+    computed: {
+      users () {
+        return get(this.userSearch, 'records', [])
+      }
+    },
     watch: {
       usersList (newValue) {
         this.$emit('user-choose', newValue)
@@ -35,7 +45,7 @@
       <b-input v-model="email"></b-input>
     </b-field>
 
-    <div class="box-user" v-for="user in userSearch" :key="user.uid">
+    <div class="box-user" v-for="user in users" :key="user.uid">
       <div class="field">
         <b-checkbox
           v-model="usersList"

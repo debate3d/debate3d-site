@@ -1,12 +1,10 @@
 <script>
-  import AllUsers from './all-users'
-  import ShowUsers from './show-users.vue'
+  import * as Components from './components'
 
   export default {
     name: 'manager-users',
     components: {
-      AllUsers,
-      ShowUsers
+      ...Components
     },
     data: () => ({
       userChoose: [ ]

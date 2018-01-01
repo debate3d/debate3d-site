@@ -25,7 +25,8 @@
         isActive: false,
         selectedTags: [],
         file: {},
-        hasImageError: null
+        hasImageError: null,
+        is_private: false
       }
     },
     apollo: {
@@ -50,7 +51,8 @@
           title: this.title,
           content: this.content,
           id_position: this.id_position,
-          tag: this.tags
+          tag: this.tags,
+          is_private: this.is_private
         }
       }
     },
@@ -122,6 +124,24 @@
         </b-select>
       </b-field>
 
+      <b-field label="O tema é privado?" class="radio-button">
+        <div class="radio-buttons">
+          <b-radio-button v-model="is_private"
+            :native-value="true"
+            type="is-success">
+            <b-icon icon="check"></b-icon>
+            <span>Sim</span>
+          </b-radio-button>
+
+          <b-radio-button v-model="is_private"
+              :native-value="false"
+              type="is-danger">
+              <b-icon icon="close"></b-icon>
+              <span>Não</span>
+          </b-radio-button>
+        </div>
+      </b-field>
+
       <b-field
         label="Tags selecionadas"
         v-if="hasSelectedTags">
@@ -179,5 +199,13 @@
 
   .label {
     display: block;
+  }
+
+  .radio-button {
+    display: block;
+  }
+
+  .radio-buttons {
+    display: flex;
   }
 </style>

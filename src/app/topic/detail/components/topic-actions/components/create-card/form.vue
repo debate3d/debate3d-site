@@ -66,20 +66,22 @@
       </b-select>
     </b-field>
 
-    <b-field>
-      <b-radio-button v-model="has_video"
-        :native-value="true"
-        type="is-success">
-        <b-icon icon="check"></b-icon>
-        <span>Sim</span>
-      </b-radio-button>
+    <b-field label="Gostaria de inserir um vídeo?" class="radio-button">
+      <div class="radio-buttons">
+        <b-radio-button v-model="has_video"
+          :native-value="true"
+          type="is-success">
+          <b-icon icon="check"></b-icon>
+          <span>Sim</span>
+        </b-radio-button>
 
-      <b-radio-button v-model="has_video"
-          :native-value="false"
-          type="is-danger">
-          <b-icon icon="close"></b-icon>
-          <span>Não</span>
-      </b-radio-button>
+        <b-radio-button v-model="has_video"
+            :native-value="false"
+            type="is-danger">
+            <b-icon icon="close"></b-icon>
+            <span>Não</span>
+        </b-radio-button>
+      </div>
     </b-field>
 
     <b-field
@@ -99,3 +101,13 @@
       @click="createCard"> Criar card </button>
   </div>
 </template>
+
+<style media="screen" scoped>
+  .radio-button {
+    display: block;
+  }
+
+  .radio-buttons {
+    display: flex;
+  }
+</style>

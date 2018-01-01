@@ -5,6 +5,10 @@ Todas as anotações do projeto estarão neste documento
 O formato é baseado em [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 e esse projeto segue [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2018-01-01
++ Adicionado possibilidade de incorporar vídeo aos cards
++ Adicionado possibilidade de criar tema privado
+
 ## [1.2.0] - 2017-12-31
 + Corrigido bug na página de `Gerência de Usuários`
 + Atualizado visualização na tela de Dashboard, agora acessível a usuário visitante

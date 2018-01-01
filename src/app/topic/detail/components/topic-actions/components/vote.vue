@@ -19,9 +19,6 @@
       ...mapGetters({
         'user': 'getUser'
       }),
-      isLogged () {
-        return !isEmpty(this.user)
-      },
       positiveLength () {
         return this.topic.votes_topic.positive.length
       },
@@ -49,7 +46,7 @@
     },
     methods: {
       vote (vote) {
-        if (!this.isLogged) {
+        if (!this.$__isLogged) {
           return setLastRoute(this.$route.path)
             .then(() => {
               return EventBus.$emit('open:login:modal')
@@ -64,7 +61,7 @@
           return
         }
 
-        if (this.hasVoted || this.btnDisabled || !this.isLogged) return
+        if (this.hasVoted || this.btnDisabled || !this.$__isLogged) return
         const data = {
           uid_topic: this.topic.uid,
           vote

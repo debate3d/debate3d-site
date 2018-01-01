@@ -1,5 +1,4 @@
 <script>
-  import { isEmpty } from 'lodash'
   import { path } from 'ramda'
   import queySingleTopic from '@/domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '@/domains/topics/schemas'
@@ -25,9 +24,6 @@
       }
     },
     computed: {
-      isLogged () {
-        return !isEmpty(this.$store.state.auth.user)
-      },
       hasCards () {
         return this.topic.cards.count !== 0
       }
@@ -78,7 +74,7 @@
         <topic-actions :topic="topic"/>
       </div>
 
-      <hr v-if="isLogged && hasCards">
+      <hr v-if="$__isLogged && hasCards">
 
       <app-pagination
         v-if="hasCards"

@@ -1,5 +1,4 @@
 <script type="text/javascript">
-  import { isEmpty } from 'lodash'
   import { mapGetters } from 'vuex'
 
   import ListItem from './list-item.vue'
@@ -19,14 +18,8 @@
       ...mapGetters({
         'user': 'getUser'
       }),
-      isLogged () {
-        return !isEmpty(this.user)
-      },
       isSubscriber () {
         return this.user.subscriber
-      },
-      isAdministrator () {
-        return this.user.administrator
       }
     },
     methods: {
@@ -45,10 +38,10 @@
         :key="item.key"
         :route="item.route"
         :label="item.label"
-        v-if="item.needAuth(isLogged, isSubscriber, isAdministrator)"
+        v-if="item.needAuth($__isLogged, isSubscriber, $__isAdministrator)"
         @remove-class-menu="$emit('remove-class-menu')" />
 
-    <button class="button" @click="logout" v-if="isLogged"> Sair </button>
+    <button class="button" @click="logout" v-if="$__isLogged"> Sair </button>
     </ul>
   </aside>
 </template>

@@ -6,5 +6,6 @@ export default {
   getTopics: state => state.topics,
   getVotes: state => state.user.votes,
   getIsLogged: state => state.isLogged,
-  getIsModerator: state => state.user.is_moderator
+  getIsModerator: state => state.user.is_moderator,
+  getIsAdministrator: state => state.user.administrator
 }

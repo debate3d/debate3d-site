@@ -30,9 +30,6 @@
       }
     },
     computed: {
-      isLogged () {
-        return !isEmpty(this.$store.state.auth.user)
-      },
       isFormValid () {
         return !isEmpty(this.title) && !isEmpty(this.content) && !this.hasImageError
       },

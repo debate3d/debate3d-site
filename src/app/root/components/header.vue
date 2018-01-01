@@ -1,7 +1,6 @@
 <script>
   import LogoLetters from '@/components/logo-letters.vue'
   import { mapGetters } from 'vuex'
-  import { isEmpty } from 'lodash'
   import { setLastRoute } from '@/helpers'
 
   export default {
@@ -10,10 +9,7 @@
     computed: {
       ...mapGetters({
         'user': 'getUser'
-      }),
-      isLogged () {
-        return !isEmpty(this.user)
-      }
+      })
     },
     methods: {
       login () {
@@ -28,7 +24,7 @@
 
 <template lang="html">
   <header class="header">
-    <button class="button" v-if="!isLogged" @click="login"> Login </button>
+    <button class="button" v-if="!$__isLogged" @click="login"> Login </button>
     <logo-letters @click.native="$router.push('/app/dashboard')" />
   </header>
 </template>

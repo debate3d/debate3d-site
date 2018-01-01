@@ -15,15 +15,14 @@
     components: { AppAvatar, UserStats },
     computed: {
       ...mapGetters({
-        'isLogged': 'getIsLogged',
         'user': 'getUser'
       }),
       ponts () {
-        if (!this.isLogged) return 0
+        if (!this.$__isLogged) return 0
         return get(this.user, 'ponts', 0)
       },
       username () {
-        if (!this.isLogged) return 'Visitante'
+        if (!this.$__isLogged) return 'Visitante'
         return get(this.user, 'name', '')
       }
     },
@@ -38,7 +37,7 @@
 <template lang="html">
   <div class="user-info">
     <app-avatar :number="user.avatar_id"></app-avatar>
-    <span class="subtitle" v-if="!isLogged"> {{username }} </span>
+    <span class="subtitle" v-if="!$__isLogged"> {{username }} </span>
     <router-link
       v-else
       class="subtitle"

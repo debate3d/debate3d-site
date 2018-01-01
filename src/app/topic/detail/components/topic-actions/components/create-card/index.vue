@@ -1,6 +1,5 @@
 <script>
   import { mapGetters } from 'vuex'
-  import { isEmpty } from 'lodash'
 
   import AppForm from './form.vue'
   import { setLastRoute, EventBus } from '@/helpers'
@@ -23,14 +22,11 @@
       statePosition () {
         return this.card_position ? 'is-positive' : 'is-negative'
       },
-      isLogged () {
-        return !isEmpty(this.user)
-      },
       cards () {
         return this.topic.cards.records
       },
       canCreate () {
-        if (!this.isLogged) {
+        if (!this.$__isLogged) {
           return false
         }
         const { uid } = this.user
@@ -39,7 +35,7 @@
       },
       hasCreated () {
         const { uid } = this.user
-        return this.isLogged && this.cards.some(card => card.author.uid === uid)
+        return this.$__isLogged && this.cards.some(card => card.author.uid === uid)
       }
     },
     methods: {

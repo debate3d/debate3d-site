@@ -1,8 +1,8 @@
 <script>
   import { mapGetters } from 'vuex'
 
-  import favoriteMethod from '../../services/add-favorite'
-  import { btnFooterMixin } from '../mixins'
+  import favoriteMethod from '../../../../../services/add-favorite'
+  import { btnFooterMixin } from '../../../../mixins'
 
   export default {
     props: {

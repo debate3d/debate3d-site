@@ -1,7 +1,7 @@
 <script>
   import { cardView } from '@/domains/card/schemas'
   import queySingleCard from '@/domains/card/services/querys/single-card.gql'
-  import AppCardFooter from '@/domains/card/view/card/footer-card.vue'
+  import AppCardFooter from '@/domains/card/view/card/components/footer-card'
   import AppCardShared from './card-shared.vue'
   import { refreshQueryMixin } from '@/mixins'
 
@@ -30,6 +30,12 @@
       },
       url () {
         return location.href
+      },
+      hasVideo () {
+        return this.card.has_video || false
+      },
+      urlVideo () {
+        return this.card.url_video
       }
     },
     apollo: {
@@ -62,6 +68,15 @@
     </div>
 
     <div class="card-content content">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe
+          v-if="hasVideo"
+          class="embed-responsive-item"
+          :src="urlVideo"
+          frameborder="0"
+          gesture="media"
+          allowfullscreen></iframe>
+      </div>
       <blockquote>
         {{ card.content }}
       </blockquote>
@@ -99,6 +114,11 @@
   .card {
     max-width: 800px;
     margin: $space auto;
+
+    .embed-responsive iframe {
+      width: 100%;
+      min-height: 300px;
+    }
 
     &.is-positive {
       & .card-header,

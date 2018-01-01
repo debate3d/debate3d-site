@@ -1,11 +1,8 @@
 <script>
-  import CreateCard from './create-card/main.vue'
-  import VoteTopic from './vote-topic/main.vue'
+  import * as Components from './components'
 
   export default {
-    components: {
-      CreateCard, VoteTopic
-    },
+    components: { ...Components },
     props: {
       topic: {
         type: Object,

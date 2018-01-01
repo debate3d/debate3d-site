@@ -33,7 +33,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../../../assets/sass/_extend";
+  @import "../../../../../assets/sass/_extend";
 
   .card-header {
     align-items: center;

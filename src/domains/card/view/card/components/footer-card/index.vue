@@ -1,9 +1,6 @@
 <script>
-  import LikeButton from './like-button.vue'
-  import DislikeButton from './dislike-button.vue'
-  import FavoriteButton from './favorite-button.vue'
-  import Comments from './comments.vue'
-  import AppTabsModal from './modal-tabs.vue'
+  import * as Components from './buttons'
+  import AppTabsModal from '../modal-tabs.vue'
 
   export default {
     props: {
@@ -12,11 +9,8 @@
       isMyArgument: Boolean
     },
     components: {
-      LikeButton,
-      DislikeButton,
-      FavoriteButton,
-      Comments,
-      AppTabsModal
+      AppTabsModal,
+      ...Components
     },
     mounted () {
       if (window !== undefined && window.FB !== undefined) {
@@ -50,7 +44,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../../../assets/sass/_extend";
+  @import "../../../../../../assets/sass/_extend";
 
   .card-footer {
     width: 100%;

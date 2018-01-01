@@ -2,8 +2,8 @@
   import { mapGetters } from 'vuex'
   import { get } from 'lodash'
 
-  import reactionMethod from '../../services/add-reation'
-  import { btnFooterMixin } from '../mixins'
+  import reactionMethod from '../../../../../services/add-reation'
+  import { btnFooterMixin } from '../../../../mixins'
 
   export default {
     props: {

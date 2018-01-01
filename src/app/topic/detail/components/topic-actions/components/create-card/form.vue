@@ -1,6 +1,6 @@
 <script>
   import { mapGetters } from 'vuex'
-  import createCard from './create-card'
+  import { createCard } from '../../support'
 
   export default {
     props: {
@@ -11,6 +11,8 @@
     data () {
       return {
         content: '',
+        has_video: false,
+        url_video: null,
         position_card: true
       }
     },
@@ -62,6 +64,28 @@
           {{ option.label }}
         </option>
       </b-select>
+    </b-field>
+
+    <b-field>
+      <b-radio-button v-model="has_video"
+        :native-value="true"
+        type="is-success">
+        <b-icon icon="check"></b-icon>
+        <span>Sim</span>
+      </b-radio-button>
+
+      <b-radio-button v-model="has_video"
+          :native-value="false"
+          type="is-danger">
+          <b-icon icon="close"></b-icon>
+          <span>Não</span>
+      </b-radio-button>
+    </b-field>
+
+    <b-field
+      label="Url do vídeo" v-if="has_video"
+      message="Cole a url do vídeo aqui">
+      <b-input type="url" v-model="url_video"></b-input>
     </b-field>
 
     <b-field

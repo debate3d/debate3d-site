@@ -2,6 +2,7 @@ query getMiniCard ($uid: String!) {
   card(uid: $uid) {
   uid
   edited
+  has_video
   topic {
     uid
     title

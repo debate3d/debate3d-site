@@ -2,7 +2,7 @@
   import { mapGetters } from 'vuex'
   import { isEmpty } from 'lodash'
 
-  import voteAction from './vote'
+  import { voteTopic } from '../support'
   import { setLastRoute, EventBus } from '@/helpers'
 
   export default {
@@ -70,7 +70,7 @@
           vote
         }
         this.btnDisabled = true
-        voteAction(this, data)
+        return voteTopic(this, data)
       }
     }
   }

@@ -1,14 +1,13 @@
 <script>
   import { mapGetters } from 'vuex'
 
-  import AppCardHeader from './card-header.vue'
-  import AppCardFooter from './footer-card.vue'
+  import * as Components from './components'
 
   export default {
     props: {
       card: Object
     },
-    components: { AppCardHeader, AppCardFooter },
+    components: { ...Components },
     computed: {
       ...mapGetters({
         'user': 'getUser'
@@ -18,6 +17,12 @@
       },
       position () {
         return (this.card.position === 'true') ? 'is-positive' : 'is-negative'
+      },
+      hasVideo () {
+        return this.card.has_video || false
+      },
+      urlVideo () {
+        return this.card.url_video
       }
     }
   }
@@ -28,15 +33,28 @@
     <app-card-header :author="card.author"></app-card-header>
     <div class="card-content">
       <div class="content">
-        <p class="subtitle">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            v-if="hasVideo"
+            class="embed-responsive-item"
+            :src="urlVideo"
+            frameborder="0"
+            gesture="media"
+            allowfullscreen></iframe>
+        </div>
+
+        <p class="subtitle" v-if="!hasVideo">
           &ldquo;{{ argument }}&rdquo;
         </p>
-        <router-link :to="`/app/card/${card.uid}/detail`">
-          Ver mais detalhes
-        </router-link>
-        <router-link :to="`/app/topic/${card.topic.nickname}/detail`">
-          Tema: {{ card.topic.title }}
-        </router-link>
+
+        <div class="links">
+          <router-link :to="`/app/card/${card.uid}/detail`">
+            Ver mais detalhes
+          </router-link>
+          <router-link :to="`/app/topic/${card.topic.nickname}/detail`">
+            Tema: {{ card.topic.title }}
+          </router-link>
+        </div>
       </div>
     </div>
     <app-card-footer
@@ -50,6 +68,8 @@
   @import "../../../../assets/sass/_extend";
 
   .card {
+    display: flex;
+    flex-direction: column;
     background-color: $white;
     color: $text;
     width: 295px;
@@ -58,13 +78,20 @@
     margin: .8em auto;
     border-radius: 2px;
 
-    .card-footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    .embed-responsive iframe {
+      max-width: 100%;
     }
 
     .card-content {
+      position: relative;
+      flex-grow: 1;
+
+      .links {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+      }
+
       a {
         display: block;
         margin-bottom: 5px;
@@ -72,7 +99,6 @@
     }
 
     @media screen and (max-width: 768px) {
-      display: block;
       margin: 1em auto;
     }
 

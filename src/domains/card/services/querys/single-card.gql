@@ -6,6 +6,8 @@ query getSingleCard ($uid: String!) {
     created
     edited
     ponts
+    has_video
+    url_video
     topic {
       uid
       title

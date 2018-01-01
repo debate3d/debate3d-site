@@ -52,6 +52,11 @@ query getSingleTopic ($nickname: String, $page: Int!) {
       count
       records {
         uid
+        content
+        position
+        ponts
+        has_video
+        url_video
         topic {
           uid
           title
@@ -63,9 +68,6 @@ query getSingleTopic ($nickname: String, $page: Int!) {
           avatar_id
           nickname
         }
-        content
-        position
-        ponts
         deck {
           id
           user {

@@ -1,5 +1,10 @@
 <script>
+  import SharedLinks from '@/components/shared-links'
+
   export default {
+    components: {
+      SharedLinks
+    },
     props: {
       topic: {
         type: Object,
@@ -18,13 +23,27 @@
         v-for="tag in topic.tags"
         class="tag is-info"
         @click="$router.push(`/app/tag/${tag.label}`)"> {{ tag.label }} </span>
+
+      <div class="shared-topic">
+        <h3 class="title"> Compartilhe este tema </h3>
+        <shared-links />
+      </div>
     </div>
   </div>
 </template>
 
-<style media="screen" lang="scss">
+<style media="screen" lang="scss" scoped>
   .content {
     word-wrap: break-word;
     flex-grow: 1;
+
+    .shared-topic {
+      max-width: 600px;
+      margin-top: 20px;
+
+      .block-button {
+        justify-content: baseline;
+      }
+    }
   }
 </style>

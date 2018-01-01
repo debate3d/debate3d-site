@@ -2,12 +2,12 @@
   import { cardView } from '@/domains/card/schemas'
   import queySingleCard from '@/domains/card/services/querys/single-card.gql'
   import AppCardFooter from '@/domains/card/view/card/components/footer-card'
-  import AppCardShared from './card-shared.vue'
+  import SharedLinks from '@/components/shared-links'
   import { refreshQueryMixin } from '@/mixins'
 
   export default {
     name: 'card-view',
-    components: { AppCardFooter, AppCardShared },
+    components: { AppCardFooter, SharedLinks },
     mixins: [ refreshQueryMixin('card') ],
     data () {
       return {
@@ -95,7 +95,8 @@
     </div>
 
     <h3 class="subtitle has-text-centered"> Compartilhe este argumento </h3>
-    <app-card-shared />
+
+    <shared-links />
 
     <app-card-footer :card="card" />
 

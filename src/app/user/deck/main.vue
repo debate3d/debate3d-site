@@ -38,8 +38,9 @@
         return {
           query: queryMyDeck,
           variables () {
+            const uid = this.getUser.uid || ''
             return {
-              uid: this.getUser.uid
+              uid
             }
           },
           fetchPolicy: 'network-only'

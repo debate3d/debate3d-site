@@ -5,6 +5,10 @@ Todas as anotações do projeto estarão neste documento
 O formato é baseado em [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 e esse projeto segue [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2018-01-06
++ Atualizado páginas `Meus Cards` e `Meus Temas` para se adequarem a existência de temas privados.
++ Atualizado `vuex` para isso também.
+
 ## [1.3.0] - 2018-01-01
 + Adicionado possibilidade de incorporar vídeo aos cards
 + Adicionado possibilidade de criar tema privado

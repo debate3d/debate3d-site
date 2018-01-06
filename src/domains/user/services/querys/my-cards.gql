@@ -1,6 +1,6 @@
 query getMyCards ($uid: String!, $page: Int!) {
   user(uid: $uid) {
-    cards(page: $page) {
+    me_cards(page: $page) {
       count
       records {
         uid

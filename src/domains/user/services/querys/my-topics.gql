@@ -1,6 +1,6 @@
 query getMyTopics ($uid: String!, $page: Int!) {
   user(uid: $uid) {
-    topics(page: $page) {
+    me_topics(page: $page) {
       count
       records {
         uid

@@ -6,7 +6,7 @@
 
   export default {
     name: 'my-cards',
-    mixins: [ paginationMixin('cards', queryMyCards), loadingMixin('cards') ],
+    mixins: [ paginationMixin('me_cards', queryMyCards), loadingMixin('me_cards') ],
     components: { RenderCards }
   }
 </script>
@@ -16,10 +16,10 @@
     <h1 class="title has-text-centered"> Meus cards </h1>
     <app-pagination
       v-if="hasPagination"
-      :total="cards.count"
+      :total="me_cards.count"
       :current.sync="page"/>
     <render-cards
-      :cards="cards"
+      :cards="me_cards"
       successMessage=""
       errorMessage="Você não possui cards cadastros ainda"
       column="is-4"/>

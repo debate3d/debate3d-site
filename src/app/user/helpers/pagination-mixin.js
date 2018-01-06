@@ -47,8 +47,9 @@ export default (prop, query) => {
         return {
           query,
           variables () {
+            const uid = this.getUser.uid || ''
             return {
-              uid: this.getUser.uid,
+              uid: uid,
               page: this.page
             }
           },

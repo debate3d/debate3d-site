@@ -1,7 +1,7 @@
 export default {
   user: {},
-  cards: [],
-  topics: [],
+  me_cards: [],
+  me_topics: [],
   deck: [],
   reactions: [],
   votes: [],

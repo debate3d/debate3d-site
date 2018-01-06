@@ -23,7 +23,7 @@
       uid_topic
       vote
     }
-    cards(page: 1) {
+    me_cards(page: 1) {
       count
       records {
         uid

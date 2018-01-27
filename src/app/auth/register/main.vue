@@ -5,9 +5,11 @@ import LogoGlasses from '@/components/logo-glasses.vue'
 import register from './register'
 import loginWithFacebook from '../facebook/main.vue'
 import AppNickname from '@/domains/user/view/app-nickname/main.vue'
+import OfflineAlert from '@/support/mixins/offline-alert'
 
 export default {
   components: { LogoGlasses, loginWithFacebook, AppNickname },
+  mixins: [ OfflineAlert ],
   data () {
     return {
       nickname: '',
@@ -70,6 +72,9 @@ export default {
 
 <template>
   <div class="container">
+    <div class="notification offline is-warning" v-if="!online">
+      Ops, você está sem conexão
+    </div>
     <logo-glasses />
     <section class="form-section">
       <h1 class="title is-3 has-text-centered"> Login </h1>

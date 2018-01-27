@@ -4,9 +4,11 @@ import { isEmpty } from 'lodash'
 import LogoGlasses from '@/components/logo-glasses.vue'
 import login from './login'
 import loginWithFacebook from '../facebook/main.vue'
+import OfflineAlert from '@/support/mixins/offline-alert'
 
 export default {
   components: { LogoGlasses, loginWithFacebook },
+  mixins: [ OfflineAlert ],
   data () {
     return {
       email: '',
@@ -45,6 +47,9 @@ export default {
 
 <template>
   <div class="container">
+    <div class="notification offline is-warning" v-if="!online">
+      Ops, você está sem conexão
+    </div>
     <logo-glasses />
     <section class="form-section">
       <h1 class="title is-3 has-text-centered"> Login </h1>

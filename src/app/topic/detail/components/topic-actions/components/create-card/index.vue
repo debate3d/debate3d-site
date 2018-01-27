@@ -30,7 +30,6 @@
           return false
         }
         const { uid } = this.user
-        console.log(uid)
         return !this.cards.some(card => card.author.uid === uid)
       },
       hasCreated () {

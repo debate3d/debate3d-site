@@ -32,6 +32,6 @@ export default (context, data) => {
     })
     .catch(() => {
       context.btnDisabled = false
-      return Promise.reject(false)
+      return Promise.reject(new Error(false))
     })
 }

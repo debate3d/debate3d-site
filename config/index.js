@@ -1,15 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
-
-const isGithub = ({ argv }) => argv[2] === 'github'
-
-const isSite = ({ argv }) => argv[2] === 'site'
-
-const assetsPublicPath = isGithub(process)
-  ? '/debate3d-site/'
-  : isSite(process)
-    ? '/app/'
-    : '/'
+const path = require('path')
 
 module.exports = {
   build: {
@@ -17,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: assetsPublicPath,
+    assetsPublicPath: '/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -34,9 +24,9 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     assetsSubDirectory: 'static',
-    assetsPublicPath: assetsPublicPath,
+    assetsPublicPath: '/',
     proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

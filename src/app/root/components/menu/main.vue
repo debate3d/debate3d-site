@@ -7,7 +7,7 @@
   import { logout } from '@/services/auth'
 
   export default {
-    name: 'menu',
+    name: 'app-menu',
     components: { ListItem, LogoLetters },
     data () {
       return {

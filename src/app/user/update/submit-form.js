@@ -6,7 +6,7 @@ import { mutationResolveHelper, mutationRejectHelper } from '@/helpers'
 import { uploadImage } from '@/domains/cloudnary/services'
 
 export default context => {
-  const { is_moderator, file, bannerFile } = context.user
+  const { is_moderator, file, bannerFile } = context.user // eslint-disable-line
   const data = omit(context.user, ['email', 'is_moderator', 'file', 'bannerFile'])
 
   const resolve = [
@@ -44,8 +44,8 @@ export default context => {
             data
           }
         })
-        .then(mutationResolveHelper(...resolve))
-        .catch(mutationRejectHelper(...errors))
+          .then(mutationResolveHelper(...resolve))
+          .catch(mutationRejectHelper(...errors))
       })
   }
 

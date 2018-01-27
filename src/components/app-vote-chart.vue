@@ -13,7 +13,7 @@
     },
     mounted () {
       EventBus.$on('refresh:apollo', () => {
-        console.log(this.$forceUpdate)
+        this.$forceUpdate()
       })
 
       this.$nextTick(() => {

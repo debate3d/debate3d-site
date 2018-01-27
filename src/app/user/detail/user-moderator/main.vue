@@ -16,7 +16,7 @@
         return gt(get(this.user, 'cards.count'), 0)
       },
       bannerUrl () {
-        const { banner_url } = this.user
+        const { banner_url } = this.user // eslint-disable-line camelcase
         return isEmpty(banner_url)
           ? 'http://fakeimg.pl/1360x350/'
           : banner_url // eslint-disable-line camelcase

@@ -57,7 +57,7 @@
     },
     methods: {
       submit () {
-        const { avatar_id } = this.user
+        const { avatar_id } = this.user // eslint-disable-line
         if (isEmpty(avatar_id) && !isNumber(avatar_id) && !this.isModerator) {
           this.openSnackbar('Escolha um avatar')
           return

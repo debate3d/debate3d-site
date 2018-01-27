@@ -11,7 +11,6 @@
     }),
     methods: {
       choiseAvatar (value) {
-        console.log(value)
         this.selected = value
       }
     }

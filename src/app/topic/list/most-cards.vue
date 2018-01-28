@@ -4,7 +4,7 @@
 
   export default {
     name: 'most-cards',
-    mixins: [ paginationMixin('mostCards', mostCardsQuery) ]
+    mixins: [ paginationMixin('mostCards', mostCardsQuery, 'topics') ]
   }
 </script>
 

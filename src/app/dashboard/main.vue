@@ -2,6 +2,7 @@
   import { mapGetters } from 'vuex'
   import { isNull, isEmpty } from 'lodash'
   import * as Components from './components'
+  import { EventBus } from '@/helpers'
 
   export default {
     name: 'main-dashboard',
@@ -25,7 +26,7 @@
               duration: 10000,
               actionText: 'Escolher',
               onAction: () => {
-                this.$router.push('/app/me/update')
+                this.$router.push('/me/update')
               }
             })
           }
@@ -44,6 +45,9 @@
           }
         }
       }
+    },
+    mounted () {
+      EventBus.$emit('loading:toggle', false)
     }
   }
 </script>

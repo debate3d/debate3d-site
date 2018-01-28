@@ -49,7 +49,6 @@
             message: 'Você não pode reagir ao seu proprio card',
             type: 'is-warning'
           })
-          return
         }
       }
     }

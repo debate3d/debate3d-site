@@ -11,11 +11,11 @@ import setUser from '../../domains/user/services/set-user'
  */
 export default (payload, store) => {
   return http.post('/auth/users', payload)
-   .then(response => setToken(response.data.token))
-   .then(token => {
-     return setUser(store)
-       .then(result => {
-         return Promise.resolve(result)
-       })
-   })
+    .then(response => setToken(response.data.token))
+    .then(token => {
+      return setUser(store)
+        .then(result => {
+          return Promise.resolve(result)
+        })
+    })
 }

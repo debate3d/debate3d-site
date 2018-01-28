@@ -1,16 +1,19 @@
 <script>
+  import { isEmpty } from 'lodash'
   import { mapGetters } from 'vuex'
 
-  import queryMyDeck from '@/domains/user/services/querys/my-deck.gql'
+  import query from '@/domains/user/services/querys/my-deck.gql'
   import AppCard from '@/domains/card/view/card/main'
   import NegativeFace from '@/components/negative'
   import { miniCard } from '@/domains/card/schemas'
-  import { loadingMixin } from '@/mixins'
+  import { apolloLoadingMixin } from '@/support/mixins'
 
   export default {
     name: 'my-deck',
     components: { AppCard, NegativeFace },
-    mixins: [ loadingMixin('user') ],
+    mixins: [
+      apolloLoadingMixin(query, 'user', {}, 'data.user')
+    ],
     data () {
       return {
         user: {
@@ -31,19 +34,15 @@
           acc.push(item.card)
           return acc
         }, [])
-      }
-    },
-    apollo: {
-      user () {
+      },
+      hasData () {
+        if (this.isLoading) return true
+        return !isEmpty(this.user.deck)
+      },
+      apolloVariables () {
+        const uid = this.getUser.uid || ''
         return {
-          query: queryMyDeck,
-          variables () {
-            const uid = this.getUser.uid || ''
-            return {
-              uid
-            }
-          },
-          fetchPolicy: 'network-only'
+          uid
         }
       }
     }
@@ -60,7 +59,7 @@
         :card="card"></app-card>
     </div>
     <negative-face
-      v-if="deck.length === 0"
+      v-if="hasData"
       message="Você não possui cards guardados no deck ainda" />
   </div>
 </template>

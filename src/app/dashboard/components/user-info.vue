@@ -41,7 +41,7 @@
     <router-link
       v-else
       class="subtitle"
-      :to="`/app/user/${user.nickname}/detail`"> {{ username }} </router-link>
+      :to="`/user/${user.nickname}/detail`"> {{ username }} </router-link>
     <span
       class="tag is-large is-info"
       @click="openStats"> {{ ponts }} pontos </span>

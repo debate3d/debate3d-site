@@ -20,4 +20,7 @@ export default (context, payload, loading) => {
         }
       })
     })
+    .then(() => {
+      loading.close()
+    })
 }

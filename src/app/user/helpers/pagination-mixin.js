@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex'
 import { capitalize, isEmpty } from 'lodash'
+import { apolloLoadingMixin } from '@/support/mixins'
 
 import AppPagination from '@/components/pagination.vue'
 
@@ -17,6 +18,9 @@ export default (prop, query) => {
     components: {
       AppPagination
     },
+    mixins: [
+      apolloLoadingMixin(query, 'user', {}, 'data.user')
+    ],
     data () {
       return {
         user: {
@@ -40,20 +44,12 @@ export default (prop, query) => {
       },
       hasPagination () {
         return this[hasProp] && this.user[prop].count > 10
-      }
-    },
-    apollo: {
-      user () {
+      },
+      apolloVariables () {
+        const uid = this.getUser.uid || ''
         return {
-          query,
-          variables () {
-            const uid = this.getUser.uid || ''
-            return {
-              uid: uid,
-              page: this.page
-            }
-          },
-          fetchPolicy: 'network-only'
+          uid: uid,
+          page: this.page
         }
       }
     }

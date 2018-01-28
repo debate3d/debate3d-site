@@ -22,7 +22,7 @@
       <span
         v-for="tag in topic.tags"
         class="tag is-info"
-        @click="$router.push(`/app/tag/${tag.label}`)"> {{ tag.label }} </span>
+        @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
 
       <div class="shared-topic">
         <h3 class="title"> Compartilhe este tema </h3>

@@ -6,7 +6,7 @@
 
   export default {
     name: 'most-ponts',
-    mixins: [ paginationMixin('mostPonts', mostPontsQuery) ],
+    mixins: [ paginationMixin('mostPonts', mostPontsQuery, 'topics') ],
     methods: {
       emitCount (value) {
         this.$emit('set-count', value)

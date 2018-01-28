@@ -64,7 +64,7 @@
             window.scrollTo(0, 0)
             loading.close()
             this.reset()
-            this.$router.push('/app/dashboard')
+            this.$router.push('/dashboard')
           })
           .catch(err => {
             loading.close()

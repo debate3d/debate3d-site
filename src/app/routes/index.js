@@ -8,7 +8,7 @@ export default [
     path: '/app',
     name: 'dashboard',
     component: DashboardComponent,
-    redirect: '/app/dashboard',
+    redirect: '/dashboard',
     children: dashboardChildren
   }
 ]

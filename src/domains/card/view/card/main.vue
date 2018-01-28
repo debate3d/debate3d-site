@@ -48,10 +48,10 @@
         </p>
 
         <div class="links">
-          <router-link :to="`/app/card/${card.uid}/detail`">
+          <router-link :to="`/card/${card.uid}/detail`">
             Ver mais detalhes
           </router-link>
-          <router-link :to="`/app/topic/${card.topic.nickname}/detail`">
+          <router-link :to="`/topic/${card.topic.nickname}/detail`">
             Tema: {{ card.topic.title }}
           </router-link>
         </div>

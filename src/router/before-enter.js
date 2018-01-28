@@ -8,11 +8,9 @@ export default (to, from, next) => {
     next()
     return
   }
-  console.log(from.path)
   if (!isGuarded(to)) {
     next()
     return
   }
   next('/auth/login')
-  return
 }

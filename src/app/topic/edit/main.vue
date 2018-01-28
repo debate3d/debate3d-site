@@ -1,12 +1,19 @@
 <script>
   import { isEmpty } from 'lodash'
-  import { path } from 'ramda'
-  import queySingleTopic from '@/domains/topics/services/querys/single-topic.gql'
+  import query from '@/domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '@/domains/topics/schemas'
-  import { refreshQueryMixin, loadingMixin } from '@/mixins'
+  import { apolloLoadingMixin, refreshQueryMixin } from '@/support/mixins'
   import FileComponent from '@/components/file-component.vue'
   import * as FormComponents from '@/domains/topics/view/form-components'
   import submitForm from './submit-form'
+
+  const fn = (context, topic) => {
+    context.topic = { ...topic }
+    context.isLoading = false
+    context.title = topic.title
+    context.content = topic.content
+    context.url_image = topic.url_image
+  }
 
   export default {
     components: {
@@ -15,11 +22,10 @@
     },
     mixins: [
       refreshQueryMixin('topic'),
-      loadingMixin('topic')
+      apolloLoadingMixin(query, 'topic', schemaTopicView, 'data.topic', fn)
     ],
     data () {
       return {
-        topic: schemaTopicView,
         page: 1,
         isLoading: true,
         title: '',
@@ -41,27 +47,11 @@
           uid: this.topic.uid,
           content: this.content
         }
-      }
-    },
-    apollo: {
-      topic () {
+      },
+      apolloVariables () {
         return {
-          query: queySingleTopic,
-          update: path([ 'data', 'topic' ]),
-          result (queryResult) {
-            const topic = path([ 'data', 'topic' ], queryResult)
-            this.topic = { ...topic }
-            this.isLoading = false
-            this.title = topic.title
-            this.content = topic.content
-            this.url_image = topic.url_image
-          },
-          variables () {
-            return {
-              nickname: this.$route.params.topic,
-              page: this.page
-            }
-          }
+          nickname: this.$route.params.topic,
+          page: this.page
         }
       }
     },
@@ -78,7 +68,7 @@
           .then(user => {
             loading.close()
             window.scrollTo(0, 0)
-            this.$router.push(`/app/topic/${this.topic.nickname}/detail`)
+            this.$router.push(`/topic/${this.topic.nickname}/detail`)
           })
           .catch(console.error)
       }

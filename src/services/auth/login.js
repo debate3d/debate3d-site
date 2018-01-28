@@ -22,7 +22,7 @@ export default (payload, store, router) => {
             return
           }
           const lastRoute = getLastRoute()
-          const toRoute = lastRoute || '/app/dashboard'
+          const toRoute = lastRoute || '/dashboard'
           router.push(toRoute)
           return Promise.resolve(result)
         })

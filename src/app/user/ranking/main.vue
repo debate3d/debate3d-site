@@ -29,7 +29,7 @@
       </b-select>
 
       <p class="control">
-        <router-link to="/app/user/search" class="button is-primary">
+        <router-link to="/user/search" class="button is-primary">
           Pesquise usuários
         </router-link>
       </p>

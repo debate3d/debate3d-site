@@ -1,16 +1,19 @@
 <script>
   import { get } from 'lodash'
   import { schemaSingleUser } from '@/domains/user/schemas'
-  import { refreshQueryMixin, loadingMixin } from '@/mixins'
-  import querySingleUser from '@/domains/user/services/querys/single-user.gql'
+  import query from '@/domains/user/services/querys/single-user.gql'
   import CommonUserView from './user-common'
   import ModeratorUserView from './user-moderator'
+  import { refreshQueryMixin, apolloLoadingMixin } from '@/support/mixins'
 
   const isCommonUser = user => get(user, 'is_moderator', false) === false
 
   export default {
     name: 'user-view',
-    mixins: [ refreshQueryMixin('user'), loadingMixin('user') ],
+    mixins: [
+      refreshQueryMixin('user'),
+      apolloLoadingMixin(query, 'user', schemaSingleUser, 'data.user')
+    ],
     components: {
       CommonUserView,
       ModeratorUserView
@@ -24,22 +27,10 @@
     computed: {
       hasCommonUser () {
         return !this.isLoading && isCommonUser(this.user)
-      }
-    },
-    apollo: {
-      user () {
+      },
+      apolloVariables () {
         return {
-          query: querySingleUser,
-          variables () {
-            return {
-              nickname: this.$route.params.user
-            }
-          },
-          result (apolloResult) {
-            this.user = get(apolloResult, 'data.user', { })
-            this.isLoading = this.false
-          },
-          fetchPolicy: 'network-only'
+          nickname: this.$route.params.user
         }
       }
     }

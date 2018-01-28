@@ -28,7 +28,7 @@
     </b-field>
     <avatar :number="user.avatar_id" :length="30" />
     <router-link
-      :to="`/app/user/${user.nickname}/detail`"
+      :to="`/user/${user.nickname}/detail`"
       class="title is-5"> {{ user.name }} </router-link>
     <span class="tag is-info is-medium"> {{ user.ponts }} pts </span>
   </div>

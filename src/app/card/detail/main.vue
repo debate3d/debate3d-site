@@ -1,14 +1,17 @@
 <script>
   import { cardView } from '@/domains/card/schemas'
-  import queySingleCard from '@/domains/card/services/querys/single-card.gql'
+  import query from '@/domains/card/services/querys/single-card.gql'
   import AppCardFooter from '@/domains/card/view/card/components/footer-card'
   import SharedLinks from '@/components/shared-links'
-  import { refreshQueryMixin } from '@/mixins'
+  import { apolloLoadingMixin, refreshQueryMixin } from '@/support/mixins'
 
   export default {
     name: 'card-view',
     components: { AppCardFooter, SharedLinks },
-    mixins: [ refreshQueryMixin('card') ],
+    mixins: [
+      refreshQueryMixin('card'),
+      apolloLoadingMixin(query, 'card', cardView, 'data.card')
+    ],
     data () {
       return {
         card: cardView
@@ -36,17 +39,10 @@
       },
       urlVideo () {
         return this.card.url_video
-      }
-    },
-    apollo: {
-      card () {
+      },
+      apolloVariables () {
         return {
-          query: queySingleCard,
-          variables: () => {
-            return {
-              uid: this.$route.params.card
-            }
-          }
+          uid: this.$route.params.card
         }
       }
     },
@@ -90,8 +86,8 @@
           <span class="has-text-weight-bold"> {{ position }} </span>
         </li>
       </ul>
-      <p> Conheça mais um pouco o autor <router-link :to="`/app/user/${card.author.nickname}/detail`"> aqui </router-link> </p>
-      <p> <router-link :to="`/app/topic/${card.topic.nickname}/detail`"> Conheça o tema </router-link> </p>
+      <p> Conheça mais um pouco o autor <router-link :to="`/user/${card.author.nickname}/detail`"> aqui </router-link> </p>
+      <p> <router-link :to="`/topic/${card.topic.nickname}/detail`"> Conheça o tema </router-link> </p>
     </div>
 
     <h3 class="subtitle has-text-centered"> Compartilhe este argumento </h3>

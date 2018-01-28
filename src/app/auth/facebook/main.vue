@@ -17,12 +17,19 @@
         const args = [
           loading,
           this.$store,
-          this.$router
+          this.$router,
+          this
         ]
         window.FB.api('/me?fields=name,email,picture', login(...args))
       },
       onSignInError (error) {
         console.error(error)
+        this.$snackbar.open({
+          message: 'Não foi possível se logar',
+          type: 'is-danger',
+          position: 'is-top-left',
+          actionText: 'Ok'
+        })
       }
     }
   }

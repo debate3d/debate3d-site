@@ -2,10 +2,12 @@
   import AppUpdateUser from '@/domains/user/view/app-update-user'
   import submitForm from '../../user/update/submit-form'
   import { getLastRoute } from '@/helpers'
+  import OfflineAlert from '@/support/mixins/offline-alert'
 
   export default {
     name: 'register-finish',
     components: { AppUpdateUser },
+    mixins: [ OfflineAlert ],
     data: () => ({
       user: { }
     }),
@@ -17,7 +19,7 @@
             loading.close()
             if (result) {
               const lastRoute = getLastRoute()
-              const toRoute = lastRoute || '/app/dashboard'
+              const toRoute = lastRoute || '/dashboard'
               return this.$router.push(toRoute)
             }
           })
@@ -32,6 +34,9 @@
 
 <template>
   <div class="register-finish">
+    <div class="notification offline is-warning" v-if="!online">
+      Ops, você está sem conexão
+    </div>
     <h1 class="title has-text-centered">
       Só mais algumas informações
     </h1>

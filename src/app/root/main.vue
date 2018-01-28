@@ -1,9 +1,12 @@
 <script>
   import * as Components from './components'
+  import OfflineAlert from '@/support/mixins/offline-alert'
+  import AppLoading from '@/components/app-loading/loading'
 
   export default {
     name: 'app',
-    components: { ...Components },
+    mixins: [ OfflineAlert ],
+    components: { ...Components, AppLoading },
     data () {
       return {
         condition: false
@@ -29,6 +32,10 @@
 
 <template>
   <div class="app-dashboard" ref="container">
+    <div class="notification offline is-warning" v-if="!online">
+      Ops, você está sem conexão
+    </div>
+    <app-loading />
     <app-menu @remove-class-menu="removeClassMenu"/>
     <app-button @toogleMenu="toogleMenu" :text="buttonText"></app-button>
     <main>

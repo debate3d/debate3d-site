@@ -22,8 +22,8 @@
     return bothIsEmpty(context)
       ? setWidth('50%')
       : isEmpty(context[property])
-      ? setDisplayNone()
-      : setWidth(context[property] + '%')
+        ? setDisplayNone()
+        : setWidth(context[property] + '%')
   }
 
   export default {

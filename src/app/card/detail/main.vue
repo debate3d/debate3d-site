@@ -1,14 +1,17 @@
 <script>
   import { cardView } from '@/domains/card/schemas'
-  import queySingleCard from '@/domains/card/services/querys/single-card.gql'
+  import query from '@/domains/card/services/querys/single-card.gql'
   import AppCardFooter from '@/domains/card/view/card/components/footer-card'
   import SharedLinks from '@/components/shared-links'
-  import { refreshQueryMixin } from '@/mixins'
+  import { apolloLoadingMixin, refreshQueryMixin } from '@/support/mixins'
 
   export default {
     name: 'card-view',
     components: { AppCardFooter, SharedLinks },
-    mixins: [ refreshQueryMixin('card') ],
+    mixins: [
+      refreshQueryMixin('card'),
+      apolloLoadingMixin(query, 'card', cardView, 'data.card')
+    ],
     data () {
       return {
         card: cardView
@@ -36,17 +39,10 @@
       },
       urlVideo () {
         return this.card.url_video
-      }
-    },
-    apollo: {
-      card () {
+      },
+      apolloVariables () {
         return {
-          query: queySingleCard,
-          variables: () => {
-            return {
-              uid: this.$route.params.card
-            }
-          }
+          uid: this.$route.params.card
         }
       }
     },

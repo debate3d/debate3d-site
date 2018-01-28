@@ -9,7 +9,7 @@ import { getLastRoute, removeLastRoute, EventBus } from '@/helpers'
 
 const setTokenMethod = token => setToken(token)
 
-export default curry((loading, store, router, user) => {
+export default curry((loading, store, router, context, user) => {
   const finished = result => {
     loading.close()
     const isVerified = result.is_verified
@@ -37,5 +37,16 @@ export default curry((loading, store, router, user) => {
     .then(path(['data', 'LoginFacebook', 'token']))
     .then(setTokenMethod)
     .then(defineUser)
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      context.$snackbar.open({
+        message: 'Não foi possível se logar',
+        type: 'is-danger',
+        position: 'is-top-left',
+        actionText: 'Ok'
+      })
+    })
+    .then(() => {
+      loading.close()
+    })
 })

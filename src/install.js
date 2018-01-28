@@ -3,6 +3,7 @@ import Buefy from 'buefy'
 import VueApollo from 'vue-apollo'
 import SocialSharing from 'vue-social-sharing'
 import SetUserInfoPlugin from './domains/user/plugins/set-user-info'
+import AppLoadingPlugin from './support/plugins/loading'
 
 /**
  * install all plugins
@@ -19,4 +20,6 @@ export default Vue => {
   Vue.use(SocialSharing)
 
   Vue.use(SetUserInfoPlugin)
+
+  Vue.use(AppLoadingPlugin)
 }

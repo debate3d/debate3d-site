@@ -1,6 +1,6 @@
 import { schemaTopicBox } from '@/domains/topics/schemas'
 import { boxTopic } from '@/domains/topics/view'
-import { loadingMixin } from '@/mixins'
+import { apolloLoadingMixin } from '@/support/mixins'
 
 /**
  * mixin to abstract pagination
@@ -10,7 +10,7 @@ import { loadingMixin } from '@/mixins'
  */
 export default (prop, query) => ({
   components: { boxTopic },
-  mixins: [ loadingMixin('topics') ],
+  mixins: [ apolloLoadingMixin(query, 'topics', {}, 'data.topics') ],
   props: {
     page: {
       type: Number,
@@ -27,18 +27,10 @@ export default (prop, query) => ({
   computed: {
     allTopics () {
       return this.topics[prop]
-    }
-  },
-  apollo: {
-    topics () {
+    },
+    apolloVariables () {
       return {
-        query,
-        variables () {
-          return {
-            page: this.page
-          }
-        },
-        fetchPolicy: 'network-only'
+        page: this.page
       }
     }
   }

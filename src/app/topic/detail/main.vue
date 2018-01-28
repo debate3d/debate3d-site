@@ -1,16 +1,23 @@
 <script>
-  import { path } from 'ramda'
-  import queySingleTopic from '@/domains/topics/services/querys/single-topic.gql'
+  import query from '@/domains/topics/services/querys/single-topic.gql'
   import { schemaTopicView } from '@/domains/topics/schemas'
 
   import RenderCards from '@/components/render-cards/main.vue'
   import AppPagination from '@/components/pagination.vue'
   import * as TopicComponents from './components'
 
-  import { refreshQueryMixin, loadingMixin } from '@/mixins'
+  import { refreshQueryMixin } from '@/mixins'
+  import { apolloLoadingMixin } from '@/support/mixins'
+
+  const fn = context => {
+    context.isLoading = false
+  }
 
   export default {
-    mixins: [ refreshQueryMixin('topic'), loadingMixin('topic') ],
+    mixins: [
+      refreshQueryMixin('topic'),
+      apolloLoadingMixin(query, 'topic', schemaTopicView, 'data.topic', fn)
+    ],
     components: {
       RenderCards,
       AppPagination,
@@ -18,7 +25,6 @@
     },
     data () {
       return {
-        topic: schemaTopicView,
         page: 1,
         isLoading: true
       }
@@ -26,23 +32,11 @@
     computed: {
       hasCards () {
         return this.topic.cards.count !== 0
-      }
-    },
-    apollo: {
-      topic () {
+      },
+      apolloVariables () {
         return {
-          query: queySingleTopic,
-          update: path([ 'data', 'topic' ]),
-          result (queryResult) {
-            this.topic = path([ 'data', 'topic' ], queryResult)
-            this.isLoading = false
-          },
-          variables () {
-            return {
-              nickname: this.$route.params.topic,
-              page: this.page
-            }
-          }
+          nickname: this.$route.params.topic,
+          page: this.page
         }
       }
     }

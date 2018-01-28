@@ -22,7 +22,7 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
         result (apolloResult) {
           const result = get(apolloResult, path, defaultValue)
           this[apolloKey] = result
-          EventBus.$emit('loading:toggle', false)
+          this.emitCloseLoading()
           this.isLoading = false
           if (isFunction(fn)) {
             fn(this, result)
@@ -32,7 +32,7 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
           return this.apolloVariables
         },
         error (err) {
-          EventBus.$emit('loading:toggle', false)
+          this.emitCloseLoading()
           EventBus.$emit('loading:set-message', err.message)
           this.isLoading = false
           this.$snackbar.open({
@@ -44,8 +44,23 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
       }
     }
   },
+  methods: {
+    emitCloseLoading () {
+      setTimeout(() => {
+        EventBus.$emit('loading:toggle', false)
+      }, 200)
+    }
+  },
+  created () {
+    EventBus.$emit('loading:toggle', true)
+  },
   beforeRouteEnter (to, from, next) {
     EventBus.$emit('loading:toggle', true)
+    if (from.name) {
+      return setTimeout(() => {
+        next()
+      }, 600)
+    }
     next()
   }
 })

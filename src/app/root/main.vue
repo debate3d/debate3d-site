@@ -9,8 +9,7 @@
     components: { ...Components, AppLoading },
     data () {
       return {
-        condition: false,
-        isActive: false
+        condition: false
       }
     },
     computed: {

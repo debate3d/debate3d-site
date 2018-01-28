@@ -47,7 +47,7 @@
       }
     },
     mounted () {
-      EventBus.$emit('loading:toggle', true)
+      EventBus.$emit('loading:toggle', false)
     }
   }
 </script>

@@ -7,17 +7,13 @@
       message: 'Carregando dados...',
       isActive: false
     }),
-    watch: {
-      isActive () {
-        this.toggleHTMLClass()
-      }
-    },
     methods: {
       close () {
         this.isActive = false
       },
       toggleHTMLClass () {
-        document.documentElement.classList.toggle('is-loading')
+        // TODO: implement logic
+        // document.documentElement.classList.toggle('is-loading')
       },
       onLoadingToggle (bool) {
         this.isActive = bool

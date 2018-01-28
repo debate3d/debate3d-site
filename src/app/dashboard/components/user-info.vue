@@ -4,7 +4,6 @@
 
   import AppAvatar from '@/components/avatar.vue'
   import UserStats from '@/domains/user/view/user-stats/main.vue'
-  import { EventBus } from '@/helpers'
 
   export default {
     name: 'dashboard-user-info',
@@ -25,14 +24,6 @@
       username () {
         if (!this.$__isLogged) return 'Visitante'
         return get(this.user, 'name', '')
-      }
-    },
-    watch: {
-      user: {
-        handler () {
-          EventBus.$emit('loading:toggle', false)
-        },
-        deep: true
       }
     },
     methods: {

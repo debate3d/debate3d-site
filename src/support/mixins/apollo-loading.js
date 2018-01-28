@@ -12,7 +12,8 @@ import { EventBus } from '@/helpers'
  */
 export default (query, apolloKey, defaultValue, path, fn) => ({
   data: () => ({
-    [apolloKey]: defaultValue
+    [apolloKey]: defaultValue,
+    isLoading: true
   }),
   apollo: {
     [apolloKey] () {
@@ -22,6 +23,7 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
           const result = get(apolloResult, path, defaultValue)
           this[apolloKey] = result
           EventBus.$emit('loading:toggle', false)
+          this.isLoading = false
           if (isFunction(fn)) {
             fn(this, result)
           }
@@ -32,6 +34,11 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
         error (err) {
           EventBus.$emit('loading:toggle', false)
           EventBus.$emit('loading:set-message', err.message)
+          this.isLoading = false
+          this.$snackbar.open({
+            title: 'Houve um problema no carregamento dos dados',
+            type: 'is-danger'
+          })
         },
         fetchPolicy: 'network-only'
       }

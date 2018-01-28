@@ -5,7 +5,7 @@
   export default {
     extends: RankingWrapper,
     mixins: [
-      rankingMixin('moderators', 'all-moderators', allModerators)
+      rankingMixin('moderators', 'all-moderators', allModerators, 'data.moderators')
     ]
   }
 </script>

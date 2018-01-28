@@ -5,9 +5,7 @@
   import RenderCards from '@/components/render-cards/main.vue'
   import AppPagination from '@/components/pagination.vue'
   import * as TopicComponents from './components'
-
-  import { refreshQueryMixin } from '@/mixins'
-  import { apolloLoadingMixin } from '@/support/mixins'
+  import { apolloLoadingMixin, refreshQueryMixin } from '@/support/mixins'
 
   const fn = context => {
     context.isLoading = false

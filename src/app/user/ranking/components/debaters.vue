@@ -5,7 +5,7 @@
   export default {
     extends: RankingWrapper,
     mixins: [
-      rankingMixin('debaters', 'all-debaters', allDebaters)
+      rankingMixin('debaters', 'all-debaters', allDebaters, 'data.debaters')
     ]
   }
 </script>

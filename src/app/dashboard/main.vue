@@ -2,6 +2,7 @@
   import { mapGetters } from 'vuex'
   import { isNull, isEmpty } from 'lodash'
   import * as Components from './components'
+  import { EventBus } from '@/helpers'
 
   export default {
     name: 'main-dashboard',
@@ -44,6 +45,9 @@
           }
         }
       }
+    },
+    mounted () {
+      EventBus.$emit('loading:toggle', false)
     }
   }
 </script>

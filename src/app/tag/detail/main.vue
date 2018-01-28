@@ -1,24 +1,15 @@
 <script>
+  import { head } from 'lodash'
   import { boxTopic } from '@/domains/topics/view'
   import { schemaTopicBox } from '@/domains/topics/schemas'
-  import searchTag from '@/domains/tag/services/querys/search-tag.gql'
+  import query from '@/domains/tag/services/querys/search-tag.gql'
+  import { apolloLoadingMixin } from '@/support/mixins'
 
   export default {
     components: { boxTopic },
-    computed: {
-      topics () {
-        return this.tagSearch.reduce((acc, tag) => {
-          acc.push(tag.topics)
-          return acc
-        }, [])[0]
-      },
-      countTopics () {
-        return this.topics.length
-      },
-      tagName () {
-        return this.tagSearch[0].label
-      }
-    },
+    mixins: [
+      apolloLoadingMixin(query, 'tagSearch', schemaTopicBox, 'data.tagSearch')
+    ],
     data () {
       return {
         tagSearch: [
@@ -30,15 +21,22 @@
         ]
       }
     },
-    apollo: {
-      tagSearch () {
+    computed: {
+      topics () {
+        return head(this.tagSearch.reduce((acc, tag) => {
+          acc.push(tag.topics)
+          return acc
+        }, []))
+      },
+      countTopics () {
+        return this.topics.length
+      },
+      tagName () {
+        return this.tagSearch[0].label
+      },
+      apolloVariables () {
         return {
-          query: searchTag,
-          variables () {
-            return {
-              label: this.$route.params.label
-            }
-          }
+          label: this.$route.params.label
         }
       }
     }

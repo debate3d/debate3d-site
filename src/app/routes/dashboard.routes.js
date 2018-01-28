@@ -16,7 +16,7 @@ export default [
   ...tagRoutes(beforeEnter),
   finishRoute,
   {
-    path: '/app/dashboard',
+    path: '/dashboard',
     name: 'dashboard-main',
     component: DashboardMain,
     meta: { requireAuth: false }

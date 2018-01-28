@@ -25,7 +25,7 @@
 <template lang="html">
   <header class="header">
     <button class="button" v-if="!$__isLogged" @click="login"> Login </button>
-    <logo-letters @click.native="$router.push('/app/dashboard')" />
+    <logo-letters @click.native="$router.push('/dashboard')" />
   </header>
 </template>
 

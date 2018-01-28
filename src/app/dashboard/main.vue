@@ -26,7 +26,7 @@
               duration: 10000,
               actionText: 'Escolher',
               onAction: () => {
-                this.$router.push('/app/me/update')
+                this.$router.push('/me/update')
               }
             })
           }
@@ -47,7 +47,7 @@
       }
     },
     mounted () {
-      EventBus.$emit('loading:toggle', false)
+      EventBus.$emit('loading:toggle', true)
     }
   }
 </script>

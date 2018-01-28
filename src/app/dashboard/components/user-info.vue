@@ -4,6 +4,7 @@
 
   import AppAvatar from '@/components/avatar.vue'
   import UserStats from '@/domains/user/view/user-stats/main.vue'
+  import { EventBus } from '@/helpers'
 
   export default {
     name: 'dashboard-user-info',
@@ -26,6 +27,14 @@
         return get(this.user, 'name', '')
       }
     },
+    watch: {
+      user: {
+        handler () {
+          EventBus.$emit('loading:toggle', false)
+        },
+        deep: true
+      }
+    },
     methods: {
       openStats () {
         this.modalActive = true
@@ -41,7 +50,7 @@
     <router-link
       v-else
       class="subtitle"
-      :to="`/app/user/${user.nickname}/detail`"> {{ username }} </router-link>
+      :to="`/user/${user.nickname}/detail`"> {{ username }} </router-link>
     <span
       class="tag is-large is-info"
       @click="openStats"> {{ ponts }} pontos </span>

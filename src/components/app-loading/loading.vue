@@ -5,7 +5,7 @@
     name: 'app-loading',
     data: () => ({
       message: 'Carregando dados...',
-      isActive: true
+      isActive: false
     }),
     watch: {
       isActive () {

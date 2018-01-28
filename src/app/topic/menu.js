@@ -1,11 +1,11 @@
 export default [
   {
-    route: '/app/topic/list',
+    route: '/topic/list',
     label: 'Temas',
     needAuth: bool => bool || true
   },
   {
-    route: '/app/topic/new',
+    route: '/topic/new',
     label: 'Criar tema',
     needAuth: (bool, subscriber) => bool && true && subscriber
   }

@@ -68,7 +68,7 @@
           .then(user => {
             loading.close()
             window.scrollTo(0, 0)
-            this.$router.push(`/app/topic/${this.topic.nickname}/detail`)
+            this.$router.push(`/topic/${this.topic.nickname}/detail`)
           })
           .catch(console.error)
       }

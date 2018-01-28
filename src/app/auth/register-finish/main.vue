@@ -19,7 +19,7 @@
             loading.close()
             if (result) {
               const lastRoute = getLastRoute()
-              const toRoute = lastRoute || '/app/dashboard'
+              const toRoute = lastRoute || '/dashboard'
               return this.$router.push(toRoute)
             }
           })

@@ -34,7 +34,7 @@
       </b-select>
 
       <p class="control">
-        <router-link to="/app/topic/search" class="button is-primary">
+        <router-link to="/topic/search" class="button is-primary">
           Pesquise temas
         </router-link>
       </p>

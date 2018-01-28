@@ -15,7 +15,7 @@
           <li>
             <router-link
               class="has-text-light"
-              to="/app/terms-of-use">
+              to="/terms-of-use">
               Termos de uso da plataforma
             </router-link>
           </li>

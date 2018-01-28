@@ -6,31 +6,31 @@ import EditTopic from './edit/main.vue'
 
 export default beforeEnter => [
   {
-    path: '/app/topic/list',
+    path: '/topic/list',
     name: 'topic-list',
     component: TopicList,
     meta: { requireAuth: false }
   },
   {
-    path: '/app/topic/:topic/detail',
+    path: '/topic/:topic/detail',
     name: 'topic-detail',
     component: TopicDetail,
     meta: { requireAuth: false }
   },
   {
-    path: '/app/topic/new',
+    path: '/topic/new',
     name: 'topic-new',
     component: NewTopic,
     meta: { requireAuth: true }
   },
   {
-    path: '/app/topic/search',
+    path: '/topic/search',
     name: 'topic-search',
     component: SearchTopic,
     meta: { requireAuth: false }
   },
   {
-    path: '/app/topic/:topic/edit',
+    path: '/topic/:topic/edit',
     name: 'topic-edit',
     component: EditTopic,
     meta: { requireAuth: true }

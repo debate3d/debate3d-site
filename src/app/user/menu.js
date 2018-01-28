@@ -1,31 +1,31 @@
 export default [
   {
-    route: '/app/users/administrator',
+    route: '/users/administrator',
     label: 'Gerencia de usuários',
     needAuth: (bool, _, administrator) => bool && administrator
   },
   {
-    route: '/app/ranking',
+    route: '/ranking',
     label: 'Ranking de usuários',
     needAuth: bool => bool || true
   },
   {
-    route: '/app/me/cards',
+    route: '/me/cards',
     label: 'Meus cards',
     needAuth: bool => bool && true
   },
   {
-    route: '/app/me/topics',
+    route: '/me/topics',
     label: 'Meus temas',
     needAuth: bool => bool && true
   },
   {
-    route: '/app/me/deck',
+    route: '/me/deck',
     label: 'Meu deck',
     needAuth: bool => bool && true
   },
   {
-    route: '/app/me/update',
+    route: '/me/update',
     label: 'Atualizar dados',
     needAuth: bool => bool && true
   }

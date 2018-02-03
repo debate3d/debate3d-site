@@ -94,9 +94,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
+        from: path.resolve(__dirname, '../static/firebase-messaging-sw.js'),
+        to: path.resolve(__dirname, '../dist')
+      },
+      {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
-        ignore: ['.*']
+        ignore: ['.*', 'firebase-messaging-sw.js']
       }
     ]),
     new Dotenv(),

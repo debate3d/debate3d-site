@@ -2,6 +2,8 @@
   import * as Components from './components'
   import OfflineAlert from '@/support/mixins/offline-alert'
   import AppLoading from '@/components/app-loading/loading'
+  import { refreshToken } from '@/domains/firebase/messaging/helpers'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'app',
@@ -13,6 +15,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        isLogged: 'getIsLogged'
+      }),
       buttonText () {
         return this.condition ? 'Fechar' : 'Menu'
       }
@@ -25,6 +30,11 @@
       removeClassMenu () {
         this.condition = false
         this.$refs.container.classList.remove('is-active')
+      }
+    },
+    mounted () {
+      if (this.isLogged) {
+        refreshToken()
       }
     }
   }

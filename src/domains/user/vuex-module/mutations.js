@@ -26,7 +26,6 @@ export default {
     store.token = token
   },
   [ TYPES.SET_TOKEN_DEVICE ] (store, tokenDevice) {
-    console.log(tokenDevice)
     store.tokenDevice = tokenDevice
   }
 }

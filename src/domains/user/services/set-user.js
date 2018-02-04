@@ -18,7 +18,6 @@ export default store => {
       store.dispatch('getCards', cards)
       store.dispatch('getVotes', votes)
       store.dispatch('isLogged', true)
-      store.commit('SET_TOKEN_DEVICE', token_device)
       return Promise.resolve(user)
     })
     .catch(error => {

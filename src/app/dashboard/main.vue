@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   import { isNull, isEmpty } from 'lodash'
   import * as Components from './components'
   import { EventBus } from '@/helpers'
@@ -15,15 +15,9 @@
         return this.user.is_verified
       }
     },
-    methods: {
-      ...mapActions({
-        setTokenDevice: 'setTokenDevice'
-      })
-    },
     watch: {
       user () {
         if (!isEmpty(this.user)) {
-          this.setTokenDevice()
           if (isNull(this.user.avatar_id)) {
             this.$snackbar.open({
               message: 'Ainda não tem um avatar?? Escolha o seu!',

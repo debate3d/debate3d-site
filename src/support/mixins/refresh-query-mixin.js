@@ -1,5 +1,6 @@
 import { EventBus } from '@/helpers'
 import { isEmpty } from 'lodash'
+import setUser from '@/domains/user/services/set-user'
 
 /**
  * mixin for refresh apollo querys
@@ -17,6 +18,10 @@ export default keyApollo => ({
   mounted () {
     EventBus.$on('refresh:apollo', payload => {
       this.refreshQuery()
+    })
+
+    EventBus.$on('refresh:apollo:user', payload => {
+      setUser(this.$store)
     })
   }
 })

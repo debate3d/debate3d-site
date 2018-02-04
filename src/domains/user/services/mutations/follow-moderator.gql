@@ -1,0 +1,3 @@
+mutation FollowModerator ($data: InputToFollowerModerator!) {
+  FollowModerator (data: $data)
+}

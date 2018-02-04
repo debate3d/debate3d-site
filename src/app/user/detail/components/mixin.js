@@ -8,6 +8,11 @@ export default (name, type = 'simple', prop) => {
         type: Object,
         required: true
       }
+    },
+    computed: {
+      isModerator () {
+        return this.user.is_moderator || false
+      }
     }
   }
 

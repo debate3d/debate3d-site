@@ -14,6 +14,10 @@ query getSingleUser ($nickname: String) {
     twitter
     youtube
     is_moderator
+    followers {
+      uid_user
+      uid_moderator
+    }
     topics(page: 1) {
       count
       records {

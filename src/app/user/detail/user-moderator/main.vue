@@ -15,6 +15,9 @@
       hasCards () {
         return gt(get(this.user, 'cards.count'), 0)
       },
+      hasTopics () {
+        return gt(get(this.user, 'topics.count'), 0)
+      },
       bannerUrl () {
         const { banner_url } = this.user // eslint-disable-line camelcase
         return isEmpty(banner_url)
@@ -49,11 +52,17 @@
     <template v-if="hasCards">
       <div class="columns">
 
-        <div class="column is-6">
+        <div
+          v-if="hasCards"
+          class="column"
+          :class="{ 'is-6': hasCards && hasTopics }">
           <user-cards :user="user" />
         </div>
 
-        <div class="column is-6">
+        <div
+          v-if="hasTopics"
+          class="column"
+          :class="{ 'is-6': hasTopics && hasCards }">
           <user-topics :user="user" :col="10" />
         </div>
       </div>

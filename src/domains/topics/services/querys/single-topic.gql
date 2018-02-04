@@ -5,6 +5,10 @@ query getSingleTopic ($nickname: String, $page: Int!) {
     content
     nickname
     url_image
+    followers {
+      uid_user
+      uid_topic
+    }
     position {
       positive
       negative

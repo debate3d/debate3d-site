@@ -18,7 +18,6 @@ export default store => {
       .then(_ => {
         return setUser(store)
           .then(user => {
-            router.push('/dashboard')
             store.dispatch('setTokenDevice')
           })
           .catch(err => {

@@ -10,5 +10,8 @@ export default {
   getIsLogged: state => !isEmpty(state.token),
   getIsModerator: state => state.user.is_moderator,
   getIsAdministrator: state => state.user.administrator,
-  isPushEnable: state => !isEmpty(state.user.token_device)
+  isPushEnable: state => !isEmpty(state.user.token_device),
+  getTopicsFollowed: state => state.user.topics_followed || [],
+  getModeratorsFollowed: state => state.user.moderators_followed || [],
+  getFollowers: state => state.user.followers || []
 }

@@ -12,6 +12,8 @@ import router from '../../../router'
 export default store => {
   const token = getToken()
   if (!isEmpty(token)) {
+    store.dispatch('setToken', token)
+
     setToken(token)
       .then(_ => {
         setUser(store)

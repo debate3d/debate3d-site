@@ -21,5 +21,12 @@ export default {
   },
   [ TYPES.IS_LOGGED ] (store, state) {
     store.isLogged = state
+  },
+  [ TYPES.SET_TOKEN ] (store, token) {
+    store.token = token
+  },
+  [ TYPES.SET_TOKEN_DEVICE ] (store, tokenDevice) {
+    console.log(tokenDevice)
+    store.tokenDevice = tokenDevice
   }
 }

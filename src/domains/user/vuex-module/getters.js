@@ -7,7 +7,7 @@ export default {
   getCards: state => state.me_cards,
   getTopics: state => state.me_topics,
   getVotes: state => state.user.votes,
-  getIsLogged: state => state.isLogged,
+  getIsLogged: state => !isEmpty(state.token),
   getIsModerator: state => state.user.is_moderator,
   getIsAdministrator: state => state.user.administrator,
   isPushEnable: state => !isEmpty(state.user.token_device)

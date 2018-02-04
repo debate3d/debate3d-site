@@ -1,0 +1,3 @@
+mutation UpdateUserTokenDevice ($data: InputToUpdateTokenDevice!) {
+  UpdateUserTokenDevice (data: $data)
+}

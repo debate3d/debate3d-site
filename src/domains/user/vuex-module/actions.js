@@ -1,4 +1,5 @@
 import * as TYPES from './mutation-types'
+import { requestPermission } from '../../firebase/messaging/helpers'
 
 export default {
   setUser (store, obj) {
@@ -21,5 +22,15 @@ export default {
   },
   isLogged (store, value) {
     store.commit(TYPES.IS_LOGGED, value)
+  },
+  setToken (store, token) {
+    store.commit(TYPES.SET_TOKEN, token)
+  },
+  setTokenDevice (store) {
+    return requestPermission(store.state.user)
+      .then(tokenDevice => {
+        store.commit(TYPES.SET_TOKEN_DEVICE, tokenDevice)
+        return tokenDevice // keep Promise chained
+      })
   }
 }

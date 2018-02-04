@@ -5,5 +5,7 @@ export default {
   deck: [],
   reactions: [],
   votes: [],
-  isLogged: false
+  isLogged: false,
+  token: '',
+  tokenDevice: ''
 }

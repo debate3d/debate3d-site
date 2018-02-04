@@ -18,6 +18,7 @@
     is_moderator
     is_verified
     is_moderator_verified
+    token_device
     votes {
       id
       uid_topic

@@ -1,3 +1,5 @@
+import { isEmpty } from 'lodash'
+
 export default {
   getUser: state => state.user,
   getDeck: state => state.deck,
@@ -7,5 +9,6 @@ export default {
   getVotes: state => state.user.votes,
   getIsLogged: state => state.isLogged,
   getIsModerator: state => state.user.is_moderator,
-  getIsAdministrator: state => state.user.administrator
+  getIsAdministrator: state => state.user.administrator,
+  isPushEnable: state => !isEmpty(state.user.token_device)
 }

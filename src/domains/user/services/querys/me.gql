@@ -19,6 +19,15 @@
     is_verified
     is_moderator_verified
     token_device
+    moderators_followed {
+      uid_moderator
+    }
+    followers {
+      uid_user
+    }
+    topics_followed {
+      uid_topic
+    }
     votes {
       id
       uid_topic

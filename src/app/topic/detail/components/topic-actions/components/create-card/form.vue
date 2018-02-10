@@ -13,7 +13,8 @@
         content: '',
         has_video: false,
         url_video: null,
-        position_card: true
+        position_card: true,
+        onSave: false
       }
     },
     computed: {
@@ -33,7 +34,7 @@
         ]
       },
       btnDisabled () {
-        return this.content === ''
+        return this.content === '' || this.onSave
       }
     },
     watch: {

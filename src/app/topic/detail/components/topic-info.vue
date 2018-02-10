@@ -1,9 +1,11 @@
 <script>
   import SharedLinks from '@/components/shared-links'
+  import FollowButton from '@/domains/topics/view/follow-button'
 
   export default {
     components: {
-      SharedLinks
+      SharedLinks,
+      FollowButton
     },
     props: {
       topic: {
@@ -24,6 +26,8 @@
         class="tag is-info"
         @click="$router.push(`/tag/${tag.label}`)"> {{ tag.label }} </span>
 
+      <follow-button :topic="topic" />
+
       <div class="shared-topic">
         <h3 class="title"> Compartilhe este tema </h3>
         <shared-links />
@@ -32,18 +36,22 @@
   </div>
 </template>
 
-<style media="screen" lang="scss" scoped>
+<style media="screen" scoped>
   .content {
     word-wrap: break-word;
     flex-grow: 1;
+  }
 
-    .shared-topic {
-      max-width: 600px;
-      margin-top: 20px;
+  .content .shared-topic {
+    max-width: 600px;
+    margin-top: 20px;
+  }
 
-      .block-button {
-        justify-content: baseline;
-      }
-    }
+  .content .shared-topic .block-button {
+    justify-content: baseline;
+  }
+
+  .content >>> .follow-topic-buttom {
+    margin-top: 10px;
   }
 </style>

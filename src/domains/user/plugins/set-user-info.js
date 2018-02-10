@@ -9,7 +9,8 @@ const SetUserInfoPlugin = {
         ...mapGetters({
           $__isLogged: 'getIsLogged',
           $__isAdministrator: 'getIsAdministrator',
-          $__isModerator: 'getIsModerator'
+          $__isModerator: 'getIsModerator',
+          $__isPushEnable: 'isPushEnable'
         }),
         $__isDebater () {
           return !isEmpty(get(this.$store, 'state.auth.user.cards', []))

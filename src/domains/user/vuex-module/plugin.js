@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash'
 
 import setUser from '../services/set-user'
 import setToken from '../../../services/set-token'
-import { getToken } from '../../../helpers'
+import { getToken, setToken as _setToken } from '../../../helpers'
 import router from '../../../router'
 
 /**
@@ -12,11 +12,18 @@ import router from '../../../router'
 export default store => {
   const token = getToken()
   if (!isEmpty(token)) {
-    setToken(token)
+    store.dispatch('setToken', token)
+
+    return setToken(token)
       .then(_ => {
-        setUser(store)
+        return setUser(store)
+          .then(user => {
+            store.dispatch('setTokenDevice')
+          })
           .catch(err => {
             console.error(err)
+            _setToken('')
+            store.dispatch('setToken', '')
             router.push('/auth/login')
             return false
           })

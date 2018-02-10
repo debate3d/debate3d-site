@@ -13,9 +13,7 @@
 <template>
   <div v-if="hasCards">
 
-    <render-cards
-      :cards="user.cards"
-      column="is-6"/>
+    <render-cards :cards="user.cards"/>
 
   </div>
 </template>

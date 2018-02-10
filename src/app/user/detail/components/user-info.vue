@@ -1,13 +1,24 @@
 <script>
   import mixin from './mixin'
+  import { mapGetters } from 'vuex'
   import AppAvatar from '@/components/avatar.vue'
   import SharedList from '@/domains/user/view/shared-list'
+  import FollowButton from '@/domains/user/view/follow-button'
 
   export default {
     mixins: [ mixin('user-detail-info') ],
     components: {
       AppAvatar,
-      SharedList
+      SharedList,
+      FollowButton
+    },
+    computed: {
+      ...mapGetters({
+        ownUser: 'getUser'
+      }),
+      isOwnUser () {
+        return this.user.uid === this.ownUser.uid
+      }
     }
   }
 </script>
@@ -24,13 +35,19 @@
       <p class="subtitle has-text-centered"> Email: {{ user.email }} </p>
       <p class="subtitle has-text-centered user-ponts"> Pontos: {{ user.ponts }} </p>
 
+      <div class="columns is-centered" v-if="isModerator && !isOwnUser">
+        <follow-button :moderator="user" class="column" />
+      </div>
+
       <shared-list :user="user" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-  @import '../../../../assets/sass/extend.sass';
+<style scoped>
+  .card >>> .follow-user-buttom {
+    margin-top: 10px;
+  }
 
   .title + .subtitle {
     margin-top: 0;

@@ -31,7 +31,7 @@ export default context => {
     url_video: getEmbedUrl(context.url_video)
   })
 
-  context.content = ''
+  context.onSave = true
 
   const successArgs = [
     context,
@@ -48,7 +48,12 @@ export default context => {
     .then(() => mutationResolveHelper(...successArgs))
     .then(user => {
       EventBus.$emit('refresh:apollo')
+      context.onSave = false
+      context.content = ''
       context.$parent.close()
     })
     .catch(mutationRejectHelper(...errorArgs))
+    .then(() => {
+      context.onSave = false
+    })
 }

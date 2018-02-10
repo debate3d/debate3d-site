@@ -10,7 +10,7 @@ export default store => {
   return getUser()
     .then(user => {
       setHasLogged(true)
-      const { reactions, topics, cards, deck, votes } = user
+      const { reactions, topics, cards, deck, votes, token_device } = user // eslint-disable-line
       store.dispatch('setUser', user)
       store.dispatch('getTopics', topics)
       store.dispatch('getReactions', reactions)
@@ -22,6 +22,7 @@ export default store => {
     })
     .catch(error => {
       console.error(error)
+      store.dispatch('setToken', null)
       setToken('')
       setHasLogged(false)
       store.dispatch('isLogged', false)

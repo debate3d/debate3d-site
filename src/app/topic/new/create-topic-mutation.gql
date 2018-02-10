@@ -1,5 +1,3 @@
 mutation InputToCreateTopic ($topic: InputToCreateTopic!) {
-  InsertTopic (data: $topic) {
-    uid
-  }
+  InsertTopic (data: $topic)
 }

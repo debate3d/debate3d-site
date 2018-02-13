@@ -72,7 +72,7 @@
 
         <router-link
           class="button is-outlined is-primary"
-          to="/dashboard" v-if="hasTopicsFollowed"> Lista completa </router-link>
+          to="/me/topics-followed" v-if="hasTopicsFollowed"> Lista completa </router-link>
 
         <p v-else> Não há tópicos seguidos no momento </p>
       </div>

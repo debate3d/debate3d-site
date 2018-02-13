@@ -19,6 +19,7 @@ export default (query, apolloKey, defaultValue, path, fn) => ({
     [apolloKey] () {
       return {
         query,
+        update: result => get(result, path),
         result (apolloResult) {
           const result = get(apolloResult, path, defaultValue)
           this[apolloKey] = result

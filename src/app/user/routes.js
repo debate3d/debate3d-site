@@ -8,6 +8,7 @@ import TermsOfUse from './terms-of-use/main.vue'
 import BeSubscriber from './subscriber/main.vue'
 import Administrator from './administrator'
 import UserSearch from './search/main.vue'
+import TopicsFollowed from './topics-followeds'
 
 export default beforeEnter => [
   {
@@ -69,5 +70,11 @@ export default beforeEnter => [
     name: 'search-users',
     component: UserSearch,
     meta: { requireAuth: false }
+  },
+  {
+    path: '/me/topics-followed',
+    name: 'topics-followed',
+    component: TopicsFollowed,
+    meta: { requireAuth: true }
   }
 ]

@@ -56,6 +56,8 @@
   <div class="app">
     <user-info></user-info>
     <hr>
+    <follow-informations />
+    <hr>
     <topics-info></topics-info>
     <hr>
     <top-users></top-users>

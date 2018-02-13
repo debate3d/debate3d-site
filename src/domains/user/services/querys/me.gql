@@ -21,12 +21,23 @@
     token_device
     moderators_followed {
       uid_moderator
+      moderator {
+        avatar_id
+        ponts
+        name
+        nickname
+      }
     }
     followers {
       uid_user
     }
     topics_followed {
       uid_topic
+      topic {
+        ponts
+        title
+        nickname
+      }
     }
     votes {
       id

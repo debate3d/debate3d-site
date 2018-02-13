@@ -25,7 +25,7 @@ export default curry((loading, store, router, context, user) => {
     return Promise.resolve(result)
   }
 
-  const defineUser = token => setUser(store).then(finished)
+  const defineUser = token => setUser(store)
 
   const data = {
     id: get(user, 'id'),
@@ -37,6 +37,7 @@ export default curry((loading, store, router, context, user) => {
     .then(path(['data', 'LoginFacebook', 'token']))
     .then(setTokenMethod)
     .then(defineUser)
+    .then(finished)
     .catch(err => {
       console.error(err)
       context.$snackbar.open({

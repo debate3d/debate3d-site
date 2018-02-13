@@ -4,7 +4,7 @@
   import { setLastRoute } from '@/helpers'
 
   export default {
-    name: 'dashboard-main-header',
+    name: 'root-header',
     components: { LogoLetters },
     computed: {
       ...mapGetters({

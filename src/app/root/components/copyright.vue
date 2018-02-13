@@ -1,3 +1,12 @@
+<script>
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'root-copyright',
+    computed: mapState(['version'])
+  }
+</script>
+
 <template lang="html">
   <div class="copyright">
     <hr>
@@ -13,6 +22,8 @@
           Alan Costa
       </a>
     </p>
+
+    <span class="tag is-dark app-version"> Version {{ version }} </span>
   </div>
 </template>
 
@@ -38,6 +49,12 @@
 
     a {
       color: #3399ee;
+    }
+
+    .app-version {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
     }
   }
 

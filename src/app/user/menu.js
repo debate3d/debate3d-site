@@ -25,6 +25,11 @@ export default [
     needAuth: bool => bool && true
   },
   {
+    route: '/me/moderators-followed',
+    label: 'Moderadores que estou seguindo',
+    needAuth: bool => bool && true
+  },
+  {
     route: '/me/deck',
     label: 'Meu deck',
     needAuth: bool => bool && true

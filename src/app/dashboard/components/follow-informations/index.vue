@@ -54,7 +54,7 @@
 
         <router-link
           class="button is-outlined is-primary"
-          to="/dashboard" v-if="hasModeratorFollowed"> Lista completa </router-link>
+          to="/me/moderators-followed" v-if="hasModeratorFollowed"> Lista completa </router-link>
 
         <p v-else> Não há moderadores seguidos no momento </p>
       </div>

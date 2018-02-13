@@ -9,6 +9,7 @@ import BeSubscriber from './subscriber/main.vue'
 import Administrator from './administrator'
 import UserSearch from './search/main.vue'
 import TopicsFollowed from './topics-followeds'
+import ModeratorsFollowed from './moderators-followeds'
 
 export default beforeEnter => [
   {
@@ -75,6 +76,12 @@ export default beforeEnter => [
     path: '/me/topics-followed',
     name: 'topics-followed',
     component: TopicsFollowed,
+    meta: { requireAuth: true }
+  },
+  {
+    path: '/me/moderators-followed',
+    name: 'moderators-followed',
+    component: ModeratorsFollowed,
     meta: { requireAuth: true }
   }
 ]

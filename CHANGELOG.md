@@ -5,6 +5,9 @@ Todas as anotações do projeto estarão neste documento
 O formato é baseado em [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 e esse projeto segue [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2018-02-15
++ Criado lógica para resetar senha
+
 ## [2.1.0] - 2018-02-13
 + Adicionado tag para visualização da versão atual da plataforma
 + Adicionado lógica para push notifications

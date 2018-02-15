@@ -2,13 +2,14 @@
 import { isEmpty } from 'lodash'
 
 import LogoGlasses from '@/components/logo-glasses.vue'
+import ForgetPassword from './forget-password.vue'
 import login from './login'
 import loginWithFacebook from '../facebook/main.vue'
 import OfflineAlert from '@/support/mixins/offline-alert'
 
 export default {
-  components: { LogoGlasses, loginWithFacebook },
-  mixins: [ OfflineAlert ],
+  components: { LogoGlasses, loginWithFacebook, ForgetPassword },
+  mixins: [ OfflineAlert, ForgetPassword ],
   data () {
     return {
       email: '',
@@ -32,6 +33,9 @@ export default {
         }
         login(this, payload, loading)
       }
+    },
+    openModal () {
+      this.$refs.modal.open()
     }
   },
   mounted () {
@@ -84,7 +88,11 @@ export default {
       </form>
 
       <p> Não possui uma conta? <router-link to="/auth/register"> Cadastre-se </router-link> </p>
+
+      <p> Esqueceu sua senha? <a href="#" @click.prevent="openModal"> Troque de senha </a> </p>
     </section>
+
+    <ForgetPassword ref="modal" />
   </div>
 </template>
 

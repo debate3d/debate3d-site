@@ -24,7 +24,7 @@ module.exports = function (ctx) {
     },
     build: {
       scopeHoisting: true,
-      vueRouterMode: 'history',
+      vueRouterMode: 'hash',
       env: ctx.dev
         ? { // so on dev we'll have
           API: '"http://localhost:3000/"'

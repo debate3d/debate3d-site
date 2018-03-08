@@ -47,7 +47,13 @@ export default {
 
     <br />
 
-    <q-btn :disable="isInvalid" @click="save" label="Entrar" flat />
+    <q-btn
+      flat
+      class="full-width"
+      :disable="isInvalid"
+      label="Entrar"
+      color="primary"
+      @click="save" />
   </form>
 </template>
 

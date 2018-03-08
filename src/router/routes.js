@@ -5,5 +5,9 @@ export default [
     path: '*',
     component: () => import('pages/404')
   },
+  {
+    path: '/',
+    redirect: { name: 'auth.root' }
+  },
   ...AuthRoutes
 ]

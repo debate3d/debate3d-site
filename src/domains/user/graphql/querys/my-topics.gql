@@ -1,0 +1,34 @@
+query getMyTopics ($uid: String!, $page: Int!) {
+  user(uid: $uid) {
+    me_topics(page: $page) {
+      count
+      records {
+        uid
+        ponts
+        title
+        url_image
+        nickname
+        cards(page: 1) {
+          count
+        }
+        position {
+          positive
+          negative
+        }
+        votes_topic {
+          count
+          positive {
+            id
+          }
+          negative {
+            id
+          }
+        }
+        tags {
+          uid
+          label
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,11 @@
 // Configuration for your app
+const path = require('path')
 
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
+
     ],
     css: [
       'app.styl'
@@ -23,6 +25,13 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
+      env: ctx.dev
+        ? { // so on dev we'll have
+          API: '"http://localhost:3000/"'
+        }
+        : { // and on build (production):
+          API: '"https://api-debate3d.herokuapp.com/"'
+        },
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
@@ -34,6 +43,15 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /(node_modules|quasar)/
         })
+        cfg.module.rules.push({
+          test: /\.(graphql|gql)$/,
+          //  exclude: /node_modules/,
+          loader: 'graphql-tag/loader'
+        })
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          '@': path.resolve(__dirname, './src')
+        }
       }
     },
     devServer: {
@@ -57,14 +75,21 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QField',
+        'QInput',
+        'QBtn',
+        'QCard',
+        'QCardMain',
+        'QCardMedia'
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading'
       ]
     },
     // animations: 'all' --- includes all animations

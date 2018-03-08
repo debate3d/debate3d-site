@@ -1,0 +1,13 @@
+query getMyModeratorsFollowed ($uid: String!) {
+  user (uid: $uid) {
+    moderators_followed {
+      moderator {
+        uid
+        name
+        nickname
+        avatar_id
+        ponts
+      }
+    }
+  }
+}

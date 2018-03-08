@@ -1,0 +1,98 @@
+query getSingleUser ($nickname: String) {
+  user(nickname: $nickname) {
+    name
+    uid
+    email
+    nickname
+    created
+    ponts
+    avatar_id
+    banner_url
+    facebook
+    instagram
+    site
+    twitter
+    youtube
+    is_moderator
+    followers {
+      uid_user
+      uid_moderator
+    }
+    topics(page: 1) {
+      count
+      records {
+        uid
+        ponts
+        title
+        nickname
+        url_image
+        cards(page: 1) {
+          count
+        }
+        position {
+          positive
+          negative
+        }
+        votes_topic {
+          count
+          positive {
+            id
+          }
+          negative {
+            id
+          }
+        }
+        tags {
+          uid
+          label
+        }
+      }
+    }
+    cards(page: 1) {
+      count
+      records {
+        uid
+        topic {
+          uid
+          title
+          nickname
+        }
+        author {
+          name
+          uid
+          avatar_id
+          nickname
+        }
+        content
+        position
+        ponts
+        deck {
+          id
+          user {
+            uid
+            name
+            nickname
+          }
+        }
+        likes {
+          id
+          reaction
+          user {
+            uid
+            name
+            nickname
+          }
+        }
+        dislikes {
+          id
+          reaction
+          user {
+            uid
+            name
+            nickname
+          }
+        }
+      }
+    }
+  }
+}

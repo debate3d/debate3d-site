@@ -1,0 +1,48 @@
+query getMyCards ($uid: String!) {
+  user(uid: $uid) {
+    deck {
+      card {
+        uid
+        topic {
+          uid
+          title
+        }
+        author {
+          name
+          uid
+          nickname
+          avatar_id
+        }
+        content
+        position
+        ponts
+        deck {
+          id
+          user {
+            uid
+            nickname
+            name
+          }
+        }
+        likes {
+          id
+          reaction
+          user {
+            uid
+            nickname
+            name
+          }
+        }
+        dislikes {
+          id
+          reaction
+          user {
+            uid
+            nickname
+            name
+          }
+        }
+      }
+    }
+  }
+}

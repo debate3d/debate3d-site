@@ -10,7 +10,17 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.1.10",
+    "apollo-client": "^2.2.6",
+    "apollo-link-http": "^1.5.3",
+    "axios": "^0.18.0",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
+    "nprogress": "^0.2.0",
+    "ramda": "^0.25.0",
+    "vue-apollo": "^3.0.0-beta.4"
+  },
   "devDependencies": {
     "babel-eslint": "8.2.1",
     "eslint": "4.15.0",

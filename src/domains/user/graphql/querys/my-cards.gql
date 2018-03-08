@@ -1,0 +1,45 @@
+query getMyCards ($uid: String!, $page: Int!) {
+  user(uid: $uid) {
+    me_cards(page: $page) {
+      count
+      records {
+        uid
+        topic {
+          uid
+          title
+        }
+        author {
+          name
+          uid
+          nickname
+          avatar_id
+        }
+        content
+        position
+        ponts
+        deck {
+          id
+          user {
+            uid
+            name
+          }
+        }
+        likes {
+          id
+          reaction
+          user {
+            uid
+            name
+          }
+        }
+        dislikes {
+          id
+          user {
+            uid
+            name
+          }
+        }
+      }
+    }
+  }
+}

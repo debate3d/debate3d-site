@@ -1,0 +1,13 @@
+query userStats ($uid: String!) {
+  userStats(uid: $uid) {
+    reactionsGived
+    cardsCreated
+    topicsCreated
+    deckGived
+    votesGived
+    votesReceived
+    likesReceived
+    deckReceived
+    dislikesReceived
+  }
+}

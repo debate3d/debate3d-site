@@ -1,0 +1,34 @@
+query getMyTopicsFollowed ($uid: String!) {
+  user (uid: $uid) {
+    topics_followed {
+      uid_topic
+      topic {
+        uid
+        ponts
+        title
+        url_image
+        nickname
+        cards(page: 1) {
+          count
+        }
+        position {
+          positive
+          negative
+        }
+        votes_topic {
+          count
+          positive {
+            id
+          }
+          negative {
+            id
+          }
+        }
+        tags {
+          uid
+          label
+        }
+      }
+    }
+  }
+}

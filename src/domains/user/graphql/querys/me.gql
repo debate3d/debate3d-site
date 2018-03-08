@@ -1,0 +1,70 @@
+{
+  me {
+    name
+    nickname
+    uid
+    email
+    avatar_id
+    created
+    cpf
+    cep
+    ponts
+    facebook
+    twitter
+    instagram
+    site
+    subscriber
+    administrator
+    is_moderator
+    is_verified
+    is_moderator_verified
+    token_device
+    moderators_followed {
+      uid_moderator
+      moderator {
+        avatar_id
+        ponts
+        name
+        nickname
+      }
+    }
+    followers {
+      uid_user
+    }
+    topics_followed {
+      uid_topic
+      topic {
+        ponts
+        title
+        nickname
+      }
+    }
+    votes {
+      id
+      uid_topic
+      vote
+    }
+    me_cards(page: 1) {
+      count
+      records {
+        uid
+        uid_topic
+      }
+    }
+    reactions {
+      id
+    }
+    topics(page: 1) {
+      count
+      records {
+        uid
+      }
+    }
+    deck {
+      id
+      card {
+        uid
+      }
+    }
+  }
+}

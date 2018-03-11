@@ -1,14 +1,28 @@
 <script>
 import { isEmpty } from 'lodash'
 import login from './login'
+import { validationMixin } from 'vuelidate'
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   name: 'auth-login-form',
+  mixins: [ validationMixin ],
+  validations: {
+    model: {
+      email: {
+        required,
+        email
+      },
+      password: {
+        required
+      }
+    }
+  },
   data () {
     return {
       model: {
-        email: null,
-        password: null
+        email: '',
+        password: ''
       }
     }
   },

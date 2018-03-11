@@ -1,5 +1,4 @@
-import { set } from 'lodash'
-import NProgress from 'nprogress'
+import { ApolloLink } from 'apollo-link'
 
 let token
 
@@ -7,13 +6,15 @@ export const setToken = value => {
   token = value
 }
 
-const applyMiddleware = (req, next) => {
-  NProgress.start()
-  const Authorization = token ? `${token}` : null
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext({
+    headers: {
+      authorization: token
+    }
+  })
 
-  set(req.options, 'headers.Authorization', Authorization)
+  return forward(operation)
+})
 
-  next()
-}
-
-export default applyMiddleware
+export default authMiddleware

@@ -14,6 +14,7 @@ export default (payload, store, router) => {
   return http.post('/auth/login', payload)
     .then(response => setToken(response.data.token))
     .then(token => {
+      store.commit('SET_TOKEN', token)
       return setUser(store)
         .then(result => {
           const isVerified = result.is_verified

@@ -1,5 +1,6 @@
 // Configuration for your app
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = function (ctx) {
   return {
@@ -52,6 +53,7 @@ module.exports = function (ctx) {
           ...cfg.resolve.alias,
           '@': path.resolve(__dirname, './src')
         }
+        cfg.plugins.push(new Dotenv())
       }
     },
     devServer: {

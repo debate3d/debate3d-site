@@ -1,5 +1,22 @@
+<script>
+export default {
+  name: 'LayoutAuth',
+  computed: {
+    isLoginRoute () {
+      return this.$route.name === 'auth.login'
+    },
+    color () {
+      return this.isLoginRoute ? 'primary' : 'secondary'
+    },
+    classColor () {
+      return `bg-${this.color}`
+    }
+  }
+}
+</script>
+
 <template>
-  <q-layout view="lHh Lpr lFf" class="bg-primary">
+  <q-layout view="lHh Lpr lFf" :class="classColor">
     <q-page-container>
       <div class="auth-container">
         <div style="width: 100%">
@@ -13,12 +30,6 @@
     </q-page-container>
   </q-layout>
 </template>
-
-<script>
-export default {
-  name: 'LayoutAuth'
-}
-</script>
 
 <style scoped>
 .auth-container {

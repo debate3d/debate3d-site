@@ -25,7 +25,7 @@ export default {
       return Object.values(this.model).some(isEmpty)
     },
     isEqualPwd () {
-      return this.model.password === this.model.password_again
+      return (this.model.password === this.model.password_again) || !this.isModelEmpty
     }
   },
   methods: {

@@ -14,6 +14,11 @@ export default [
         path: '/auth/register',
         name: 'auth.register',
         component: () => import('./register')
+      },
+      {
+        path: '/password-reset',
+        name: 'auth.password.reset',
+        component: () => import('./reset')
       }
     ]
   }

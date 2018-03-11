@@ -1,9 +1,15 @@
 <script>
 import AuthLoginForm from './form'
+import ForgetPassword from './forget-password'
 
 export default {
   name: 'auth-login-page',
-  components: { AuthLoginForm }
+  components: { AuthLoginForm, ForgetPassword },
+  methods: {
+    openModal () {
+      this.$refs.modal.open()
+    }
+  }
 }
 </script>
 
@@ -16,6 +22,12 @@ export default {
         Ainda não possuem uma conta?
         <router-link :to="{ name: 'auth.register' }"> Faça seu cadastro </router-link>
       </p>
+
+      <p class="text-dark">
+        <a href="#" @click="openModal"> Reset sua senha </a>
+      </p>
+
+      <forget-password ref="modal" />
     </q-card-main>
   </q-card>
 </template>

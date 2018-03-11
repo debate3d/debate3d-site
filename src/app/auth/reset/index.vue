@@ -1,9 +1,9 @@
 <script>
-import AuthRecoveryForm from './form'
+import AuthRecoveryPasswordForm from './form'
 
 export default {
   name: 'auth-recovery-password-page',
-  components: { AuthRecoveryForm }
+  components: { AuthRecoveryPasswordForm }
 }
 </script>
 

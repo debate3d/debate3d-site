@@ -24,51 +24,49 @@ export default {
     }
   },
   methods: {
-    save () {
-      if (this.isInvalid) {
-        this.$q.loading.show()
-        const password = this.model.password
-        const password_again = this.model.password_again // eslint-disable-line
-        const token = this.token
-        const data = {
-          password,
-          password_again,
-          token
-        }
-        this.$apollo.mutate({
-          mutation,
-          variables: {
-            data
-          }
-        })
-          .then(() => {
-            this.$q.notify({
-              message: 'Sua senha foi resetada com sucesso, clique em ok para ir a tela de login',
-              type: 'positive',
-              position: 'is-top',
-              actions: [
-                {
-                  label: 'Ok',
-                  handler: () => {
-                    this.$router.push({ name: 'auth.login' })
-                    this.model.password = ''
-                    this.model.password_again = ''
-                  }
-                }
-              ]
-            })
-          })
-          .catch(err => {
-            this.$q.notify({
-              message: err.message,
-              type: 'negative',
-              position: 'is-top'
-            })
-          })
-          .then(() => {
-            this.$q.loading.show()
-          })
+    save (event) {
+      event.preventDefault()
+      event.stopPropagation()
+      this.$q.loading.show()
+      const password = this.model.password
+      const password_again = this.model.password_again // eslint-disable-line
+      const token = this.token
+      const data = {
+        password,
+        password_again,
+        token
       }
+      this.$apollo.mutate({
+        mutation,
+        variables: {
+          data
+        }
+      })
+        .then(() => {
+          return this.$q.notify({
+            message: 'Sua senha foi resetada com sucesso, clique em ok para ir a tela de login',
+            type: 'positive',
+            actions: [
+              {
+                label: 'Ok',
+                handler: () => {
+                  this.$router.push({ name: 'auth.login' })
+                  this.model.password = ''
+                  this.model.password_again = ''
+                }
+              }
+            ]
+          })
+        })
+        .catch(err => {
+          return this.$q.notify({
+            message: err.message,
+            type: 'negative'
+          })
+        })
+        .then(() => {
+          this.$q.loading.hide()
+        })
     },
     reset () {
       this.model = {
@@ -84,12 +82,12 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="login">
+  <form action="#">
     <q-field>
       <q-input
         float-label="Nova senha"
         type="password"
-        v-model="password"></q-input>
+        v-model="model.password"></q-input>
     </q-field>
 
     <br>
@@ -98,10 +96,14 @@ export default {
       <q-input
         float-label="Repita a nova senha"
         type="password"
-        v-model="password_again"></q-input>
+        v-model="model.password_again"></q-input>
     </q-field>
 
+    <br>
+
     <q-btn
+      flat
+      class="full-width"
       @click="save"
       :disabled="isInvalid">
       Resetar senha

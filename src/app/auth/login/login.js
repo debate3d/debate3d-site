@@ -4,6 +4,7 @@ export default (context, model) => {
   context.$q.loading.show()
   return login(model, context.$store, context.$router)
     .then(() => {
+      context.reset()
       return context.$q.notify({
         message: 'Você está logado',
         type: 'positive'

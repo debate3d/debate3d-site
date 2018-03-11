@@ -37,6 +37,12 @@ export default {
       event.stopPropagation()
 
       return login(this, this.model)
+    },
+    reset () {
+      this.model = {
+        email: '',
+        password: ''
+      }
     }
   }
 }

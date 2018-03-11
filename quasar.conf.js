@@ -6,7 +6,7 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
-
+      'apollo'
     ],
     css: [
       'app.styl'

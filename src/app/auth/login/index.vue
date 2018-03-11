@@ -11,6 +11,11 @@ export default {
   <q-card class="auth-login bg-white">
     <q-card-main>
       <auth-login-form />
+      <br>
+      <p class="text-dark">
+        Ainda não possuem uma conta?
+        <router-link :to="{ name: 'auth.register' }"> Faça seu cadastro </router-link>
+      </p>
     </q-card-main>
   </q-card>
 </template>

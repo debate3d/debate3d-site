@@ -9,5 +9,10 @@ export default [
     path: '/',
     redirect: { name: 'auth.root' }
   },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../layouts/dashboard')
+  },
   ...AuthRoutes
 ]

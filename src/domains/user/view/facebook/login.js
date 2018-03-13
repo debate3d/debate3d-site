@@ -14,7 +14,10 @@ export default curry((store, router, context, user) => {
     context.$q.loading.show()
     EventBus.$emit('close:login:modal')
     router.push({ name: 'dashboard' })
-    return Promise.resolve(result)
+    return context.$q.notify({
+      message: 'Você está logado',
+      type: 'positive'
+    })
   }
 
   const defineUser = token => setUser(store)

@@ -1,15 +1,18 @@
 <script>
 import AuthRegisterForm from './form'
+import LoginFacebook from '@/domains/user/view/facebook'
 
 export default {
   name: 'auth-register-page',
-  components: { AuthRegisterForm }
+  components: { AuthRegisterForm, LoginFacebook }
 }
 </script>
 
 <template>
   <q-card class="auth-register bg-white">
     <q-card-main>
+      <login-facebook />
+      <br />
       <auth-register-form />
 
       <br>

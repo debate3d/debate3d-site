@@ -6,6 +6,7 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
+      'fb-button',
       'apollo'
     ],
     css: [
@@ -13,10 +14,10 @@ module.exports = function (ctx) {
     ],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons'
+      'material-icons',
+      'fontawesome'
       // 'ionicons',
-      // 'mdi',
-      // 'fontawesome'
+      // 'mdi'
     ],
     supportIE: false,
     vendor: {

@@ -1,10 +1,11 @@
 <script>
 import AuthLoginForm from './form'
 import ForgetPassword from './forget-password'
+import LoginFacebook from '@/domains/user/view/facebook'
 
 export default {
   name: 'auth-login-page',
-  components: { AuthLoginForm, ForgetPassword },
+  components: { AuthLoginForm, LoginFacebook, ForgetPassword },
   methods: {
     openModal () {
       this.$refs.modal.open()
@@ -16,8 +17,10 @@ export default {
 <template>
   <q-card class="auth-login bg-white">
     <q-card-main>
+      <login-facebook />
+      <br />
       <auth-login-form />
-      <br>
+      <br />
       <p class="text-dark">
         Ainda não possuem uma conta?
         <router-link :to="{ name: 'auth.register' }"> Faça seu cadastro </router-link>

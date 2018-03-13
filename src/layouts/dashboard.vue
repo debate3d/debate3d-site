@@ -1,4 +1,5 @@
 <script>
+import { mapMutations } from 'vuex'
 import LayoutHeader from '../components/dashboard/header'
 import LayoutMenu from '../components/dashboard/menu'
 
@@ -12,9 +13,13 @@ export default {
     drawerState: false
   }),
   methods: {
+    ...mapMutations(['setTitle']),
     onUpdateDrawerState (bool) {
       this.drawerState = bool
     }
+  },
+  created () {
+    this.setTitle('Dashboard')
   }
 }
 </script>

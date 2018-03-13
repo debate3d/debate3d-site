@@ -63,7 +63,7 @@ export default {
   </q-layout-drawer>
 </template>
 
-<style>
+<style scoped>
 .logo-figure {
   max-width: 100%;
   margin: 0;

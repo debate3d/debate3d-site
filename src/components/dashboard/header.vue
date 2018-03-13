@@ -1,4 +1,6 @@
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'dashboard-header',
   props: {
@@ -10,6 +12,9 @@ export default {
   data: () => ({
     localDrawerState: false
   }),
+  computed: {
+    ...mapState(['pageTitle'])
+  },
   watch: {
     localDrawerState: 'updateDrawerState',
     drawerState (bool) {
@@ -29,7 +34,7 @@ export default {
 
 <template>
   <q-layout-header reveal>
-    <q-toolbar>
+    <q-toolbar color="blue-grey-10">
       <q-btn
         flat
         round
@@ -39,10 +44,29 @@ export default {
         icon="menu"
         aria-label="Menu"
       />
+      <q-toolbar-title>
+        {{ pageTitle }}
+      </q-toolbar-title>
+
+      <div class="row flex-center">
+        <figure class="logo-figure">
+          <img alt="Debate3D logo" src="~assets/logo-debate3d-white.png">
+        </figure>
+      </div>
     </q-toolbar>
   </q-layout-header>
 </template>
 
-<style>
+<style scoped>
+.logo-figure {
+  max-width: 150px;
+  margin: 0;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
 
+.logo-figure img {
+  max-width: 100%;
+}
 </style>

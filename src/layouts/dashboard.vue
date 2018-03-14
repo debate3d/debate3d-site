@@ -2,12 +2,14 @@
 import { mapMutations } from 'vuex'
 import LayoutHeader from '../components/dashboard/header'
 import LayoutMenu from '../components/dashboard/menu'
+import LayoutFooter from '../components/dashboard/footer'
 
 export default {
   name: 'dashboard',
   components: {
     LayoutMenu,
-    LayoutHeader
+    LayoutHeader,
+    LayoutFooter
   },
   data: () => ({
     drawerState: false
@@ -33,6 +35,8 @@ export default {
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <layout-footer />
   </q-layout>
 </template>
 

@@ -67,6 +67,7 @@ module.exports = function (ctx) {
       components: [
         'QScrollArea',
         'QLayout',
+        'QLayoutFooter',
         'QLayoutHeader',
         'QLayoutDrawer',
         'QPageContainer',

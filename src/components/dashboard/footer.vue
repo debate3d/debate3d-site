@@ -1,6 +1,11 @@
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'dashboard-footer'
+  name: 'dashboard-footer',
+  computed: {
+    ...mapState(['version'])
+  }
 }
 </script>
 
@@ -48,7 +53,7 @@ export default {
       </div>
     </div>
 
-    <hr />
+    <hr style="margin: 0" />
 
     <div class="copyright">
       <p class="text-white text-center">
@@ -66,7 +71,14 @@ export default {
         </a>
       </p>
 
-      <!-- <span class="tag is-dark app-version"> Version {{ version }} </span> -->
+      <q-chip
+        small
+        dense
+        square
+        color="dark"
+        class="app-version">
+        Version {{ version }}
+      </q-chip>
     </div>
   </q-layout-footer>
 </template>
@@ -108,6 +120,12 @@ a {
 }
 
 .copyright {
-  padding-top: 5px;
+  padding-top: 10px;
+}
+
+.app-version {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 </style>

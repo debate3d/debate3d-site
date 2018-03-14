@@ -1,3 +1,6 @@
+import pkg from '../../package.json'
+
 export default {
-  pageTitle: ''
+  pageTitle: '',
+  version: pkg.version
 }

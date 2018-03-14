@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'dashboard-header',
@@ -13,7 +13,10 @@ export default {
     localDrawerState: false
   }),
   computed: {
-    ...mapState(['pageTitle'])
+    ...mapState(['pageTitle']),
+    ...mapGetters({
+      'isLogged': 'isLogged'
+    })
   },
   watch: {
     localDrawerState: 'updateDrawerState',
@@ -24,6 +27,9 @@ export default {
   methods: {
     updateDrawerState (bool) {
       this.$emit('update-drawerState', bool)
+    },
+    toLogin () {
+      this.$router.push({ name: 'auth.login' })
     }
   },
   mounted () {
@@ -48,6 +54,16 @@ export default {
         {{ pageTitle }}
       </q-toolbar-title>
 
+      <q-btn
+        v-if="!isLogged"
+        small
+        color="amber-10"
+        class="login-button within-iframe-hide"
+        aria-label="Login"
+        label="Login"
+        @click="toLogin"
+      />
+
       <div class="row flex-center">
         <figure class="logo-figure">
           <img alt="Debate3D logo" src="~assets/logo-debate3d-white.png">
@@ -68,5 +84,11 @@ export default {
 
 .logo-figure img {
   max-width: 100%;
+}
+
+.login-button {
+  position: absolute;
+  top: 6px;
+  right: 180px;
 }
 </style>

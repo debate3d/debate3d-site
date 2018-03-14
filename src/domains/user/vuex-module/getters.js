@@ -13,5 +13,6 @@ export default {
   isPushEnable: state => !isEmpty(state.user.token_device),
   getTopicsFollowed: state => state.user.topics_followed || [],
   getModeratorsFollowed: state => state.user.moderators_followed || [],
-  getFollowers: state => state.user.followers || []
+  getFollowers: state => state.user.followers || [],
+  isLogged: state => !isEmpty(state.token)
 }
